@@ -1,0 +1,11 @@
+<nav>
+  <h1>Growler</h1>
+  <div class="btnList">
+    <app-button [icon]="'contrast'" [showLabel]="false"/>
+    <app-dropdown [icon]="'person'" [label]="'Admin'">
+      @for (btn of btnList; track $index) {
+        <app-button [icon]="btn.icon" [label]="btn.label" />
+      }
+    </app-dropdown>
+  </div>
+</nav>

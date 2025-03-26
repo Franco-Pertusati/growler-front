@@ -1,0 +1,13 @@
+<button>
+  @if (showIcon) {
+  <i class="material-icons-round">{{ icon }}</i>
+  }
+  @if (showLabel && label) {
+  <span>{{ label }}</span>
+  }
+  @if (notifications) {
+  <div class="notNum">
+    {{ notifications }}
+  </div>
+  }
+</button>

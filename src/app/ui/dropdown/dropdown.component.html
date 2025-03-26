@@ -1,0 +1,20 @@
+<div class="dropDownContainer" (mouseenter)="openDropdown()" (mouseleave)="closeDropdown()">
+  <button>
+    @if (showIcon) {
+    <i class="material-icons-round">{{ icon }}</i>
+    }
+    @if (showLabel && label) {
+    <span>{{ label }}</span>
+    }
+    <i class="material-icons-round">keyboard_arrow_down</i>
+    <div class="ddOptions"></div>
+  </button>
+
+  @if (isOpen) {
+  <div class="ddCont">
+    <div class="win">
+      <ng-content />
+    </div>
+  </div>
+  }
+</div>

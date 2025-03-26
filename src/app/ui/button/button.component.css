@@ -1,0 +1,50 @@
+.primary {
+  background-color: var(--primary);
+}
+
+.primary:hover {
+  background-color: var(--primary2);
+}
+
+.secondary {
+  background-color: var(--bg2);
+}
+
+.secondary:hover {
+  background-color: var(--bg1);
+}
+
+.danger {
+  background-color: var(--danger);
+}
+
+.danger:hover {
+  background-color: var(--danger);
+}
+
+.warning {
+  background-color: var(--warning);
+}
+
+.warning:hover {
+  background-color: var(--warning);
+}
+
+.succes {
+  background-color: var(--succes);
+}
+
+.succes:hover {
+  background-color: var(--succes);
+}
+
+.notNum {
+  height: 28px;
+  width: 28px;
+  position: absolute;
+  right: -14px;
+  top: -14px;
+  background-color: var(--danger);
+  border-radius: 50px;
+  font-size: 1.8rem;
+}

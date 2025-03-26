@@ -1,0 +1,16 @@
+nav {
+  padding: 12px 24px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100vw;
+  background-color: var(--bg1);
+  border-bottom: solid 1px var(--bg2);
+  box-shadow: 0 4px 8px var(--transparent);
+}
+
+.btnList {
+  width: 100%;
+  display: flex;
+  flex-direction: row-reverse;
+}
