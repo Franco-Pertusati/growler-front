@@ -4,17 +4,20 @@ import { Component, Input } from '@angular/core';
 @Component({
   selector: 'app-button',
   standalone: true,
-  imports: [],
+  imports: [NgClass],
   templateUrl: './button.component.html',
   styleUrl: './button.component.css',
 })
 
 export class ButtonComponent {
   @Input() type: 'button' | 'submit' | 'reset' = 'button';
-  @Input() disabled = false;
   @Input() label: string = 'Action';
   @Input() showLabel: boolean = true;
   @Input() icon: string = 'check'
   @Input() showIcon: boolean = true;
   @Input() notifications: number = 0;
+  @Input() style: string = '';
+  @Input() disabled = false;
+  @Input() accent = false;
+  @Input() active = false;
 }

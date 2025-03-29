@@ -1,4 +1,4 @@
-<button>
+<button [ngClass]="[style, active? 'active' : '', accent? 'accent' : '']">
   @if (showIcon) {
   <i class="material-icons-round">{{ icon }}</i>
   }

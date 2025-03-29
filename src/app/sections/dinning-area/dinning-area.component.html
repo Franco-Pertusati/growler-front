@@ -1,3 +1,14 @@
-<div class="background hfull wfull">
-  dinning area
+<div class="gridContainer background hfull wfull">
+  <div class="grid">
+    @for (cell of cells; track $index) {
+    <div class="cell" (dragover)="onDragOver($event)" (drop)="onDrop($event, cell)" (dragenter)="onDragEnter($event)"
+      (dragleave)="onDragLeave($event)">
+      @for (table of getTableAtPosition(cell); track table.id) {
+      <div class="hfull" draggable="true" (dragstart)="onDragStart($event, table)">
+        <app-table [tableData]="table" />
+      </div>
+      }
+    </div>
+    }
+  </div>
 </div>

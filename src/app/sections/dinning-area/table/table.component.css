@@ -1,0 +1,33 @@
+.table {
+  height: 100%;
+  width: 100%;
+  background-color: var(--danger);
+  border-radius: 4px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.table span {
+  text-shadow: 0 0 12px #000;
+}
+
+.occupied {
+  background-color: var(--succes);
+}
+
+.wfp {
+  background-color: var(--blue);
+}
+
+.tableData {
+  width: 200px;
+  position: absolute;
+  bottom: -178px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  border: solid 1px var(--border);
+  z-index: 10;
+}

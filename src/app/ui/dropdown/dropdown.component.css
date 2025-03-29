@@ -4,5 +4,8 @@
 
 
 .win {
+  width: 220px;
   position: absolute;
+  left: calc(50% - 110px);
+  z-index: 50;
 }

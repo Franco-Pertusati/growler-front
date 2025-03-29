@@ -1,11 +1,12 @@
 nav {
+  width: 100%;
   padding: 12px 24px;
   display: flex;
   align-items: center;
   gap: 12px;
-  width: 100vw;
   background-color: var(--bg1);
-  border-bottom: solid 1px var(--bg2);
+  border: solid 1px var(--border);
+  border-radius: 12px;
   box-shadow: 0 4px 8px var(--transparent);
 }
 

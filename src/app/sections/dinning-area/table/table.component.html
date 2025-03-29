@@ -1,0 +1,14 @@
+<div class="table" [ngClass]="tableData?.state === 'occupied'? 'occupied' : ''" (mouseenter)="openDropdown()"
+  (mouseleave)="closeDropdown()">
+  <span>
+    {{ tableData?.name }}
+  </span>
+  @if (isOpen) {
+  <div class="tableData background">
+    <span>Total check: {{tableData?.guestCount}}</span>
+    <span>Total time: {{tableData?.guestCount}}</span>
+    <span>Last order time: {{tableData?.guestCount}}</span>
+    <span>Guest count: {{tableData?.guestCount}}</span>
+  </div>
+  }
+</div>

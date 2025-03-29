@@ -48,3 +48,28 @@
   border-radius: 50px;
   font-size: 1.8rem;
 }
+
+.square {
+  width: 120px;
+  height: 120px;
+  flex-direction: column;
+  border: solid 1px var(--border);
+}
+
+.square i {
+  font-size: 3rem;
+  margin: auto;
+}
+
+.square span {
+  font-size: 1.8rem;
+  text-wrap: wrap;
+}
+
+.accent {
+  background-color: var(--primary);
+}
+
+.active {
+  background-color: var(--bg3);
+}

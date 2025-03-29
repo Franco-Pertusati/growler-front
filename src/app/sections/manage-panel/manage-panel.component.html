@@ -1,3 +1,19 @@
 <div class="background wfull hfull">
-
+  <h3>Dinning area managment</h3>
+  <span>Table data</span>
+  <div>
+    <app-button [style]="'square'" [icon]="'add'" [label]="'Add table'" />
+    <app-button [style]="'square'" [icon]="'delete'" [label]="'Remove table'" />
+    <app-button [style]="'square'" [icon]="'bookmark_add'" [label]="'Reserve table'" />
+  </div>
+  <span>Table shape</span>
+  <div>
+    <app-button [style]="'square'" [icon]="'square'" [label]="'Square'" />
+    <app-button [style]="'square'" [icon]="'circle'" [label]="'Circle'" />
+  </div>
+  <span>Table Name</span>
+  <form action="">
+    <input type="text">
+    <app-button [icon]="'check'" [showLabel]="false" [accent]="true" />
+  </form>
 </div>

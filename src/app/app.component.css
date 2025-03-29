@@ -1,15 +1,13 @@
 .container {
-  display: flex;
-  flex-direction: column;
+  padding: 12px;
   width: 100vw;
   height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 408px;
+  grid-template-rows: auto 1fr;
+  gap: 12px;
 }
 
-.c1 {
-  height: 100%;
-  padding: 12px;
-  display: grid;
-  grid-template-columns: 1fr 420px;
-  gap: 12px;
-  /* background-color: var(--succes); */
+app-nav {
+  grid-column: span 2;
 }
