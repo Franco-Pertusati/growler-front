@@ -4,7 +4,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  border: solid 1px var(--border);
 }
 
 .grid {

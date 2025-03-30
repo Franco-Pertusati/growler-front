@@ -11,18 +11,18 @@ import { ThemeBtnComponent } from "../../ui/theme-btn/theme-btn.component";
   styleUrl: './nav.component.css'
 })
 export class NavComponent {
-  btnList = [
+  inventoryBtnList = [
     {
-      label: 'Edit table',
-      icon: 'edit'
+      label: 'Product list',
+      icon: 'menu_book'
     },
     {
-      label: 'Switch table',
-      icon: 'swap_horiz'
+      label: 'Category list',
+      icon: 'menu_book'
     },
     {
-      label: 'Close table',
-      icon: 'delete'
+      label: 'Ingredits list',
+      icon: 'menu_book'
     },
   ]
 }

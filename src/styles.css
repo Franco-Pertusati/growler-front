@@ -1,14 +1,16 @@
+@import '@angular/cdk/overlay-prebuilt.css';
+
 :root .dark {
-  --bg1: #111111;
-  --bg2: #1E1E1E;
-  --bg3: #292929;
+  --bg1: #1d1d1d;
+  --bg2: #272727;
+  --bg3: #363636;
 
   --font: #f8f9fa;
   --font2: #cbcfd3;
   --font3: #aaa9a9;
 
-  --primary: #0466c8;
-  --primary2: #0077b6;
+  --primary: #eb5e00;
+  --primary2: #f77620;
 
   --transparent: #1212124d;
   --border: #3d3d3d;
@@ -22,16 +24,16 @@
 }
 
 .light {
-  --bg1: #f8f9fa;
-  --bg2: #cbcfd3;
-  --bg3: #aaa9a9;
+  --bg1: #F8F9FA;
+  --bg2: #E9ECEF;
+  --bg3: #DEE2E6;
 
   --font: #212529;
-  --font2: #495057;
-  --font3: #6c757d;
+  --font2: #343A40;
+  --font3: #495057;
 
-  --primary: #0466c8;
-  --primary2: #0353a4;
+  --primary: #4498ec;
+  --primary2: #0b76e0;
 
   --transparent: hsla(0, 0%, 100%, 0.3);
 
@@ -95,9 +97,10 @@ button:hover, .dropDwn:hover {
   background-color: var(--bg1);
   border-radius: 12px;
   padding: 12px;
+  border: solid 1px var(--border);
 }
 
-h1 {
+h1, h2 {
   font-size: 3rem;
   font-weight: normal;
 }
@@ -109,3 +112,6 @@ h1 {
 .wfull {
   width: 100%;
 }
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

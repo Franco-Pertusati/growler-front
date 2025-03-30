@@ -1,9 +1,21 @@
-<nav>
+<nav class="background">
   <h1>Growler</h1>
   <div class="btnList">
     <app-theme-btn />
-    <app-dropdown [icon]="'person'" [label]="'Admin'">
-      @for (btn of btnList; track $index) {
+    <app-button [icon]="'settings'" [label]="'Settings'" [style]="'wfull'"/>
+    <app-button [icon]="'point_of_sale'" [label]="'POS and payments'" [style]="'wfull'"/>
+    <app-dropdown [icon]="'inventory_2'" [label]="'Inventory'">
+      @for (btn of inventoryBtnList; track $index) {
+        <app-button [icon]="btn.icon" [label]="btn.label" [style]="'wfull'"/>
+      }
+    </app-dropdown>
+    <app-dropdown [icon]="'table_restaurant'" [label]="'Dinning room'">
+      @for (btn of inventoryBtnList; track $index) {
+        <app-button [icon]="btn.icon" [label]="btn.label" [style]="'wfull'"/>
+      }
+    </app-dropdown>
+    <app-dropdown [icon]="'person'" [label]="'Users'">
+      @for (btn of inventoryBtnList; track $index) {
         <app-button [icon]="btn.icon" [label]="btn.label" [style]="'wfull'"/>
       }
     </app-dropdown>

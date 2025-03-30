@@ -3,11 +3,6 @@
   width: 100vw;
   height: 100vh;
   display: grid;
-  grid-template-columns: 1fr 408px;
   grid-template-rows: auto 1fr;
   gap: 12px;
-}
-
-app-nav {
-  grid-column: span 2;
 }

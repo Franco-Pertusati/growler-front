@@ -1,17 +1,15 @@
 nav {
   width: 100%;
-  padding: 12px 24px;
+  padding: 12px;
   display: flex;
   align-items: center;
   gap: 12px;
-  background-color: var(--bg1);
-  border: solid 1px var(--border);
-  border-radius: 12px;
-  box-shadow: 0 4px 8px var(--transparent);
 }
 
 .btnList {
   width: 100%;
   display: flex;
+  gap: 12px;
+  align-items: center;
   flex-direction: row-reverse;
 }
