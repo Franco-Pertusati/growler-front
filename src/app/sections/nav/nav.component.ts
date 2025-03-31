@@ -14,15 +14,18 @@ export class NavComponent {
   inventoryBtnList = [
     {
       label: 'Product list',
-      icon: 'menu_book'
+      icon: 'menu_book',
+      route: 'products'
     },
     {
-      label: 'Category list',
-      icon: 'menu_book'
+      label: 'Categories list',
+      icon: 'menu_book',
+      route: 'categories'
     },
     {
-      label: 'Ingredits list',
-      icon: 'menu_book'
+      label: 'Ingredients list',
+      icon: 'menu_book',
+      route: 'ingredients'
     },
   ]
 }

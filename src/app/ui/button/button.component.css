@@ -1,3 +1,11 @@
+button {
+  background-color: var(--bg1);
+}
+
+button:hover {
+  background-color: var(--bg2);
+}
+
 .primary {
   background-color: var(--primary);
 }
@@ -68,6 +76,14 @@
 
 .accent {
   background-color: var(--primary);
+}
+
+.accent * {
+  font-weight: 600;
+}
+
+.accent:hover {
+  background-color: var(--primary2);
 }
 
 .active {

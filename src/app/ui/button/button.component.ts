@@ -1,10 +1,11 @@
 import { NgClass } from '@angular/common';
 import { Component, Input } from '@angular/core';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-button',
   standalone: true,
-  imports: [NgClass],
+  imports: [NgClass, RouterLink],
   templateUrl: './button.component.html',
   styleUrl: './button.component.css',
 })
@@ -20,4 +21,5 @@ export class ButtonComponent {
   @Input() disabled = false;
   @Input() accent = false;
   @Input() active = false;
+  @Input() routerLink: string | null = null;
 }

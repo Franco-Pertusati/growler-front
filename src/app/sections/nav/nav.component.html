@@ -6,7 +6,7 @@
     <app-button [icon]="'point_of_sale'" [label]="'POS and payments'" [style]="'wfull'"/>
     <app-dropdown [icon]="'inventory_2'" [label]="'Inventory'">
       @for (btn of inventoryBtnList; track $index) {
-        <app-button [icon]="btn.icon" [label]="btn.label" [style]="'wfull'"/>
+        <app-button [icon]="btn.icon" [label]="btn.label" [style]="'wfull'" [routerLink]="btn.route"/>
       }
     </app-dropdown>
     <app-dropdown [icon]="'table_restaurant'" [label]="'Dinning room'">
