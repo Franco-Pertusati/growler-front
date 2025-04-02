@@ -13,8 +13,8 @@
         <app-button [label]="'Disabled products'" [icon]="'check_box_outline_blank'" />
       </app-dropdown>
       <div class="createBtnContainer flex">
-        <app-button [label]="'Create Product'" [icon]="'add'" [accent]="true" />
-        <app-button [label]="'Create Category'" [icon]="'add'" [accent]="true" />
+        <app-button [label]="'Create Product'" [icon]="'add'" [accent]="true"  />
+        <app-button [label]="'Create Category'" [icon]="'add'" [accent]="true" (click)="openDialog()"/>
       </div>
     </div>
   </div>
@@ -33,7 +33,7 @@
         <span>{{ prod.id }}</span>
         <span>{{ prod.name }}</span>
         <span>{{ prod.price | currency }}</span>
-        <div class="flex">
+        <div class="flex badgeContainer">
           @for (ing of prod.ingredients; track $index) {
             <div class="badge">{{ ing.name }}</div>
           }

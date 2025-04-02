@@ -22,9 +22,9 @@
 }
 
 .light {
-  --bg1: #F8F9FA;
-  --bg2: #E9ECEF;
-  --bg3: #DEE2E6;
+  --bg1: #f8f9fa;
+  --bg2: #e9ecef;
+  --bg3: #dee2e6;
 
   --font: #212529;
   --font2: #343A40;
@@ -135,3 +135,6 @@ form {
   flex-direction: column;
   gap: 8px;
 }
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
