@@ -1,0 +1,47 @@
+<div class="pageCont">
+  <div class="win wfull">
+    <h1>Products</h1>
+    <div class="flex topBar">
+      <app-input-container>
+        <input type="text">
+      </app-input-container>
+      <app-button [showLabel]="false" [icon]="'grid_view'" />
+      <app-button [showLabel]="false" [icon]="'list'" [active]="true" />
+      <app-dropdown [label]="'Filter'" [icon]="'tune'">
+        <app-button [label]="'Empty categories'" [icon]="'check_box_outline_blank'" />
+        <app-button [label]="'Disabled categories'" [icon]="'check_box_outline_blank'" />
+        <app-button [label]="'Disabled products'" [icon]="'check_box_outline_blank'" />
+      </app-dropdown>
+      <div class="createBtnContainer flex">
+        <app-button [label]="'Create Product'" [icon]="'add'" [accent]="true" />
+        <app-button [label]="'Create Category'" [icon]="'add'" [accent]="true" />
+      </div>
+    </div>
+  </div>
+  <div class="catList">
+    @for (cat of categories; track $index) {
+    <div class="win wfull catCard">
+      <h3>{{ cat.name }}</h3>
+      <div class="prodItem strong">
+        <span>ID</span>
+        <span>Name</span>
+        <span>Price</span>
+        <span>Ingredients</span>
+      </div>
+      @for (prod of cat.products; track $index) {
+      <div class="prodItem">
+        <span>{{ prod.id }}</span>
+        <span>{{ prod.name }}</span>
+        <span>{{ prod.price | currency }}</span>
+        <div class="flex">
+          @for (ing of prod.ingredients; track $index) {
+            <div class="badge">{{ ing.name }}</div>
+          }
+        </div>
+      </div>
+      }
+    </div>
+    }
+  </div>
+
+</div>

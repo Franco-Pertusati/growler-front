@@ -1,0 +1,8 @@
+.btns {
+  display: flex;
+  gap: 8px;
+}
+
+input {
+  width: 100%;
+}

@@ -9,8 +9,8 @@
   --font2: #cbcfd3;
   --font3: #aaa9a9;
 
-  --primary: #FF880F;
-  --primary2: #ff952b;
+  --primary: #be4f33;
+  --primary2: #F4A261;
 
   --transparent: #1212124d;
   --border: #3d3d3d;
@@ -30,8 +30,10 @@
   --font2: #343A40;
   --font3: #495057;
 
-  --primary: #4498ec;
-  --primary2: #0b76e0;
+  --border: #c3c6c9;
+
+  --primary: #F4A261;
+  --primary2: #be4f33;
 
   --transparent: hsla(0, 0%, 100%, 0.3);
 
@@ -80,15 +82,21 @@ button:hover, .dropDwn:hover {
 
 .win {
   margin: 0 auto;
-  padding: 8px;
+  padding: 12px;
   background-color: var(--bg1);
-  border: solid 1px var(--bg3);
+  border: solid 1px var(--border);
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 12px;
   border-radius: 12px;
   width: fit-content;
   box-shadow: 0 4px 8px var(--transparent);
+}
+
+.flex {
+  display: flex;
+  gap: 12px;
+  align-items: center;
 }
 
 .background {
@@ -111,5 +119,19 @@ h1, h2 {
   width: 100%;
 }
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+input {
+  padding: 4px;
+  border-style: none;
+  border-radius: 4px;
+  background-color: var(--bg2);
+}
+
+input:focus {
+  outline: 2px solid var(--primary);
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}

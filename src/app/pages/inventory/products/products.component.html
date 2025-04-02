@@ -1,0 +1,30 @@
+<div>
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Product</th>
+        <th>Price</th>
+        <th>Category</th>
+        <th>Ingredients</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (p of products; track $index) {
+      <tr>
+        <td>{{ p.id }}</td>
+        <td>{{ p.name }}</td>
+        <td>{{ p.price | currency }}</td>
+        <td>{{ p.category.name }}</td>
+        <td>
+          <div class="badgeList">
+            @for (i of p.ingredients; track $index) {
+            <div class="badge">{{i.name}}</div>
+            }
+          </div>
+        </td>
+      </tr>
+      }
+    </tbody>
+  </table>
+</div>

@@ -78,14 +78,14 @@ button:hover {
   background-color: var(--primary);
 }
 
-.accent * {
-  font-weight: 600;
-}
-
 .accent:hover {
-  background-color: var(--primary2);
+  background-color: var(--primary);
 }
 
 .active {
   background-color: var(--bg3);
+}
+
+.justIcon {
+  padding: 6px;
 }

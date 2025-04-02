@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { NavComponent } from "./sections/nav/nav.component";
-import { DinningAreaComponent } from "./sections/dinning-area/dinning-area.component";
+import { DinningAreaComponent } from "./pages/dinning-area/dinning-area.component";
 import { ManagePanelComponent } from "./sections/manage-panel/manage-panel.component";
 
 @Component({

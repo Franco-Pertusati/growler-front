@@ -3,7 +3,7 @@
   <div class="btnList">
     <app-theme-btn />
     <app-button [icon]="'settings'" [label]="'Settings'" [style]="'wfull'"/>
-    <app-button [icon]="'point_of_sale'" [label]="'POS and payments'" [style]="'wfull'"/>
+    <app-button [icon]="'point_of_sale'" [label]="'Payments'" [style]="'wfull'"/>
     <app-dropdown [icon]="'inventory_2'" [label]="'Inventory'">
       @for (btn of inventoryBtnList; track $index) {
         <app-button [icon]="btn.icon" [label]="btn.label" [style]="'wfull'" [routerLink]="btn.route"/>

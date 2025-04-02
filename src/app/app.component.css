@@ -3,6 +3,11 @@
   width: 100vw;
   height: 100vh;
   display: grid;
-  grid-template-rows: auto 1fr;
+  grid-template-columns: auto 1fr;
   gap: 12px;
+}
+
+.routerContainer {
+  height: 100%;
+  overflow: hidden;
 }
