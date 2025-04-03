@@ -2,3 +2,13 @@
   display: flex;
   gap: 8px;
 }
+
+.flexCol {
+  gap: 4px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}

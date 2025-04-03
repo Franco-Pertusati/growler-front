@@ -1,21 +1,34 @@
-<div>
+<div class="win">
   <form action="">
     <h2>Create Product</h2>
-    <div>
-      <label for="">Label</label>
-      <input type="text" id="" placeholder="Placeholder">
+    <div class="flexCol">
+      <label for="name">Name</label>
+      <input type="text" id="name" placeholder="White Beer">
+      @if (errorMessage) {
+        <span>{{ errorMessage }}</span>
+      }
     </div>
-    <div>
-      <label for="">Label</label>
-      <input type="text" id="" placeholder="Placeholder">
+    <div class="flexCol">
+      <label for="price">Price</label>
+      <input type="text" id="price" placeholder="9.50">
+      @if (errorMessage) {
+        <span>{{ errorMessage }}</span>
+      }
     </div>
-    <div>
-      <label for="">Label</label>
-      <input type="text" id="" placeholder="Placeholder">
+    <div class="flexCol">
+      <label for="category">Category</label>
+      <select name="" id="category"></select>
+    </div>
+    <div class="flexCol">
+      <label for="ingredients">Ingredients</label>
+      <select name="" id="ingredients"></select>
     </div>
     <div class="btns">
       <app-button [label]="'Create'" [icon]="'add'" [accent]="true" [type]="'submit'"/>
       <app-button [label]="'Create and re-fill'" [icon]="'refresh'" [accent]="true" [type]="'submit'"/>
+      @if (isLoading) {
+        <span>Creating...</span>
+      }
     </div>
   </form>
 </div>

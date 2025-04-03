@@ -6,6 +6,7 @@ import { InputContainerComponent } from "../../../ui/input-container/input-conta
 import { DropdownComponent } from "../../../ui/dropdown/dropdown.component";
 import { Dialog, DialogModule } from '@angular/cdk/dialog';
 import { CreateCategoryFormComponent } from './forms/create-category-form/create-category-form.component';
+import { CreateProductFormComponent } from './forms/create-product-form/create-product-form.component';
 
 @Component({
   selector: 'app-categories',
@@ -17,12 +18,15 @@ import { CreateCategoryFormComponent } from './forms/create-category-form/create
 export class CategoriesComponent {
   categories: any[] = []
   dialog = inject(Dialog);
+  dialogList = [
+    CreateCategoryFormComponent,
+    CreateProductFormComponent
+  ]
 
   constructor(private apiService: ApiService) { }
 
-  openDialog() {
-    const dialogRef =
-    this.dialog.open<string>(CreateCategoryFormComponent)
+  openDialog(dialogIndex: number) {
+    const dialogRef = this.dialog.open<string>(this.dialogList[dialogIndex])
   }
 
   ngOnInit(): void {
@@ -40,6 +44,4 @@ export class CategoriesComponent {
       }
     );
   }
-
-
 }

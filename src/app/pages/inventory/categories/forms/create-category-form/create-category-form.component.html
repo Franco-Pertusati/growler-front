@@ -1,13 +1,40 @@
 <div class="win">
-  <form action="">
-    <h2>Create Category</h2>
-    <div>
-      <label for="">Label</label>
-      <input type="text" id="" placeholder="Placeholder">
+  <h2>Crear Nueva Categoría</h2>
+
+  <form [formGroup]="categoryForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="name">Nombre de la categoría</label>
+      <input
+        type="text"
+        id="name"
+        formControlName="name"
+        class="form-control"
+        [class.is-invalid]="name?.invalid && (name?.dirty || name?.touched)"
+      >
+      <div *ngIf="name?.invalid && (name?.dirty || name?.touched)" class="invalid-feedback">
+        <div *ngIf="name?.errors?.['required']">El nombre es requerido</div>
+        <div *ngIf="name?.errors?.['minlength']">
+          El nombre debe tener al menos 3 caracteres
+        </div>
+      </div>
     </div>
-    <div class="btns">
-      <app-button [label]="'Create'" [icon]="'add'" [accent]="true" [type]="'submit'"/>
-      <app-button [label]="'Create and re-fill'" [icon]="'refresh'" [accent]="true" [type]="'submit'"/>
+
+    <div *ngIf="errorMessage" class="alert alert-danger">
+      {{ errorMessage }}
     </div>
+
+    <button
+      type="submit"
+      class="btn btn-primary"
+      [disabled]="categoryForm.invalid || isLoading"
+    >
+      <span *ngIf="!isLoading">Crear Categoría</span>
+      <span *ngIf="isLoading">
+        <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+        Procesando...
+      </span>
+    </button>
+
+    <a routerLink="/categories" class="btn btn-link">Cancelar</a>
   </form>
 </div>
