@@ -26,18 +26,12 @@
         <span>ID</span>
         <span>Name</span>
         <span>Price</span>
-        <span>Ingredients</span>
       </div>
       @for (prod of cat.products; track $index) {
       <div class="prodItem">
         <span>{{ prod.id }}</span>
         <span>{{ prod.name }}</span>
         <span>{{ prod.price | currency }}</span>
-        <div class="flex badgeContainer">
-          @for (ing of prod.ingredients; track $index) {
-            <div class="badge">{{ ing.name }}</div>
-          }
-        </div>
       </div>
       }
     </div>

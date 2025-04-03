@@ -43,10 +43,11 @@ export class CreateCategoryFormComponent {
     this.apiService.createCategory(categoryData).subscribe({
       next: (response) => {
         this.isLoading = false;
+        this.router.navigateByUrl('/products')
       },
       error: (error) => {
         this.isLoading = false;
-        this.errorMessage = 'Error al crear la categoría. Por favor, inténtalo de nuevo.';
+        this.errorMessage = 'Error creating category, please try again.';
         console.error('Error creating category:', error);
       }
     });

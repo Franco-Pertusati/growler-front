@@ -7,6 +7,7 @@ import { DropdownComponent } from "../../../ui/dropdown/dropdown.component";
 import { Dialog, DialogModule } from '@angular/cdk/dialog';
 import { CreateCategoryFormComponent } from './forms/create-category-form/create-category-form.component';
 import { CreateProductFormComponent } from './forms/create-product-form/create-product-form.component';
+import { Category } from '../../../modules/products';
 
 @Component({
   selector: 'app-categories',
@@ -16,7 +17,7 @@ import { CreateProductFormComponent } from './forms/create-product-form/create-p
   styleUrl: './categories.component.css'
 })
 export class CategoriesComponent {
-  categories: any[] = []
+  categories: Category[] = []
   dialog = inject(Dialog);
   dialogList = [
     CreateCategoryFormComponent,

@@ -1,30 +1,37 @@
 <div class="win">
-  <form action="">
-    <h2>Create Product</h2>
+  <h2>Create Product</h2>
+  <form [formGroup]="productForm" action="">
     <div class="flexCol">
       <label for="name">Name</label>
-      <input type="text" id="name" placeholder="White Beer">
-      @if (errorMessage) {
-        <span>{{ errorMessage }}</span>
+      <input type="text" id="name" formControlName="name" placeholder="White Beer">
+      @if (productForm.get('name')?.invalid && (productForm.get('name')?.dirty || productForm.get('name')?.touched)) {
+        <span class="error">Name is required (min 3 chars)</span>
       }
     </div>
+
     <div class="flexCol">
       <label for="price">Price</label>
-      <input type="text" id="price" placeholder="9.50">
-      @if (errorMessage) {
-        <span>{{ errorMessage }}</span>
+      <input type="number" id="price" formControlName="price" placeholder="9.50" step="0.01">
+      @if (productForm.get('price')?.invalid && (productForm.get('price')?.dirty || productForm.get('price')?.touched)) {
+        <span class="error">Valid price required</span>
       }
     </div>
+
     <div class="flexCol">
       <label for="category">Category</label>
-      <select name="" id="category"></select>
+      <select formControlName="category" id="category">
+        <option value="">Select category</option>
+        @for (category of categories; track $index) {
+          <option [value]="category.id">{{ category.name }}</option>
+        }
+      </select>
+      @if (productForm.get('category')?.invalid && productForm.get('category')?.touched) {
+        <span class="error">Category is required</span>
+      }
     </div>
-    <div class="flexCol">
-      <label for="ingredients">Ingredients</label>
-      <select name="" id="ingredients"></select>
-    </div>
+
     <div class="btns">
-      <app-button [label]="'Create'" [icon]="'add'" [accent]="true" [type]="'submit'"/>
+      <app-button [label]="'Create'" [icon]="'add'" [accent]="true" [type]="'submit'" (click)="onSubmit()"/>
       <app-button [label]="'Create and re-fill'" [icon]="'refresh'" [accent]="true" [type]="'submit'"/>
       @if (isLoading) {
         <span>Creating...</span>

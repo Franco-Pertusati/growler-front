@@ -6,7 +6,6 @@
         <th>Product</th>
         <th>Price</th>
         <th>Category</th>
-        <th>Ingredients</th>
       </tr>
     </thead>
     <tbody>
@@ -16,13 +15,6 @@
         <td>{{ p.name }}</td>
         <td>{{ p.price | currency }}</td>
         <td>{{ p.category.name }}</td>
-        <td>
-          <div class="badgeList">
-            @for (i of p.ingredients; track $index) {
-            <div class="badge">{{i.name}}</div>
-            }
-          </div>
-        </td>
       </tr>
       }
     </tbody>
