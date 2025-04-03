@@ -61,10 +61,10 @@ body * {
 }
 
 button, .dropDwn {
-  padding: 6px 12px;
+  padding: 6px 8px;
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 6px;
   position: relative;
   cursor: pointer;
   border-style: none;

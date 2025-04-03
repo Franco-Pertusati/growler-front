@@ -1,4 +1,4 @@
-<div class="dropDownContainer" (mouseenter)="openDropdown()" (mouseleave)="closeDropdown()">
+<div class="dropDownContainer" [ngClass]="style" (mouseenter)="openDropdown()" (mouseleave)="closeDropdown()">
   <button>
     @if (showIcon) {
     <i class="material-icons-round">{{ icon }}</i>

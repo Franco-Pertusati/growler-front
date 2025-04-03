@@ -1,23 +1,18 @@
 <nav class="background">
-  <h1>Growler</h1>
-  <div class="btnList">
+  <div class="flex appTitle">
+    <h1 class="wfull">Growler</h1>
     <app-theme-btn />
-    <app-button [icon]="'settings'" [label]="'Settings'" [style]="'wfull'"/>
-    <app-button [icon]="'point_of_sale'" [label]="'Payments'" [style]="'wfull'"/>
-    <app-dropdown [icon]="'inventory_2'" [label]="'Inventory'">
-      @for (btn of inventoryBtnList; track $index) {
-        <app-button [icon]="btn.icon" [label]="btn.label" [style]="'wfull'" [routerLink]="btn.route"/>
-      }
-    </app-dropdown>
-    <app-dropdown [icon]="'table_restaurant'" [label]="'Dinning room'">
-      @for (btn of inventoryBtnList; track $index) {
-        <app-button [icon]="btn.icon" [label]="btn.label" [style]="'wfull'"/>
-      }
-    </app-dropdown>
-    <app-dropdown [icon]="'person'" [label]="'Users'">
-      @for (btn of inventoryBtnList; track $index) {
-        <app-button [icon]="btn.icon" [label]="btn.label" [style]="'wfull'"/>
-      }
-    </app-dropdown>
+  </div>
+  <div class="btnList wfull">
+    <app-button [label]="'Dashboard'" [icon]="'home'" [style]="'wfull'" [routerLink]="'dashboard'" />
+    <app-acordeon [label]="'Products'" [icon]="'restaurant'" [style]="'wfull'">
+      <app-button [label]="'Products list'" [icon]="'assignment'" [style]="'wfull'" [routerLink]="'products'"/>
+      <app-button [label]="'Ingredients list'" [icon]="'assignment'" [style]="'wfull'" />
+    </app-acordeon>
+    <app-acordeon [label]="'Shifts'" [icon]="'work'" [style]="'wfull'">
+      <app-button [label]="'Start shift'" [icon]="'work'" [style]="'wfull'" />
+      <app-button [label]="'Shift history'" [icon]="'work_history'" [style]="'wfull'" />
+    </app-acordeon>
+    <app-button [label]="'Dinning area'" [icon]="'table_restaurant'" [style]="'wfull'" [routerLink]="'dinning-area'" />
   </div>
 </nav>

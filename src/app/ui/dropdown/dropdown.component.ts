@@ -1,18 +1,19 @@
+import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-dropdown',
   standalone: true,
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './dropdown.component.html',
   styleUrl: './dropdown.component.css'
 })
 export class DropdownComponent {
-    @Input() type: 'button' | 'submit' | 'reset' = 'button';
     @Input() label: string = 'Action';
     @Input() showLabel: boolean = true;
     @Input() icon: string = 'check'
     @Input() showIcon: boolean = true;
+    @Input() style: string = '';
 
     isOpen: boolean = false;
 

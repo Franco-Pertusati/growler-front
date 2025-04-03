@@ -1,0 +1,12 @@
+.ddCont {
+  padding-left: 8px;
+  border-left: solid 1px var(--border);
+}
+
+i {
+  transition: all ease .3s;
+}
+
+.deg90 {
+  transform: rotate(-90deg);
+}
