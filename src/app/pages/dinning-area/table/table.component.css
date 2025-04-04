@@ -9,10 +9,6 @@
   position: relative;
 }
 
-.table span {
-  text-shadow: 0 0 12px #000;
-}
-
 .occupied {
   background-color: var(--succes);
 }

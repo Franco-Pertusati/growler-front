@@ -12,8 +12,8 @@
   display: grid;
   grid-template-columns: repeat(8, 125px);
   grid-template-rows: repeat(6, 125px);
-  overflow: hidden;
   border-radius: 8px;
+  border: solid 1px var(--border);
 }
 
 .cell {
@@ -23,5 +23,5 @@
 }
 
 .cell.hover {
-  background-color: var(--bg2);
+  background-color: var(--bg3);
 }

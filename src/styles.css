@@ -10,7 +10,7 @@
   --font3: #aaa9a9;
 
   --primary: #be4f33;
-  --primary2: #F4A261;
+  --primary2: #be4f33;
 
   --transparent: #1212124d;
   --border: #3d3d3d;
@@ -32,12 +32,12 @@
 
   --border: #c3c6c9;
 
-  --primary: #F4A261;
-  --primary2: #be4f33;
+  --primary: #ff7c65;
+  --primary2: #ee8e7d;
 
   --transparent: hsla(0, 0%, 100%, 0.3);
 
-  --success: #59cd90;
+  --succes: #59cd90;
   --warning: #f39c12;
   --danger: #e74c3c;
 }
@@ -52,7 +52,7 @@
 }
 
 body {
-  background-color: var(--bg3);
+  background-color: var(--bg2);
   display: flex;
 }
 
@@ -77,20 +77,20 @@ button span {
 }
 
 button:hover, .dropDwn:hover {
-  background-color: var(--bg2);
+  background-color: var(--bg3);
 }
 
 .win {
   margin: 0 auto;
   padding: 12px;
   background-color: var(--bg1);
-  /* border: solid 1px var(--border); */
+  border: solid 1px var(--border);
   display: flex;
   flex-direction: column;
   gap: 12px;
   border-radius: 12px;
   width: fit-content;
-  box-shadow: 0 4px 8px var(--transparent);
+  box-shadow: 0 4px 8px hsla(0, 0%, 7%, 0.3);
 }
 
 .flex {
@@ -109,7 +109,8 @@ button:hover, .dropDwn:hover {
   background-color: var(--bg1);
   border-radius: 12px;
   padding: 12px;
-  /* border: solid 1px var(--border); */
+  border: solid 1px var(--border);
+  box-shadow: 0 4px 8px hsla(0, 0%, 7%, 0.2);
 }
 
 h1, h2 {
@@ -129,11 +130,12 @@ input {
   padding: 4px;
   border-style: none;
   border-radius: 4px;
-  background-color: var(--bg2);
+  background-color: var(--bg3);
 }
 
 input:focus {
   outline: 2px solid var(--primary);
+  background-color: var(--bg1);
 }
 
 form {
@@ -142,5 +144,3 @@ form {
   gap: 8px;
 }
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

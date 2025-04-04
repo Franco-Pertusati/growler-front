@@ -1,12 +1,10 @@
 <div class="pageCont">
-  <div class="win wfull">
-    <h1>Products</h1>
-    <div class="flex topBar">
-      <app-input-container>
-        <input type="text">
-      </app-input-container>
-      <app-button [showLabel]="false" [icon]="'grid_view'" />
-      <app-button [showLabel]="false" [icon]="'list'" [active]="true" />
+  <div class="wfull topBar">
+    <h2>Products</h2>
+    <div class="flex">
+      <input type="text" placeholder="Search">
+      <app-button [showLabel]="false" [icon]="'grid_view'" [accent]="gridMode" (click)="gridMode = true" />
+      <app-button [showLabel]="false" [icon]="'list'" [accent]="!gridMode"  (click)="gridMode = false"/>
       <app-dropdown [label]="'Filter'" [icon]="'tune'">
         <app-button [label]="'Empty categories'" [icon]="'check_box_outline_blank'" />
         <app-button [label]="'Disabled categories'" [icon]="'check_box_outline_blank'" />
@@ -14,26 +12,36 @@
       </app-dropdown>
       <div class="createBtnContainer flex">
         <app-button [label]="'Create Product'" [icon]="'add'" [accent]="true" (click)="openDialog(1)" />
-        <app-button [label]="'Create Category'" [icon]="'add'" [accent]="true" (click)="openDialog(0)"/>
+        <app-button [label]="'Create Category'" [icon]="'add'" [accent]="true" (click)="openDialog(0)" />
       </div>
     </div>
   </div>
-  <div class="catList">
+  <div class="catList" [ngClass]="gridMode? 'gridMode' : ''">
+
     @for (cat of categories; track $index) {
-    <div class="win wfull catCard">
+    <div class="catCard win wfull">
       <h3>{{ cat.name }}</h3>
-      <div class="prodItem strong">
-        <span>ID</span>
-        <span>Name</span>
-        <span>Price</span>
+      <div class="prodCardContainer">
+
+        <div class="cardDataTitle">
+          <span>ID</span>
+          <span>Name</span>
+          <span>Price</span>
+        </div>
+
+        <div class="prodList">
+          @for (prod of cat.products; track $index) {
+          <div class="prodCard" [ngClass]="gridMode? 'background' : ''">
+            <span>{{ prod.id }}</span>
+            <span class="inf">{{ prod.name }}</span>
+            <span class="inf">{{ prod.price | currency }}</span>
+            <i class="material-icons-round prodChkbx">check_box_outline_blank</i>
+            <i class="material-icons-round optionsBtn">more_vert</i>
+          </div>
+          }
+        </div>
+
       </div>
-      @for (prod of cat.products; track $index) {
-      <div class="prodItem">
-        <span>{{ prod.id }}</span>
-        <span>{{ prod.name }}</span>
-        <span>{{ prod.price | currency }}</span>
-      </div>
-      }
     </div>
     }
   </div>

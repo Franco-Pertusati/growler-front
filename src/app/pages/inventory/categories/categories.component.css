@@ -1,9 +1,10 @@
 .pageCont {
+  padding: 24px;
   width: 100%;
   height: 100%;
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 24px;
 }
 
 .createBtnContainer {
@@ -13,39 +14,82 @@
 .catList {
   display: flex;
   flex-direction: column;
-  gap: 12px;
-  overflow-y: scroll;
+  gap: 24px;
+  overflow-y: auto;
 }
 
-.catCard {
-  padding: 8px;
-  gap: 0px;
-}
-
-.prodItem {
-  padding: 4px;
+.cardDataTitle {
+  margin-bottom: 12px;
   display: grid;
-  grid-template-columns: 56px 420px 200px 1fr;
-  border-radius: 8px;
+  gap: 24px;
+  grid-template-columns: 30px 264px 198px auto  30px;
 }
 
-.badgeContainer {
-  overflow: hidden;
+.prodList {
+  display: flex;
+  flex-direction: column;
 }
 
-.badge {
-  border: solid 1px var(--primary);
-  border-radius: 99px;
-  padding: 0px 8px;
-  font-size: 1.5rem;
+.prodCard {
+  display: grid;
+  gap: 24px;
+  grid-template-columns: 30px 264px 198px auto  30px;
+}
+
+.gridMode .cardDataTitle {
+  display: none;
+}
+
+.gridMode .catCard {
+  background-color: transparent;
+  border-style: none;
+  box-shadow: none;
+}
+
+.gridMode .prodList {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.gridMode .prodCard {
+  padding: 12px;
+  height: 220px;
+  width: 220px;
+  border-radius: 12px;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  position: relative;
+}
+
+.gridMode .prodChkbx {
+  position: absolute;
+  right: 42px;
+  top: 12px;
+}
+
+.gridMode .optionsBtn {
+  position: absolute;
+  right: 12px;
+  top: 12px;
+}
+
+.gridMode .inf {
+  text-align: center;
+  font-size: 2.4rem;
 }
 
 h3 {
-  margin-bottom: 12px;
-  margin-left: 4px;
   font-size: 2.6rem;
 }
 
 .strong {
   font-weight: 600;
+}
+
+.topBar {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }

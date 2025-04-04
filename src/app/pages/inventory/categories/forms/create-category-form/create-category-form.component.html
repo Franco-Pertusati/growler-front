@@ -3,14 +3,12 @@
 
   <form [formGroup]="categoryForm" (ngSubmit)="onSubmit()">
     <div class="form-group">
-      <label for="name">Nombre de la categoría</label>
-      <input
+      <!-- <input
         type="text"
         id="name"
         formControlName="name"
-        class="form-control"
-        [class.is-invalid]="name?.invalid && (name?.dirty || name?.touched)"
-      >
+      > -->
+      <app-input [error]="errorMessage" [name]="'name'" [label]="'Category name'"/>
       <div *ngIf="name?.invalid && (name?.dirty || name?.touched)" class="invalid-feedback">
         <div *ngIf="name?.errors?.['required']">El nombre es requerido</div>
         <div *ngIf="name?.errors?.['minlength']">

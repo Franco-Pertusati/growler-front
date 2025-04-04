@@ -1,10 +1,11 @@
 nav {
   width: 100%;
   height: 100%;
-  padding: 12px;
+  padding: 24px;
   display: flex;
   flex-direction: column;
   gap: 12px;
+  border-right: solid 1px var(--border);
 }
 
 .btnList {
