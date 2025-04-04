@@ -9,7 +9,7 @@
   --font2: #cbcfd3;
   --font3: #aaa9a9;
 
-  --primary: #be4f33;
+  --primary: #ef571b;
   --primary2: #be4f33;
 
   --transparent: #1212124d;
@@ -32,8 +32,8 @@
 
   --border: #c3c6c9;
 
-  --primary: #ff7c65;
-  --primary2: #ee8e7d;
+  --primary: #ff694f;
+  --primary2: #ff8874;
 
   --transparent: hsla(0, 0%, 100%, 0.3);
 
@@ -90,7 +90,6 @@ button:hover, .dropDwn:hover {
   gap: 12px;
   border-radius: 12px;
   width: fit-content;
-  box-shadow: 0 4px 8px hsla(0, 0%, 7%, 0.3);
 }
 
 .flex {

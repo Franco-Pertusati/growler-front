@@ -47,7 +47,7 @@ export class CategoriesComponent {
     });
   }
 
-  edit() {}
+  editProduct() {}
 
   loadCategories() {
     this.apiService.getCategories().subscribe(

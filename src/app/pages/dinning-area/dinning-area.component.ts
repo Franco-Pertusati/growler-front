@@ -1,132 +1,41 @@
 import { Component } from '@angular/core';
 import { Table } from '../../modules/tables';
 import { TableComponent } from "./table/table.component";
+import { ButtonComponent } from '../../ui/button/button.component';
+import { ApiService } from '../../services/api.service';
 
 @Component({
   selector: 'app-dinning-area',
   standalone: true,
-  imports: [TableComponent],
+  imports: [TableComponent, ButtonComponent],
   templateUrl: './dinning-area.component.html',
   styleUrl: './dinning-area.component.css'
 })
 export class DinningAreaComponent {
-  tables: Table[] = [
-    {
-      id: 1,
-      name: "Mesa 1",
-      products: [],  // No hay productos
-      total: 0,
-      state: "empty",
-      startTime: Date.now(), // Hora de inicio actual (timestamp)
-      waiter: "Camarero 1",
-      guestCount: 0,
-      pos: 1,
-    },
-    {
-      id: 2,
-      name: "Mesa 2",
-      products: [],
-      total: 0,
-      state: "empty",
-      startTime: Date.now(),
-      waiter: "Camarero 2",
-      guestCount: 0,
-      pos: 2,
-    },
-    {
-      id: 3,
-      name: "Mesa 3",
-      products: [],
-      total: 0,
-      state: "empty",
-      startTime: Date.now(),
-      waiter: "Camarero 3",
-      guestCount: 0,
-      pos: 3,
-    },
-    {
-      id: 4,
-      name: "Mesa 4",
-      products: [],
-      total: 0,
-      state: "empty",
-      startTime: Date.now(),
-      waiter: "Camarero 4",
-      guestCount: 0,
-      pos: 4,
-    },
-    {
-      id: 5,
-      name: "Mesa 5",
-      products: [],
-      total: 0,
-      state: "empty",
-      startTime: Date.now(),
-      waiter: "Camarero 5",
-      guestCount: 0,
-      pos: 5,
-    },
-    {
-      id: 6,
-      name: "Mesa 6",
-      products: [],
-      total: 0,
-      state: "empty",
-      startTime: Date.now(),
-      waiter: "Camarero 6",
-      guestCount: 0,
-      pos: 6,
-    },
-    {
-      id: 7,
-      name: "Mesa 7",
-      products: [],
-      total: 0,
-      state: "empty",
-      startTime: Date.now(),
-      waiter: "Camarero 7",
-      guestCount: 0,
-      pos: 7,
-    },
-    {
-      id: 8,
-      name: "Mesa 8",
-      products: [],
-      total: 0,
-      state: "empty",
-      startTime: Date.now(),
-      waiter: "Camarero 8",
-      guestCount: 0,
-      pos: 8,
-    },
-    {
-      id: 9,
-      name: "Mesa 9",
-      products: [],
-      total: 0,
-      state: "empty",
-      startTime: Date.now(),
-      waiter: "Camarero 9",
-      guestCount: 0,
-      pos: 9,
-    },
-    {
-      id: 10,
-      name: "Mesa 10",
-      products: [],
-      total: 0,
-      state: "occupied",
-      startTime: Date.now(),
-      waiter: "Camarero 10",
-      guestCount: 0,
-      pos: 10,
-    }
-  ]
+  tables: Table[] = []
   cells = [...Array(48).keys()].map(x => x + 1);
   draggedTable: any = null;
+  selectedTable: Table | null = null;
+
+  constructor(private apiService: ApiService) { }
+
+  ngOnInit() {
+    this.getTables()
+  }
+
+  getTables() {
+    this.apiService.getTables().subscribe(
+      (data: any) => {
+        this.tables = data.member;
+      },
+      (error) => {
+        console.error('Error fetching products:', error);
+      }
+    );
+  }
 
   getTableAtPosition(pos: number) {
-    return this.tables.filter(table => table.pos === pos);
+    return this.tables.filter(table => table.position === pos);
   }
 
   onDragStart(event: DragEvent, table: any) {
@@ -159,17 +68,39 @@ export class DinningAreaComponent {
       target.classList.remove('hover');
 
       if (this.draggedTable) {
-        const existingTable = this.tables.find(t => t.pos === cellPos && t.id !== this.draggedTable.id);
-        this.saveTables()
+        const existingTable = this.tables.find(t => t.position === cellPos && t.id !== this.draggedTable.id);
         if (!existingTable) {
-          this.draggedTable.pos = cellPos;
+          this.draggedTable.position = cellPos;
+          this.changes.push(this.draggedTable)
         }
       }
     }
   }
 
+  changes: Table[] = []
+
+  registerChange(table: Table) {
+    this.changes.push(table)
+  }
+
   saveTables() {
-    // Aquí puedes implementar la lógica para guardar en una API
-    console.log('Mesas actualizadas:', this.tables);
+    this.changes.forEach(t => {
+      this.apiService.updateTable(t.id, t).subscribe({
+        next: (t) => {
+          console.log('Mesa actualizada:', t);
+          this.changes = []
+        },
+        error: (err) => {
+          console.error('Error al actualizar mesa:', err);
+          // Revertir cambios locales si falla
+          this.getTables();
+        }
+      });
+    });
+  }
+
+  resetTables() {
+    this.changes = [];
+    this.getTables();
   }
 }

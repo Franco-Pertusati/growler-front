@@ -43,14 +43,18 @@ button:hover {
 }
 
 .notNum {
-  height: 28px;
-  width: 28px;
+  height: 22px;
+  width: 22px;
   position: absolute;
   right: -14px;
   top: -14px;
+  border-radius: 99px;
   background-color: var(--danger);
-  border-radius: 50px;
-  font-size: 1.8rem;
+  font-size: 1.5rem;
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .square {
@@ -83,5 +87,5 @@ button:hover {
 }
 
 .justIcon {
-  padding: 6px;
+  padding: 8px;
 }

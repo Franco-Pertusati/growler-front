@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Category, Ingredient, Product } from '../modules/products';
+import { Table } from '../modules/tables';
 
 @Injectable({
   providedIn: 'root'
@@ -15,6 +16,7 @@ export class ApiService {
   getProducts(): Observable<Product[]> {
     return this.http.get<Product[]>(`${this.apiUrl}/api/products`);
   }
+
   getProduct(id: number): Observable<Product> {
     return this.http.get<Product>(`${this.apiUrl}/api/products/${id}`);
   }
@@ -51,5 +53,14 @@ export class ApiService {
 
   deleteCategory(id: number): Observable<Category> {
     return this.http.delete<Category>(`${this.apiUrl}/api/categories/${id}`);
+  }
+
+  //Dinning Area
+  getTables(): Observable<any[]> {
+    return this.http.get<any[]>(`${this.apiUrl}/api/dining_tables`);
+  }
+
+  updateTable(id: number, data: Partial<Table>): Observable<Table> {
+    return this.http.patch<Table>(`${this.apiUrl}/api/dining_tables/${id}`, data);
   }
 }

@@ -1,19 +1,23 @@
 .gridContainer {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  margin: 0 auto;
+}
+
+.topBar {
+  margin-bottom: 24px;
+  padding: 24px;
+  border-bottom: solid 1px var(--border);
+}
+
+h2 {
+  margin-bottom: 12px;
 }
 
 .grid {
   width: fit-content;
-  border: solid 1px var(--bg2);
   display: grid;
-  grid-template-columns: repeat(8, 125px);
-  grid-template-rows: repeat(6, 125px);
+  grid-template-columns: repeat(8, 110px);
+  grid-template-rows: repeat(5, 110px);
   border-radius: 8px;
-  border: solid 1px var(--border);
 }
 
 .cell {
@@ -24,4 +28,13 @@
 
 .cell.hover {
   background-color: var(--bg3);
+}
+
+.gridCont {
+  width: 100%;
+  height: calc(100% - 200px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }

@@ -7,6 +7,7 @@
   justify-content: center;
   align-items: center;
   position: relative;
+  cursor: move;
 }
 
 .occupied {
@@ -20,9 +21,13 @@
 .tableData {
   width: 200px;
   position: absolute;
-  bottom: -178px;
+  bottom: -90%;
   display: flex;
   flex-direction: column;
   gap: 8px;
   z-index: 10;
+}
+
+.roundTable {
+  border-radius: 50%;
 }
