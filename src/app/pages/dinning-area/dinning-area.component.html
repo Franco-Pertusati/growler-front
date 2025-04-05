@@ -2,18 +2,18 @@
   <div class="topBar">
     <h2>Tables Positions</h2>
     <div class="flex">
-      <span>Table settings</span>
-      <app-button [icon]="'category'" [showLabel]="false" [active]="true" (click)="toggleTableShape()" />
-      <app-button [icon]="'delete'" [showLabel]="false" [active]="true" />
-      <app-button [icon]="'edit'" [showLabel]="false" [active]="true" />
+      <span>Salon settings</span>
+      <app-button [icon]="'add'" [label]="'Add table'" [active]="true" />
+      <app-button [icon]="'save'" [showLabel]="false" [notifications]="layoutChanges.length" [active]="true"
+      (click)="saveTables()" />
+      <app-button [icon]="'refresh'" [showLabel]="false" [active]="true" (click)="resetTables()" />
       <br>
       -
       <br>
-      <span>Salon settings</span>
-      <app-button [icon]="'add'" [label]="'Add table'" [active]="true" />
-      <app-button [icon]="'save'" [showLabel]="false" [notifications]="changes.length" [active]="true"
-      (click)="saveTables()" />
-      <app-button [icon]="'refresh'" [showLabel]="false" [active]="true" (click)="resetTables()" />
+      <span>Table settings</span>
+      <app-button [icon]="'category'" [showLabel]="false" [active]="true" (click)="toggleTableShape()" />
+      <app-button [icon]="'delete'" [showLabel]="false" [active]="true" (click)="deleteTable()"/>
+      <app-button [icon]="'edit'" [showLabel]="false" [active]="true" />
       <br>
       -
       <br>
@@ -22,7 +22,7 @@
   </div>
   <div class="gridCont">
     <div style="height: 28px;">
-      @if (changes.length > 0) {
+      @if (layoutChanges.length > 0) {
       <span>Unsaved changes</span>
       }
     </div>

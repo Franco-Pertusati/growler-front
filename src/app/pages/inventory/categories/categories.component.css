@@ -3,7 +3,6 @@
   height: 100%;
   display: flex;
   flex-direction: column;
-  gap: 24px;
 }
 
 .createBtnContainer {
@@ -11,6 +10,7 @@
 }
 
 .catList {
+  padding: 24px;
   display: flex;
   flex-direction: column;
   gap: 24px;
@@ -104,6 +104,6 @@ h3 {
   padding: 24px;
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 6px;
   border-bottom: solid 1px var(--border);
 }

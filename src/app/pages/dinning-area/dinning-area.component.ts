@@ -3,14 +3,18 @@ import { Table } from '../../modules/tables';
 import { TableComponent } from "./table/table.component";
 import { ButtonComponent } from '../../ui/button/button.component';
 import { ApiService } from '../../services/api.service';
+import { Dialog, DialogModule } from '@angular/cdk/dialog';
+
+type LayoutChange = { table: Table, action: 'create' | 'delete' | 'update' };
 
 @Component({
   selector: 'app-dinning-area',
   standalone: true,
-  imports: [TableComponent, ButtonComponent],
+  imports: [TableComponent, ButtonComponent, DialogModule],
   templateUrl: './dinning-area.component.html',
   styleUrl: './dinning-area.component.css'
 })
+
 export class DinningAreaComponent {
   tables: Table[] = []
   cells = [...Array(48).keys()].map(x => x + 1);
@@ -27,7 +31,6 @@ export class DinningAreaComponent {
     this.apiService.getTables().subscribe(
       (data: any) => {
         this.tables = data.member;
-        console.log(this.tables)
       },
       (error) => {
         console.error('Error fetching products:', error);
@@ -72,44 +75,78 @@ export class DinningAreaComponent {
         const existingTable = this.tables.find(t => t.position === cellPos && t.id !== this.draggedTable.id);
         if (!existingTable) {
           this.draggedTable.position = cellPos;
-          this.changes.push(this.draggedTable)
+          this.registerChange({ table: this.draggedTable, action: 'update' })
         }
       }
     }
   }
 
-  changes: Table[] = []
+  deleteTable() {
+    if (this.selectedTable) {
+      this.registerChange({ table: this.selectedTable, action: 'delete' })
+      const tableId = this.selectedTable.id
+      this.tables = this.tables.filter(t => t.id !== tableId)
+    }
+  }
 
-  registerChange(table: Table) {
-    this.changes.push(table)
+  layoutChanges: LayoutChange[] = []
+
+  registerChange(change: LayoutChange) {
+    const duplicateChangeID = this.layoutChanges.findIndex(c => c.table.id === change.table.id);
+
+    if (duplicateChangeID !== -1) {
+      this.layoutChanges.splice(duplicateChangeID, 1);
+    }
+
+    this.layoutChanges.push(change);
   }
 
   saveTables() {
-    if (this.changes.length > 0) {
-      this.changes.forEach(t => {
-        this.apiService.updateTable(t.id, t).subscribe({
-          next: (t) => {
-            this.changes = []
-          },
-          error: (err) => {
-            console.error('Error al actualizar mesa:', err);
-            // Revertir cambios locales si falla
-            this.getTables();
-          }
-        });
+    if (this.layoutChanges.length > 0) {
+      this.layoutChanges.forEach(change => {
+        switch (change.action) {
+          case 'create':
+            console.log("create sin implementar")
+            break;
+          case 'delete':
+            this.apiService.deleteTable(change.table.id).subscribe({
+              next: () => {
+                console.log(`${change.table.name} deleted`)
+              },
+              error: (err) => {
+                console.error('Error al actualizar mesa:', err);
+                // Revertir cambios locales si falla
+              }
+            });
+            break
+          case 'update':
+            this.apiService.updateTable(change.table.id, change.table).subscribe({
+              next: () => {
+                console.log(`${change.table.name} updated`)
+              },
+              error: (err) => {
+                console.error('Error al actualizar mesa:', err);
+                // Revertir cambios locales si falla
+              }
+            });
+            break
+          default:
+            break;
+        }
       });
+    this.layoutChanges = []
     }
   }
 
   resetTables() {
-    this.changes = [];
-    this.getTables();
+    this.layoutChanges = []
+    this.getTables()
   }
 
   toggleTableShape() {
     if (this.selectedTable) {
       this.selectedTable.round = !this.selectedTable.round;
-      this.registerChange(this.selectedTable)
+      this.registerChange({ table: this.selectedTable, action: 'update' })
     }
   }
 }

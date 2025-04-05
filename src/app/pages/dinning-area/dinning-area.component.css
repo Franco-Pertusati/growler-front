@@ -7,7 +7,7 @@
   padding: 24px;
   border-bottom: solid 1px var(--border);
   display: flex;
-  gap: 8px;
+  gap: 6px;
   flex-direction: column;
 }
 

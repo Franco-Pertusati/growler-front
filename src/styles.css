@@ -9,8 +9,8 @@
   --font2: #cbcfd3;
   --font3: #aaa9a9;
 
-  --primary: #ef571b;
-  --primary2: #be4f33;
+  --primary: #ff5023;
+  --primary2: #ff5023;
 
   --transparent: #1212124d;
   --border: #3d3d3d;
@@ -32,8 +32,8 @@
 
   --border: #c3c6c9;
 
-  --primary: #ff694f;
-  --primary2: #ff8874;
+  --primary: #ff5023;
+  --primary2: #ff5023;
 
   --transparent: hsla(0, 0%, 100%, 0.3);
 
@@ -80,6 +80,10 @@ button:hover, .dropDwn:hover {
   background-color: var(--bg3);
 }
 
+.light .accent * {
+  color: var(--bg1);
+}
+
 .win {
   margin: 0 auto;
   padding: 12px;
@@ -109,7 +113,7 @@ button:hover, .dropDwn:hover {
   border-radius: 12px;
   padding: 12px;
   border: solid 1px var(--border);
-  box-shadow: 0 4px 8px hsla(0, 0%, 7%, 0.2);
+  box-shadow: 0 4px 8px hsla(0, 0%, 7%, 0.1);
 }
 
 h1, h2 {
