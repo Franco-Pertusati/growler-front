@@ -27,6 +27,7 @@ export class DinningAreaComponent {
     this.apiService.getTables().subscribe(
       (data: any) => {
         this.tables = data.member;
+        console.log(this.tables)
       },
       (error) => {
         console.error('Error fetching products:', error);
@@ -84,23 +85,31 @@ export class DinningAreaComponent {
   }
 
   saveTables() {
-    this.changes.forEach(t => {
-      this.apiService.updateTable(t.id, t).subscribe({
-        next: (t) => {
-          console.log('Mesa actualizada:', t);
-          this.changes = []
-        },
-        error: (err) => {
-          console.error('Error al actualizar mesa:', err);
-          // Revertir cambios locales si falla
-          this.getTables();
-        }
+    if (this.changes.length > 0) {
+      this.changes.forEach(t => {
+        this.apiService.updateTable(t.id, t).subscribe({
+          next: (t) => {
+            this.changes = []
+          },
+          error: (err) => {
+            console.error('Error al actualizar mesa:', err);
+            // Revertir cambios locales si falla
+            this.getTables();
+          }
+        });
       });
-    });
+    }
   }
 
   resetTables() {
     this.changes = [];
     this.getTables();
+  }
+
+  toggleTableShape() {
+    if (this.selectedTable) {
+      this.selectedTable.round = !this.selectedTable.round;
+      this.registerChange(this.selectedTable)
+    }
   }
 }

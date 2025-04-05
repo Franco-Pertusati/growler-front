@@ -3,5 +3,5 @@ export interface Table {
   name: string;
   position: number;
   state: number;
-  isRound: boolean;
+  round: boolean;
 }

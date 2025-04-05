@@ -11,6 +11,7 @@ import { NgClass } from '@angular/common';
 })
 export class TableComponent {
   @Input() tableData?:Table
+  @Input() selected?:boolean
 
   isOpen = false;
 

@@ -1,4 +1,4 @@
-<div class="table" [ngClass]="[tableData?.state === 2? 'occupied' : '', tableData?.state === 3? 'wfp': '', tableData?.isRound? 'roundTable' : '']"
+<div class="table" [ngClass]="[tableData?.state === 2? 'occupied' : '', tableData?.state === 3? 'wfp': '', tableData?.round? 'roundTable' : '', selected? 'selectedTable' : '']"
   (mouseenter)="openDropdown()" (mouseleave)="closeDropdown()">
   <span>
     {{ tableData?.name }}

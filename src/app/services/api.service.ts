@@ -57,10 +57,14 @@ export class ApiService {
 
   //Dinning Area
   getTables(): Observable<any[]> {
-    return this.http.get<any[]>(`${this.apiUrl}/api/dining_tables`);
+    return this.http.get<any[]>(`${this.apiUrl}/api/dinig_tables`);
   }
 
-  updateTable(id: number, data: Partial<Table>): Observable<Table> {
-    return this.http.patch<Table>(`${this.apiUrl}/api/dining_tables/${id}`, data);
+  updateTable(id: number, data: Table): Observable<Table> {
+    return this.http.patch<Table>(`${this.apiUrl}/api/dinig_tables/${id}`, data);
+  }
+
+  deleteTable(id: number) {
+    return this.http.delete<Table>(`${this.apiUrl}/api/dinig_tables/${id}`);
   }
 }

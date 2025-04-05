@@ -29,5 +29,9 @@
 }
 
 .roundTable {
-  border-radius: 50%;
+  border-radius: 100px;
+}
+
+.selectedTable {
+  outline: solid 3px var(--font);
 }
