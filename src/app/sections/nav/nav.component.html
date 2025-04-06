@@ -4,15 +4,18 @@
     <app-theme-btn />
   </div>
   <div class="btnList wfull">
-    <app-button [label]="'Dashboard'" [icon]="'home'" [style]="'wfull'" [routerLink]="'dashboard'" />
-    <app-acordeon [label]="'Products'" [icon]="'restaurant'" [style]="'wfull'">
-      <app-button [label]="'Products list'" [icon]="'assignment'" [style]="'wfull'" [routerLink]="'products'"/>
-      <app-button [label]="'Ingredients list'" [icon]="'assignment'" [style]="'wfull'" />
+    @for (b of menuItems; track $index) {
+    @if (!b.children && b.routerLink) {
+    <app-button [icon]="b.icon" [label]="b.label" [routerLink]="b.routerLink" [style]="'wfull'" />
+    } @else {
+    <app-acordeon [icon]="b.icon" [label]="b.label">
+      @for (b of b.children; track $index) {
+      @if (!b.children && b.routerLink) {
+      <app-button [icon]="b.icon" [label]="b.label" [routerLink]="b.routerLink" [style]="'wfull'" />
+      }
+      }
     </app-acordeon>
-    <app-acordeon [label]="'Shifts'" [icon]="'work'" [style]="'wfull'">
-      <app-button [label]="'Start shift'" [icon]="'work'" [style]="'wfull'" />
-      <app-button [label]="'Shift history'" [icon]="'work_history'" [style]="'wfull'" />
-    </app-acordeon>
-    <app-button [label]="'Dinning area'" [icon]="'table_restaurant'" [style]="'wfull'" [routerLink]="'dinning-area'" />
+    }
+    }
   </div>
 </nav>

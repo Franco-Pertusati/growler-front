@@ -2,22 +2,10 @@
   <div class="topBar">
     <h2>Tables Positions</h2>
     <div class="flex">
-      <span>Salon settings</span>
-      <app-button [icon]="'add'" [label]="'Add table'" [active]="true" />
+      <span>Salon settings:</span>
       <app-button [icon]="'save'" [showLabel]="false" [notifications]="layoutChanges.length" [active]="true"
       (click)="saveTables()" />
       <app-button [icon]="'refresh'" [showLabel]="false" [active]="true" (click)="resetTables()" />
-      <br>
-      -
-      <br>
-      <span>Table settings</span>
-      <app-button [icon]="'category'" [showLabel]="false" [active]="true" (click)="toggleTableShape()" />
-      <app-button [icon]="'delete'" [showLabel]="false" [active]="true" (click)="deleteTable()"/>
-      <app-button [icon]="'edit'" [showLabel]="false" [active]="true" />
-      <br>
-      -
-      <br>
-      <span>Table selected: {{ selectedTable?.name }}</span>
     </div>
   </div>
   <div class="gridCont">
@@ -31,9 +19,15 @@
       <div class="cell" (dragover)="onDragOver($event)" (drop)="onDrop($event, cell)" (dragenter)="onDragEnter($event)"
         (dragleave)="onDragLeave($event)">
         @for (table of getTableAtPosition(cell); track table.id) {
-        <div class="hfull" draggable="true" (dragstart)="onDragStart($event, table)" (click)="selectedTable = table">
-          <app-table [tableData]="table" [selected]="selectedTable === table" />
-        </div>
+          <div class="hfull" draggable="true" (dragstart)="onDragStart($event, table)" (click)="selectedTable = table">
+            <app-table
+            [tableData]="table"
+            [selected]="selectedTable === table"
+            (deleteTable)="handleDeleteTable(table)"
+            (toggleShape)="handleToggleTableShape(table)"
+            (renameTable)="handleRenameTable($event)"
+          />
+          </div>
         }
       </div>
       }

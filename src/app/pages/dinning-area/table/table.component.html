@@ -1,6 +1,25 @@
-<div class="table" [ngClass]="[tableData?.state === 2? 'occupied' : '', tableData?.state === 3? 'wfp': '', tableData?.round? 'roundTable' : '', selected? 'selectedTable' : '']"
-  (mouseenter)="openDropdown()" (mouseleave)="closeDropdown()">
+<div class="table"
+  [ngClass]="[tableData?.state === 2? 'occupied' : '', tableData?.state === 3? 'wfp': '', tableData?.round? 'roundTable' : '', selected? 'selectedTable' : '']">
+  @if (isEditing) {
+  <form action="" class="editNameCont win" (submit)="onSaveName(); $event.preventDefault()">
+    <input
+      type="text"
+      [(ngModel)]="newName"
+      placeholder="Table name"
+      [ngModelOptions]="{standalone: true}"
+    >
+    <app-button [accent]="true" [showLabel]="false" [icon]="'check'" type="submit"/>
+  </form>
+  } @else {
   <span>
     {{ tableData?.name }}
   </span>
+  }
+  @if (selected) {
+  <div class="btnsContainer win">
+    <app-button [active]="true" [showLabel]="false" [icon]="'edit'" (click)="toggleEditState()"/>
+    <app-button [active]="true" [showLabel]="false" [icon]="'category'" (click)="onToggleShape()" (contextmenu)="onDelete(); $event.preventDefault()"/>
+    <app-button [active]="true" [showLabel]="false" [icon]="'delete'" (click)="onDelete()" (contextmenu)="onDelete(); $event.preventDefault()"/>
+  </div>
+  }
 </div>

@@ -7,7 +7,8 @@
   justify-content: center;
   align-items: center;
   position: relative;
-  cursor: move;
+  cursor: pointer;
+  position: relative;
 }
 
 .occupied {
@@ -34,4 +35,25 @@
 
 .selectedTable {
   outline: solid 3px var(--font);
+}
+
+.editNameCont {
+  flex-direction: row;
+  padding: 8px;
+  gap: 8px;
+  z-index: 2;
+}
+
+.editNameCont input {
+  width: 150px;
+}
+
+.btnsContainer {
+  position: absolute;
+  flex-direction: row;
+  padding: 4px;
+  gap: 4px;
+  border-radius: 8px;
+  bottom: -56px;
+  z-index: 1;
 }

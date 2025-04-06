@@ -10,7 +10,9 @@
   --font3: #aaa9a9;
 
   --primary: #ff5023;
-  --primary2: #ff5023;
+  --primary2: #ff6924;
+
+  --mainGradient: linear-gradient(90deg, var(--primary) 0%, var(--primary2) 100%);
 
   --transparent: #1212124d;
   --border: #3d3d3d;

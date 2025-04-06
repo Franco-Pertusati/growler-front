@@ -1,23 +1,21 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { Table } from '../../modules/tables';
 import { TableComponent } from "./table/table.component";
 import { ButtonComponent } from '../../ui/button/button.component';
 import { ApiService } from '../../services/api.service';
-import { Dialog, DialogModule } from '@angular/cdk/dialog';
-
-type LayoutChange = { table: Table, action: 'create' | 'delete' | 'update' };
+import { LayoutChange } from './modules/changesRegister';
 
 @Component({
   selector: 'app-dinning-area',
   standalone: true,
-  imports: [TableComponent, ButtonComponent, DialogModule],
+  imports: [TableComponent, ButtonComponent],
   templateUrl: './dinning-area.component.html',
   styleUrl: './dinning-area.component.css'
 })
 
 export class DinningAreaComponent {
   tables: Table[] = []
-  cells = [...Array(48).keys()].map(x => x + 1);
+  cells = [...Array(40).keys()].map(x => x + 1);
   draggedTable: any = null;
   selectedTable: Table | null = null;
 
@@ -81,11 +79,37 @@ export class DinningAreaComponent {
     }
   }
 
+  createTable() {
+    const table = {}
+    this.apiService.createTable(table).subscribe({
+      next: () => {
+        console.log("Table created")
+      },
+      error: (err) => {
+        console.error('Error al actualizar mesa:', err);
+        // Revertir cambios locales si falla
+      }
+    });
+  }
+
   deleteTable() {
     if (this.selectedTable) {
       this.registerChange({ table: this.selectedTable, action: 'delete' })
       const tableId = this.selectedTable.id
       this.tables = this.tables.filter(t => t.id !== tableId)
+    }
+  }
+
+  toggleTableShape() {
+    if (this.selectedTable) {
+      this.selectedTable.round = !this.selectedTable.round;
+      this.registerChange({ table: this.selectedTable, action: 'update' })
+    }
+  }
+
+  renameTable() {
+    if (this.selectedTable) {
+      this.registerChange({ table: this.selectedTable, action: 'update' })
     }
   }
 
@@ -105,9 +129,11 @@ export class DinningAreaComponent {
     if (this.layoutChanges.length > 0) {
       this.layoutChanges.forEach(change => {
         switch (change.action) {
+
           case 'create':
             console.log("create sin implementar")
             break;
+
           case 'delete':
             this.apiService.deleteTable(change.table.id).subscribe({
               next: () => {
@@ -115,10 +141,10 @@ export class DinningAreaComponent {
               },
               error: (err) => {
                 console.error('Error al actualizar mesa:', err);
-                // Revertir cambios locales si falla
               }
             });
             break
+
           case 'update':
             this.apiService.updateTable(change.table.id, change.table).subscribe({
               next: () => {
@@ -126,15 +152,15 @@ export class DinningAreaComponent {
               },
               error: (err) => {
                 console.error('Error al actualizar mesa:', err);
-                // Revertir cambios locales si falla
               }
             });
             break
+
           default:
             break;
         }
       });
-    this.layoutChanges = []
+      this.layoutChanges = []
     }
   }
 
@@ -143,10 +169,20 @@ export class DinningAreaComponent {
     this.getTables()
   }
 
-  toggleTableShape() {
+  handleDeleteTable(table: Table) {
+    this.selectedTable = table;
+    this.deleteTable();
+  }
+
+  handleToggleTableShape(table: Table) {
+    this.selectedTable = table;
+    this.toggleTableShape();
+  }
+
+  handleRenameTable(newName: string) {
     if (this.selectedTable) {
-      this.selectedTable.round = !this.selectedTable.round;
-      this.registerChange({ table: this.selectedTable, action: 'update' })
+      this.selectedTable.name = newName;
+      this.registerChange({ table: this.selectedTable, action: 'update' });
     }
   }
 }

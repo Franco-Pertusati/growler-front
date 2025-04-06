@@ -68,7 +68,7 @@ export class ApiService {
     return this.http.delete<Table>(`${this.apiUrl}/api/dinig_tables/${id}`);
   }
 
-  create(table: Table) {
-    return this.http.post<Table>(`${this.apiUrl}/api/dinig_tables`, table);
+  createTable(table: any) {
+    return this.http.post<any>(`${this.apiUrl}/api/dinig_tables`, table);
   }
 }

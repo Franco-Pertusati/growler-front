@@ -12,17 +12,20 @@
 }
 
 .grid {
+  padding: 0;
   width: fit-content;
   display: grid;
   grid-template-columns: repeat(8, 110px);
   grid-template-rows: repeat(5, 110px);
-  border-radius: 8px;
+  border-radius: 0px;
+  border: solid 1px var(--border);
 }
 
 .cell {
   padding: 6px;
   height: 100%;
   width: 100%;
+  border: solid 1px var(--border);
 }
 
 .cell.hover {
@@ -31,7 +34,7 @@
 
 .gridCont {
   width: 100%;
-  height: calc(100% - 246px);
+  height: calc(100% - 200px);
   display: flex;
   flex-direction: column;
   align-items: center;
