@@ -1,3 +1,16 @@
-<div class="homeContainer">
-  <h2>Welcome back user</h2>
+<div class="pageCont">
+  <app-top-bar [title]="'Dashboard'" />
+  <div class="content">
+    <h3>Last shift resume</h3>
+    <div class="flex">
+      <app-stat-card [title]="'Income'" />
+      <app-stat-card [title]="'Tables'" [icon]="'table_restaurant'" [value]="'57'"/>
+      <app-stat-card [title]="'Take aways'" [icon]="'store'" [value]="'82'"/>
+      <app-stat-card [title]="'Most selled'" [icon]="'trending_up'" [value]="'Golden'"/>
+    </div>
+    <div class="flex">
+      <app-table-card />
+      <app-table-card />
+    </div>
+  </div>
 </div>

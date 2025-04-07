@@ -1,0 +1,23 @@
+i {
+  padding: 6px;
+  font-size: 3rem;
+  border-radius: 50%;
+  background: linear-gradient(145deg, var(--bg1), var(--bg2));
+  border: solid 1px var(--border);
+}
+
+.flex {
+  justify-content: space-between;
+}
+
+.smCard {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.value {
+  line-height: 1;
+  font-size: 4rem;
+}
+

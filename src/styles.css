@@ -17,7 +17,7 @@
   --transparent: #1212124d;
   --border: #3d3d3d;
 
-  --succes: #59cd90;
+  --succes: #44cf85;
   --warning: #fac05e;
   --danger: #ef271b;
   --blue: #0074c2;
@@ -115,7 +115,6 @@ button:hover, .dropDwn:hover {
   border-radius: 12px;
   padding: 12px;
   border: solid 1px var(--border);
-  box-shadow: 0 4px 8px hsla(0, 0%, 7%, 0.1);
 }
 
 h1, h2 {
@@ -149,3 +148,22 @@ form {
   gap: 8px;
 }
 
+.smCard {
+  width: 320px;
+  height: 198px;
+  flex-direction: column;
+  position: relative;
+}
+
+.mdCard {
+  width: 652px;
+  height: 1000px;
+}
+
+.greenFont {
+  color: var(--succes);
+}
+
+.greenRed {
+  color: var(--danger);
+}

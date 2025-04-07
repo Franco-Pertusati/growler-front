@@ -46,6 +46,18 @@ export class NavComponent {
       ],
     },
     {
+      label: 'Users',
+      icon: 'badge',
+      style: 'wfull',
+      routerLink: 'users',
+    },
+    {
+      label: 'Dinning area',
+      icon: 'table_restaurant',
+      style: 'wfull',
+      routerLink: 'dinning-area',
+    },
+    {
       label: 'Shifts',
       icon: 'work',
       style: 'wfull',
@@ -63,10 +75,10 @@ export class NavComponent {
       ],
     },
     {
-      label: 'Dinning area',
-      icon: 'table_restaurant',
+      label: 'Settings',
+      icon: 'settings',
       style: 'wfull',
-      routerLink: 'dinning-area',
+      routerLink: ' ',
     },
   ];
 }

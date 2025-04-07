@@ -1,4 +1,19 @@
-.homeContainer {
-  padding: 12px;
+.pageCont {
   height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.content {
+  padding: 24px;
+  height: 100%;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+h3 {
+  font-size: 2.5rem;
+  font-weight: normal;
 }

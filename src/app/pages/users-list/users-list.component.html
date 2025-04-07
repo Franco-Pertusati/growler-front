@@ -1,0 +1,10 @@
+<div>
+  <app-top-bar [title]="'Users'">
+    <input type="text" placeholder="Search">
+    <app-button [showLabel]="false" [icon]="'grid_view'" [accent]="gridMode" (click)="gridMode = true" />
+    <app-button [showLabel]="false" [icon]="'list'" [accent]="!gridMode"  (click)="gridMode = false"/>
+    <div class="createBtnContainer flex">
+      <app-button [label]="'Add user'" [icon]="'add'" [accent]="true" />
+    </div>
+  </app-top-bar>
+</div>
