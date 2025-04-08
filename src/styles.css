@@ -10,16 +10,17 @@
   --font3: #aaa9a9;
 
   --primary: #ff5023;
-  --primary2: #ff6924;
-
-  --mainGradient: linear-gradient(90deg, var(--primary) 0%, var(--primary2) 100%);
+  --primary2: #ffcabc;
 
   --transparent: #1212124d;
   --border: #3d3d3d;
 
-  --succes: #44cf85;
-  --warning: #fac05e;
-  --danger: #ef271b;
+  --succes: #59cd90;
+  --succesBg: #aaffd2;
+  --warning: #f39c12;
+  --warningBg: #ffffd2;
+  --danger: #e74c3c;
+  --dangerBg: #ffc5bf;
   --blue: #0074c2;
 }
 
@@ -35,13 +36,18 @@
   --border: #c3c6c9;
 
   --primary: #ff5023;
-  --primary2: #ff5023;
+  --primary2: #ffd1c5;
+
 
   --transparent: hsla(0, 0%, 100%, 0.3);
 
   --succes: #59cd90;
+  --succesBg: #cfffe5;
   --warning: #f39c12;
+  --warningBg: #ffffda;
   --danger: #e74c3c;
+  --dangerBg: #ffdfdb;
+  --blue: #0074c2;
 }
 
 * {
@@ -62,7 +68,8 @@ body * {
   font-size: 2rem;
 }
 
-button, .dropDwn {
+button,
+.dropDwn {
   padding: 6px 8px;
   display: flex;
   align-items: center;
@@ -78,7 +85,8 @@ button span {
   text-wrap-mode: nowrap;
 }
 
-button:hover, .dropDwn:hover {
+button:hover,
+.dropDwn:hover {
   background-color: var(--bg3);
 }
 
@@ -117,9 +125,14 @@ button:hover, .dropDwn:hover {
   border: solid 1px var(--border);
 }
 
-h1, h2 {
+h1,
+h2 {
   font-size: 3rem;
   font-weight: normal;
+}
+
+h3 {
+  font-size: 2.8rem;
 }
 
 .hfull {
@@ -166,4 +179,22 @@ form {
 
 .greenRed {
   color: var(--danger);
+}
+
+.bgMain {
+  color: var(--primary);
+  background-color: var(--primary2);
+}
+
+.bgGreen {
+  color: var(--succes);
+  background-color: var(--succesBg);
+}
+
+.badge {
+  width: fit-content;
+  padding: 6px 12px;
+  line-height: 1;
+  font-size: 1.8rem;
+  border-radius: 22px;
 }

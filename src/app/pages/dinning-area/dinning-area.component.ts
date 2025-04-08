@@ -80,7 +80,13 @@ export class DinningAreaComponent {
   }
 
   createTable() {
-    const table = {}
+    const table = {
+      id: 3,
+      name: 'NewTable',
+      position: 1,
+      state: 3,
+      round: false
+    }
     this.apiService.createTable(table).subscribe({
       next: () => {
         console.log("Table created")

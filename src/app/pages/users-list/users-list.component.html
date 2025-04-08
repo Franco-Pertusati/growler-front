@@ -1,10 +1,37 @@
-<div>
+<div class="createBtnContainer">
   <app-top-bar [title]="'Users'">
     <input type="text" placeholder="Search">
-    <app-button [showLabel]="false" [icon]="'grid_view'" [accent]="gridMode" (click)="gridMode = true" />
-    <app-button [showLabel]="false" [icon]="'list'" [accent]="!gridMode"  (click)="gridMode = false"/>
     <div class="createBtnContainer flex">
       <app-button [label]="'Add user'" [icon]="'add'" [accent]="true" />
     </div>
   </app-top-bar>
+  <div class="cont">
+
+    <div class="catCard win wfull">
+      <div class="row titleRow">
+        <span>Name</span>
+        <span>Date Employed</span>
+        <span>Status</span>
+        <span>Role</span>
+        <span>Action</span>
+        <app-button [showLabel]="false" [icon]="'check_box_outline_blank'" />
+      </div>
+        @for (user of users; track $index) {
+          <div class="row">
+            <span>{{ user.name}}</span>
+            <span>12/03/2023</span>
+            <span>Active</span>
+            <span class="badge" [ngClass]="user.role === 'admin'? 'bgMain' : 'bgGreen'">{{ user.role }}</span>
+            <div class="flex">
+              <app-button [showLabel]="false" [icon]="'delete'" />
+              <app-button [showLabel]="false" [icon]="'edit'" />
+            </div>
+            <app-button [showLabel]="false" [icon]="'check_box_outline_blank'" />
+          </div>
+        }
+      <div>
+      </div>
+    </div>
+
+  </div>
 </div>
