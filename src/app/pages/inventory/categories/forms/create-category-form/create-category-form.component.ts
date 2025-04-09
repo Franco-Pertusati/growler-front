@@ -5,12 +5,11 @@ import { Router } from '@angular/router';
 import { Category } from '../../../../../modules/products';
 import { ApiService } from '../../../../../services/api.service';
 import { CommonModule } from '@angular/common';
-import { InputComponent } from "../../../../../ui/form/input/input.component";
 
 @Component({
   selector: 'app-create-category-form',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, InputComponent],
+  imports: [CommonModule, ReactiveFormsModule],
   templateUrl: './create-category-form.component.html',
   styleUrl: './create-category-form.component.css'
 })

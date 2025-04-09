@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, signal } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Category, Product } from '../modules/products';
@@ -81,7 +81,7 @@ export class ApiService {
    * @returns Observable of Category array
    */
   getCategories(): Observable<Category[]> {
-    return this.http.get<Category[]>(`${this.apiUrl}/api/categories`);
+    return this.http.get<any>(`${this.apiUrl}/api/categories`);
   }
 
   /**

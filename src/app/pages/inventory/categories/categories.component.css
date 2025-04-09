@@ -33,14 +33,6 @@
   flex-direction: column;
 }
 
-.prodCard:nth-child(odd) {
-  background-color: var(--bg2);
-}
-
-.gridMode .prodCard:nth-child(odd) {
-  background-color: var(--bg1);
-}
-
 .prodCard {
   padding: 8px 0;
   display: grid;
@@ -70,15 +62,21 @@
   height: 220px;
   width: 220px;
   border-radius: 12px;
+  display: grid;
+  grid-template-rows: 1fr auto;
   grid-template-columns: 1fr;
-  grid-template-rows: 1fr 1fr 1fr;
+  place-items: center;
   position: relative;
 }
 
 .gridMode .prodChkbx {
   position: absolute;
-  right: 42px;
+  left: 12px;
   top: 12px;
+}
+
+.gridMode .idProd {
+  display: none;
 }
 
 .gridMode .optionsBtn {

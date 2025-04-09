@@ -1,0 +1,74 @@
+<div class="win">
+  <h2>Create Product</h2>
+  <form [formGroup]="prodForm" action="">
+    <!-- Campo Name -->
+    <div>
+      <div class="flex">
+        <label for="name">Name</label>
+        @if (prodForm.get('name')?.errors && (prodForm.get('name')?.touched || prodForm.get('name')?.dirty)) {
+          <span class="small">
+            @if (prodForm.get('name')?.hasError('required')) {
+              <span class="small">Name is required</span>
+            }
+            @if (prodForm.get('name')?.hasError('minlength')) {
+              <span class="small">Minimum 3 characters required</span>
+            }
+            @if (prodForm.get('name')?.hasError('maxlength')) {
+              <span class="small">Maximum 50 characters allowed</span>
+            }
+          </span>
+        }
+      </div>
+      <input type="text" id="name" placeholder="White Beer" formControlName="name">
+    </div>
+
+    <!-- Campo Price -->
+    <div>
+      <div class="flex">
+        <label for="price">Price</label>
+        @if (prodForm.get('price')?.errors && (prodForm.get('price')?.touched || prodForm.get('price')?.dirty)) {
+          <div>
+            @if (prodForm.get('price')?.hasError('required')) {
+              <span class="small">Price is required</span>
+            }
+            @if (prodForm.get('price')?.hasError('min')) {
+              <span class="small">Minimum value is 0.01</span>
+            }
+            @if (prodForm.get('price')?.hasError('max')) {
+              <span class="small">Maximum value is 1,000,000</span>
+            }
+            @if (prodForm.get('price')?.hasError('pattern')) {
+              <span class="small">Invalid price format (e.g. 10.99)</span>
+            }
+          </div>
+        }
+      </div>
+      <input type="text" id="price" placeholder="0.00" formControlName="price">
+    </div>
+
+    <!-- Campo Category -->
+    <div>
+      <div class="flex">
+        <label for="category">Category</label>
+        @if (prodForm.get('category')?.errors && (prodForm.get('category')?.touched || prodForm.get('category')?.dirty)) {
+          <span>
+            @if (prodForm.get('category')?.hasError('required')) {
+              <span class="small">Category is required</span>
+            }
+          </span>
+        }
+      </div>
+      <select formControlName="category" id="category" class="wfull">
+        <option value="">Select category</option>
+        @for (option of data; track $index) {
+          <option [value]="option.id">{{ option.name }}</option>
+        }
+      </select>
+    </div>
+
+    <div class="flex">
+      <app-button [label]="'Create'" [icon]="'add'" [accent]="true" [type]="'submit'" (cick)="onSubmit()" />
+      <app-button [label]="'Create and re-fill'" [icon]="'refresh'" [accent]="true" [type]="'submit'" />
+    </div>
+  </form>
+</div>

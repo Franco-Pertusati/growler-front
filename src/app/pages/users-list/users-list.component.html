@@ -21,7 +21,7 @@
             <span>{{ user.name}}</span>
             <span>12/03/2023</span>
             <span>Active</span>
-            <span class="badge" [ngClass]="user.role === 'admin'? 'bgMain' : 'bgGreen'">{{ user.role }}</span>
+            <span class="badge" [ngClass]="user.role === 'admin'? 'bgMain' : 'bgGreen'">{{ user.role | titlecase  }}</span>
             <div class="flex">
               <app-button [showLabel]="false" [icon]="'delete'" />
               <app-button [showLabel]="false" [icon]="'edit'" />
