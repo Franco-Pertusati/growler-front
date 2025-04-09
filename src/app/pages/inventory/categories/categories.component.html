@@ -35,8 +35,10 @@
             <span class="idProd">{{ prod.id }}</span>
             <span class="inf">{{ prod.name | titlecase }}</span>
             <span class="inf">{{ prod.price | currency }}</span>
-            <i class="material-icons-round prodChkbx">check_box_outline_blank</i>
-            <i class="material-icons-round optionsBtn">more_vert</i>
+            <span class="bgGreen badge">Active</span>
+            <app-button [showLabel]="false" [icon]="'delete'" />
+            <app-button [showLabel]="false" [icon]="'edit'" />
+            <app-button [showLabel]="false" [icon]="'check_box_outline_blank'" />
           </div>
           }
         </div>

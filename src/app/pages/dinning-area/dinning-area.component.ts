@@ -4,6 +4,7 @@ import { TableComponent } from "./table/table.component";
 import { ButtonComponent } from '../../ui/button/button.component';
 import { ApiService } from '../../services/api.service';
 import { LayoutChange } from './modules/changesRegister';
+import { ToastService } from '../../services/toast.service';
 
 @Component({
   selector: 'app-dinning-area',
@@ -19,19 +20,20 @@ export class DinningAreaComponent {
   draggedTable: any = null;
   selectedTable: Table | null = null;
 
-  constructor(private apiService: ApiService) { }
+  constructor(private apiService: ApiService, private toast: ToastService) { }
 
   ngOnInit() {
     this.getTables()
   }
 
+  //CORREJIR SUSCRIBE
   getTables() {
     this.apiService.getTables().subscribe(
       (data: any) => {
         this.tables = data.member;
       },
       (error) => {
-        console.error('Error fetching products:', error);
+        this.toast.showToast('Error fetching the tables', 'exclamation')
       }
     );
   }
@@ -79,6 +81,7 @@ export class DinningAreaComponent {
     }
   }
 
+  //OJO SIN IMPLEMENTAR
   createTable() {
     const table = {
       id: 3,
@@ -93,7 +96,6 @@ export class DinningAreaComponent {
       },
       error: (err) => {
         console.error('Error al actualizar mesa:', err);
-        // Revertir cambios locales si falla
       }
     });
   }
@@ -167,6 +169,7 @@ export class DinningAreaComponent {
         }
       });
       this.layoutChanges = []
+      this.toast.showToast('Layout updated', 'check')
     }
   }
 

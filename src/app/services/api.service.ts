@@ -34,12 +34,14 @@ export class ApiService {
     return this.http.get<Product>(`${this.apiUrl}/api/products/${id}`);
   }
 
-  /**
-   * Creates a new product
-   * @param productData The product data to create
-   * @returns Observable of the created Product
-   */
-  createProduct(productData: any): Observable<Product> {
+
+  createProduct(product: any): Observable<Product> {
+    const productData = {
+      name: product.name,
+      price: product.price,
+      category: `${this.apiUrl}/api/categories/${product.category}`,
+    }
+    console.log(productData.price + 3)
     return this.http.post<Product>(`${this.apiUrl}/api/products`, productData);
   }
 

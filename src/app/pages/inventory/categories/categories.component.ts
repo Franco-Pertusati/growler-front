@@ -4,8 +4,9 @@ import { ButtonComponent } from "../../../ui/button/button.component";
 import { CommonModule } from '@angular/common';
 import { DropdownComponent } from "../../../ui/dropdown/dropdown.component";
 import { Dialog, DIALOG_DATA, DialogModule, DialogRef } from '@angular/cdk/dialog';
-import { Category, Product } from '../../../modules/products';
+import { Category } from '../../../modules/products';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { ToastService } from '../../../services/toast.service';
 
 @Component({
   selector: 'app-categories',
@@ -16,9 +17,9 @@ import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } 
 })
 export class CategoriesComponent {
   categories: Category[] = []
-  gridMode: boolean = true;
+  gridMode: boolean = false;
 
-  constructor(private apiService: ApiService, private dialog: Dialog) { }
+  constructor(private apiService: ApiService, private dialog: Dialog, private toast: ToastService) { }
 
   ngOnInit(): void {
     this.loadCategories();
@@ -31,6 +32,7 @@ export class CategoriesComponent {
 
     dialogRef.closed.subscribe(product => {
       if (product) {
+        console.log(product)
         this.createProduct(product)
       }
     });
@@ -39,12 +41,11 @@ export class CategoriesComponent {
   createProduct(newProd: any) {
     this.apiService.createProduct(newProd).subscribe({
       next: () => {
-        console.log('Producto creado');
         this.loadCategories()
+        this.toast.showToast('Product created', 'check')
       },
       error: (err) => {
-        console.error('Error al eliminar:', err);
-        alert('No se pudo eliminar el producto');
+        console.error('Error al crear producto', err);
       }
     });
   }
@@ -102,12 +103,11 @@ export class CreateProductFormComponent {
   });
   data = inject(DIALOG_DATA);
 
-  constructor(private apiService: ApiService, private dialogRef: DialogRef) { }
+  constructor(private dialogRef: DialogRef) { }
 
-  onSubmit() {
-    this.apiService.createProduct(this.prodForm.value).subscribe({
-      next: () => this.dialogRef.close(this.prodForm.value),
-      error: (err) => console.error('Error creating product:', err)
-    });
+  submit() {
+    if (this.prodForm.valid) {
+      this.dialogRef.close(this.prodForm.value)
+    }
   }
 }

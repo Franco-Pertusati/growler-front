@@ -43,7 +43,7 @@
           </div>
         }
       </div>
-      <input type="text" id="price" placeholder="0.00" formControlName="price">
+      <input type="number" id="price" placeholder="0.00" formControlName="price">
     </div>
 
     <!-- Campo Category -->
@@ -67,7 +67,7 @@
     </div>
 
     <div class="flex">
-      <app-button [label]="'Create'" [icon]="'add'" [accent]="true" [type]="'submit'" (cick)="onSubmit()" />
+      <app-button [label]="'Create'" [icon]="'add'" [accent]="true" [type]="'submit'" (click)="submit()" />
       <app-button [label]="'Create and re-fill'" [icon]="'refresh'" [accent]="true" [type]="'submit'" />
     </div>
   </form>

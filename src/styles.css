@@ -10,18 +10,21 @@
   --font3: #aaa9a9;
 
   --primary: #ff5023;
-  --primary2: #ffcabc;
+  --primary2: #fd6e4a4d;
 
   --transparent: #1212124d;
   --border: #3d3d3d;
 
   --succes: #59cd90;
-  --succesBg: #cfffe5;
+  --succesBg: #59cd904d;
   --warning: #f39c12;
-  --warningBg: #ffffda;
-  --danger: #f5402c;
-  --dangerBg: #ffdfdb;
+  --warningBg: #f39c124d;
+  --danger: #fa4531;
+  --dangerBg: #fa45314d;
   --blue: #0074c2;
+  --blueBg: #0074c24d;
+  --violet: #b85cff;
+  --violetBg: #b85cff4d;
 }
 
 .light {
@@ -36,18 +39,21 @@
   --border: #c3c6c9;
 
   --primary: #ff5023;
-  --primary2: #ffd1c5;
+  --primary2: #ff50244d;
 
 
   --transparent: hsla(0, 0%, 100%, 0.3);
 
   --succes: #59cd90;
-  --succesBg: #cfffe5;
+  --succesBg: #59cd904d;
   --warning: #f39c12;
-  --warningBg: #ffffda;
+  --warningBg: #f39c124d;
   --danger: #fa4531;
-  --dangerBg: #ffdfdb;
+  --dangerBg: #fa45314d;
   --blue: #0074c2;
+  --blueBg: #0074c24d;
+  --violet: #662C91;
+  --violetBg: #662C914d;
 }
 
 * {
@@ -200,6 +206,11 @@ select:focus {
 .bgGreen {
   color: var(--succes);
   background-color: var(--succesBg);
+}
+
+.bgGreen {
+  color: var(--violet);
+  background-color: var(--violetBg);
 }
 
 .badge {

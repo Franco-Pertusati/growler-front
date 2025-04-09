@@ -16,11 +16,34 @@ export class UsersListComponent {
   gridMode: boolean = false;
 
   users: User[] = [];
+  selectedUsers: Set<number> = new Set<number>();
 
   constructor(private userService: ApiService) { }
 
   ngOnInit(): void {
     this.loadUsers();
+  }
+
+  toggleUserSelection(userId: number): void {
+    if (this.isSelected(userId)) {
+      this.selectedUsers.delete(userId);
+    } else {
+      this.selectedUsers.add(userId);
+    }
+  }
+
+  isSelected(userId: number): boolean {
+    return this.selectedUsers.has(userId);
+  }
+
+  toggleSelectAll() {
+    if (this.users.length === this.selectedUsers.size) {
+      this.selectedUsers.clear()
+    } else {
+      this.users.forEach(user => {
+        this.selectedUsers.add(user.id)
+      });
+    }
   }
 
   loadUsers() {
