@@ -1,0 +1,14 @@
+.container {
+  width: 100vw;
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 298px 1fr;
+  grid-template-rows: 100vh;
+  position: relative;
+}
+
+.toastContainer {
+  position: fixed;
+  bottom: 24px;
+  right: 48px;
+}

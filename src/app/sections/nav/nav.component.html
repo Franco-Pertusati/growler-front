@@ -6,11 +6,11 @@
   <div class="btnList wfull">
     @for (b of menuItems; track $index) {
     @if (!b.children && b.routerLink) {
-    <app-button [icon]="b.icon" [label]="b.label" [routerLink]="b.routerLink" [style]="'wfull'" />
+    <app-button [icon]="b.icon" [label]="b.label" [routerLink]="b.routerLink" [style]="'wfull'" [accent]="isRouteActive(b.routerLink)" />
     } @else {
     <app-acordeon [icon]="b.icon" [label]="b.label">
       @for (b of b.children; track $index) {
-      <app-button [icon]="b.icon" [label]="b.label" [routerLink]="b.routerLink || null" [style]="'wfull'" />
+      <app-button [icon]="b.icon" [label]="b.label" [routerLink]="b.routerLink || null" [style]="'wfull'" [accent]="isRouteActive(b.routerLink)" />
       }
     </app-acordeon>
     }

@@ -12,3 +12,17 @@
   flex-direction: column;
   gap: 12px;
 }
+
+.win {
+  width: 100%;
+}
+
+.gridLayout {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: minmax(320px, 100%) minmax(320px, 100%) minmax(320px, 100%) minmax(320px, 100%);
+}
+
+.tabWin {
+  grid-column: 2 span;
+}

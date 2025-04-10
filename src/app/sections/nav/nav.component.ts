@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { ButtonComponent } from "../../ui/button/button.component";
 import { ThemeBtnComponent } from "../../ui/theme-btn/theme-btn.component";
 import { AcordeonComponent } from "../../ui/acordeon/acordeon.component";
+import { NavigationEnd, Router } from '@angular/router';
 
 export interface MenuItem {
   label: string;
@@ -81,4 +82,18 @@ export class NavComponent {
       routerLink: ' ',
     },
   ];
+
+  constructor(private router: Router) { }
+
+  ngOnInit() {}
+
+  isRouteActive(route: string | undefined): boolean {
+    if (!route) return false;
+    return this.router.isActive(route, {
+      paths: 'exact',
+      queryParams: 'ignored',
+      fragment: 'ignored',
+      matrixParams: 'ignored'
+    });
+  }
 }

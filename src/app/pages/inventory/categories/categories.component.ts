@@ -45,7 +45,7 @@ export class CategoriesComponent {
         this.toast.showToast('Product created', 'check')
       },
       error: (err) => {
-        console.error('Error al crear producto', err);
+        this.toast.showToast('An error occurred while creating the product.', 'error')
       }
     });
   }
@@ -53,12 +53,12 @@ export class CategoriesComponent {
   deleteProduct(prodId: number) {
     this.apiService.deleteProduct(prodId).subscribe({
       next: () => {
-        console.log('Producto eliminado');
+        this.toast.showToast('Product deleted', 'check')
         this.loadCategories()
       },
       error: (err) => {
         console.error('Error al eliminar:', err);
-        alert('No se pudo eliminar el producto');
+        this.toast.showToast('An error occurred while deleting the product.', 'error')
       }
     });
   }
@@ -70,7 +70,7 @@ export class CategoriesComponent {
         console.log(this.categories)
       },
       (error) => {
-        console.error('Error fetching products:', error);
+        this.toast.showToast('Error fetching product list', 'error')
       }
     );
   }

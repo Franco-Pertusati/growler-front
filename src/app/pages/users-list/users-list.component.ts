@@ -4,6 +4,7 @@ import { ButtonComponent } from "../../ui/button/button.component";
 import { User } from '../../modules/users';
 import { ApiService } from '../../services/api.service';
 import { CommonModule } from '@angular/common';
+import { ToastService } from '../../services/toast.service';
 
 @Component({
   selector: 'app-users-list',
@@ -18,7 +19,7 @@ export class UsersListComponent {
   users: User[] = [];
   selectedUsers: Set<number> = new Set<number>();
 
-  constructor(private userService: ApiService) { }
+  constructor(private userService: ApiService, private toast: ToastService) { }
 
   ngOnInit(): void {
     this.loadUsers();
@@ -52,7 +53,7 @@ export class UsersListComponent {
         this.users = data.member;
       },
       (error) => {
-        console.error('Error fetching products:', error);
+        this.toast.showToast('Error fetching user list.', 'error');
       }
     );
   }

@@ -1,0 +1,14 @@
+.win {
+  height: fit-content;
+  padding: 32px 64px;
+}
+
+.titleContainer {
+  padding-bottom: 32px;
+}
+
+h2 {
+  text-align: center;
+  font-weight: bold;
+  font-size: 2.5rem;
+}

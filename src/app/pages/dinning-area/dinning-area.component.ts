@@ -33,7 +33,7 @@ export class DinningAreaComponent {
         this.tables = data.member;
       },
       (error) => {
-        this.toast.showToast('Error fetching the tables', 'exclamation')
+        this.toast.showToast('Error fetching the tables', 'error')
       }
     );
   }

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-table-card',
@@ -8,5 +8,6 @@ import { Component } from '@angular/core';
   styleUrl: './table-card.component.css'
 })
 export class TableCardComponent {
-
+  @Input() title: string = 'Title'
+  @Input() list: Array<any> = []
 }

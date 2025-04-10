@@ -1,0 +1,29 @@
+.sigInContainer {
+  width: 100vw;
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  position: relative;
+}
+
+h1 {
+  padding-top: 24px;
+  font-size: 5rem;
+  font-weight: 600;
+  color: white;
+  text-align: center;
+}
+
+
+.rSide {
+  height: 100%;
+  width: 100%;
+  background-color: var(--primary);
+}
+
+.btn {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+}
