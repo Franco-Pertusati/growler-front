@@ -19,7 +19,7 @@
   <div class="catList" [ngClass]="gridMode? 'gridMode' : ''">
 
     @for (cat of categories; track $index) {
-    <div class="catCard win wfull">
+    <div class="catCard win wfull p24">
       <h3>{{ cat.name | titlecase }}</h3>
       <div class="prodCardContainer">
 
@@ -36,7 +36,6 @@
             <span class="inf">{{ prod.name | titlecase }}</span>
             <span class="inf">{{ prod.price | currency }}</span>
             <span class="bgGreen badge">Active</span>
-            <app-button [showLabel]="false" [icon]="'delete'" />
             <app-button [showLabel]="false" [icon]="'edit'" />
             <app-button [showLabel]="false" [icon]="'check_box_outline_blank'" />
           </div>

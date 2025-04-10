@@ -1,6 +1,20 @@
 .toast {
   width: fit-content;
   min-width: 420px;
+  border: solid 1px var(--border);
+  box-shadow: 0 4px 4px hsla(0, 0%, 0%, 0.2);
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1000;
+}
+
+.toast.show {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 i {
@@ -9,6 +23,16 @@ i {
   border-radius: 50px;
   background: linear-gradient(145deg, var(--bg1), var(--bg2));
   font-size: 2rem;
+  transition: transform 0.2s ease;
 }
 
+.toast:hover i {
+  transform: scale(1.1);
+}
 
+/* Animación de salida */
+.toast.hide {
+  opacity: 0;
+  transform: translateY(20px) scale(0.9);
+  transition: all 0.2s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+}

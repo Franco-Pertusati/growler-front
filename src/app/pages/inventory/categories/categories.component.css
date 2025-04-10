@@ -21,7 +21,7 @@
   margin-bottom: 12px;
   display: grid;
   gap: 24px;
-  grid-template-columns: 80px 264px 198px 98px repeat(3, 40px);
+  grid-template-columns: 80px minmax(264px, auto) minmax(198px, auto) 98px repeat(2, 40px);
 }
 
 .cardDataTitle span {
@@ -37,7 +37,7 @@
   padding: 8px 0;
   display: grid;
   gap: 24px;
-  grid-template-columns: 80px 264px 198px 98px repeat(3, 40px);
+  grid-template-columns: 80px minmax(264px, auto) minmax(198px, auto) 98px repeat(2, 40px);
   align-items: center;
   box-shadow: none;
 }

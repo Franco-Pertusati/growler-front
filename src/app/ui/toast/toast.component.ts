@@ -12,6 +12,8 @@ import { Subscription } from 'rxjs';
 export class ToastComponent {
   private toastSubscription: Subscription | undefined;
   toastNotification: ToastNotification | null = null;
+  isVisible: boolean = false;
+  isHiding: boolean = false;
 
   constructor(private toastService: ToastService) {}
 
@@ -19,9 +21,16 @@ export class ToastComponent {
     this.toastSubscription = this.toastService.getToastObservable().subscribe(
       (notification) => {
         this.toastNotification = notification;
+        this.isHiding = false;
+        this.isVisible = true;
+
         setTimeout(() => {
-          this.toastNotification = null;
-        }, 3000);
+          this.isHiding = true;
+          setTimeout(() => {
+            this.toastNotification = null;
+            this.isVisible = false;
+          }, 200); // Tiempo para la animación de salida
+        }, 3000); // Tiempo que permanece visible
       }
     );
   }

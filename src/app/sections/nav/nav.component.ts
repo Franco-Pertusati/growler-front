@@ -38,19 +38,7 @@ export class NavComponent {
       label: 'Products',
       icon: 'restaurant',
       style: 'wfull',
-      children: [
-        {
-          label: 'Products list',
-          icon: 'assignment',
-          style: 'wfull',
-          routerLink: 'products',
-        },
-        {
-          label: 'Ingredients list',
-          icon: 'assignment',
-          style: 'wfull',
-        },
-      ],
+      routerLink: 'products',
     },
     {
       label: 'Users',
@@ -89,11 +77,15 @@ export class NavComponent {
 
   isRouteActive(route: string | undefined): boolean {
     if (!route) return false;
-    return this.router.isActive(route, {
-      paths: 'exact',
+
+    // Para rutas que comienzan con /app/ruta
+    const fullRoute = route.startsWith('/app') ? route : `/app${route.startsWith('/') ? route : '/' + route}`;
+
+    return this.router.isActive(fullRoute, {
+      paths: 'subset',
+      matrixParams: 'ignored',
       queryParams: 'ignored',
-      fragment: 'ignored',
-      matrixParams: 'ignored'
+      fragment: 'ignored'
     });
   }
 }

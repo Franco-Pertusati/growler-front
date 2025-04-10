@@ -12,6 +12,8 @@
   --primary: #ff5023;
   --primary2: #fd6e4a4d;
 
+  --murray: #ff4d74;
+
   --transparent: #1212124d;
   --border: #3d3d3d;
 
@@ -40,6 +42,8 @@
 
   --primary: #ff5023;
   --primary2: #ff50244d;
+
+  --murray: #ff4d74;
 
 
   --transparent: hsla(0, 0%, 100%, 0.3);
@@ -93,7 +97,8 @@ button span {
 
 button:hover,
 .dropDwn:hover {
-  background-color: var(--bg3);
+  background-color: var(--bg1);
+  box-shadow: 0 2px 4px hsla(0, 0%, 0%, 0.1);
 }
 
 .light .accent * {
@@ -210,7 +215,7 @@ select:focus {
   background-color: var(--succesBg);
 }
 
-.bgGreen {
+.bgViolet {
   color: var(--violet);
   background-color: var(--violetBg);
 }
@@ -230,4 +235,8 @@ select:focus {
 
 .contCenter {
   justify-content: center;
+}
+
+.p24 {
+  padding: 24px;
 }

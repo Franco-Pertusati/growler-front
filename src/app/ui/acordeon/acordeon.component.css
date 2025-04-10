@@ -1,12 +1,48 @@
-.ddCont {
-  padding-left: 8px;
-  border-left: solid 1px var(--border);
+/* Animaciones para el dropdown */
+.dropDownContainer {
+  position: relative;
 }
 
-i {
-  transition: all ease .3s;
+.ddCont {
+  padding: 8px 12px;
+  overflow: hidden;
+  animation: slideDown 0.3s ease-out forwards;
+  transform-origin: top center;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+    max-height: 0;
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    max-height: 500px; /* Ajusta según el contenido máximo esperado */
+  }
+}
+
+/* Animación para el ícono de flecha */
+.material-icons-round {
+  transition: transform 0.3s ease;
 }
 
 .deg90 {
   transform: rotate(-90deg);
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+    max-height: 500px;
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-10px);
+    max-height: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+  }
 }

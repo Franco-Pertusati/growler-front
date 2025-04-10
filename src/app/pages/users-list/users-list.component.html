@@ -1,8 +1,13 @@
 <div class="createBtnContainer">
   <app-top-bar [title]="'Users'">
-    <input type="text" placeholder="Search">
-    <div class="createBtnContainer flex">
-      <app-button [label]="'Add user'" [icon]="'add'" [accent]="true" />
+    <input type="text" placeholder="Search" (input)="updateSearchValue($event)">
+    <div class="flex">
+      <app-button [label]="'Add user'" [icon]="'person_add'" [accent]="true" />
+      @if (selectedUsers.size) {
+      <app-button [label]="'Delete ' + selectedUsers.size + ' users'" [icon]="'person_remove'" [accent]="true" />
+      <app-button [label]="'Set as admin'" [icon]="'manage_accounts'" [accent]="true" />
+      <app-button [label]="'Set as waiter'" [icon]="'manage_accounts'" [accent]="true" />
+      }
     </div>
   </app-top-bar>
   <div class="cont">
@@ -14,11 +19,14 @@
         <span>Status</span>
         <span>Role</span>
         <div></div>
-        <app-button [showLabel]="false" [icon]="this.users.length === this.selectedUsers.size? 'check_box' : 'check_box_outline_blank'" (click)="toggleSelectAll()" />
+        <app-button [showLabel]="false"
+          [icon]="this.users.length === this.selectedUsers.size? 'check_box' : 'check_box_outline_blank'"
+          (click)="toggleSelectAll()" />
       </div>
       @for (user of users; track $index) {
+      @if (user.name.toLocaleLowerCase().includes(searchValue.toLocaleLowerCase())) {
       <div class="row">
-        <span>{{ user.name}}</span>
+        <span>{{ user.name }}</span>
         <span>12/03/2023</span>
         <span>Active</span>
         <span class="badge" [ngClass]="user.role === 'admin'? 'bgMain' : 'bgGreen'">{{ user.role | titlecase }}</span>
@@ -27,6 +35,7 @@
         <app-button [showLabel]="false" [icon]="isSelected(user.id) ? 'check_box' : 'check_box_outline_blank'"
           (click)="toggleUserSelection(user.id)" />
       </div>
+      }
       }
       <div>
       </div>

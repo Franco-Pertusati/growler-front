@@ -14,8 +14,7 @@ import { ToastService } from '../../services/toast.service';
   styleUrl: './users-list.component.css'
 })
 export class UsersListComponent {
-  gridMode: boolean = false;
-
+  searchValue: string = '';
   users: User[] = [];
   selectedUsers: Set<number> = new Set<number>();
 
@@ -79,5 +78,9 @@ export class UsersListComponent {
       console.log('User deleted');
       this.loadUsers(); // Refresh the list
     });
+  }
+
+  updateSearchValue(event: any) {
+    this.searchValue = event.target.value;
   }
 }
