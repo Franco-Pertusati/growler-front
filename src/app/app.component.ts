@@ -8,7 +8,7 @@ import { ToastComponent } from "./ui/toast/toast.component";
   standalone: true,
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
-  imports: [RouterOutlet]
+  imports: [RouterOutlet, ToastComponent]
 })
 export class AppComponent {
 }

@@ -6,9 +6,3 @@
   grid-template-rows: 100vh;
   position: relative;
 }
-
-.toastContainer {
-  position: fixed;
-  bottom: 24px;
-  right: 48px;
-}

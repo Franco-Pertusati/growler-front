@@ -6,6 +6,7 @@ nav {
   flex-direction: column;
   gap: 12px;
   border-right: solid 1px var(--border);
+  background-color: var(--bg1);
 }
 
 .btnList {
@@ -23,16 +24,4 @@ h1 {
   background: linear-gradient(to right, var(--primary), var(--murray));
   background-clip: text;
   color: transparent;
-}
-
-.profileData {
-  margin-top: auto;
-}
-
-.win i {
-  padding: 4px;
-  background-color: var(--primary);
-  color: white;
-  border-radius: 99px;
-  text-align: center;
 }

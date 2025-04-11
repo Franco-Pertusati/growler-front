@@ -25,6 +25,18 @@ export class CategoriesComponent {
     this.loadCategories();
   }
 
+  loadCategories() {
+    this.apiService.getCategories().subscribe(
+      (data: any) => {
+        this.categories = data.member;
+        console.log(this.categories)
+      },
+      (error) => {
+        this.toast.showToast('Error fetching product list', 'error')
+      }
+    );
+  }
+
   openCreateProdForm() {
     const dialogRef = this.dialog.open(CreateProductFormComponent, {
       data: this.categories
@@ -61,18 +73,6 @@ export class CategoriesComponent {
         this.toast.showToast('An error occurred while deleting the product.', 'error')
       }
     });
-  }
-
-  loadCategories() {
-    this.apiService.getCategories().subscribe(
-      (data: any) => {
-        this.categories = data.member;
-        console.log(this.categories)
-      },
-      (error) => {
-        this.toast.showToast('Error fetching product list', 'error')
-      }
-    );
   }
 }
 

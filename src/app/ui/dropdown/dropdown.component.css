@@ -6,4 +6,5 @@
   position: absolute;
   left: calc(50% - 110px);
   z-index: 50;
+  gap: 4px;
 }

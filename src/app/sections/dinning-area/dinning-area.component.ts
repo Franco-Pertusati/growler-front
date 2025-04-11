@@ -1,10 +1,11 @@
-import { Component, inject, Input } from '@angular/core';
+import { Component, Output } from '@angular/core';
 import { Table } from '../../modules/tables';
 import { TableComponent } from "./table/table.component";
 import { ButtonComponent } from '../../ui/button/button.component';
 import { ApiService } from '../../services/api.service';
 import { LayoutChange } from './modules/changesRegister';
 import { ToastService } from '../../services/toast.service';
+import { ShiftService } from '../../services/shift.service';
 
 @Component({
   selector: 'app-dinning-area',
@@ -15,13 +16,15 @@ import { ToastService } from '../../services/toast.service';
 })
 
 export class DinningAreaComponent {
-  @Input() activeShift: boolean = true;
+  activeShift: boolean = false
   tables: Table[] = []
   cells = [...Array(40).keys()].map(x => x + 1);
   draggedTable: any = null;
   selectedTable: Table | null = null;
 
-  constructor(private apiService: ApiService, private toast: ToastService) { }
+  constructor(private apiService: ApiService, private toast: ToastService, private shift: ShiftService) {
+    this.activeShift = shift.getShiftState() ;
+  }
 
   ngOnInit() {
     this.getTables()
@@ -82,7 +85,7 @@ export class DinningAreaComponent {
     }
   }
 
-  //OJO SIN IMPLEMENTAR
+  //OJO, SIN IMPLEMENTAR
   createTable() {
     const table = {
       id: 3,

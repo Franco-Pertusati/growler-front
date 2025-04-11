@@ -1,8 +1,6 @@
 import { Routes } from '@angular/router';
 import { HomeComponent } from './pages/home/home.component';
-import { ProductsComponent } from './pages/inventory/products/products.component';
 import { CategoriesComponent } from './pages/inventory/categories/categories.component';
-import { DinningAreaComponent } from './sections/dinning-area/dinning-area.component';
 import { UsersListComponent } from './pages/users-list/users-list.component';
 import { SignInComponent } from './pages/auth/sign-in/sign-in.component';
 import { AuthComponent } from './pages/auth/auth.component';

@@ -1,0 +1,15 @@
+div {
+  padding: 8px;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100vw;
+  height: fit-content;
+  background: linear-gradient(90deg, var(--primary) 0%, var(--murray));
+}
+
+span {
+  color: white;
+  font-weight: bold;
+  font-size: 1.8rem;
+}
