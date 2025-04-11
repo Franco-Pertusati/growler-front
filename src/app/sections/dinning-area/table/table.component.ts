@@ -8,7 +8,7 @@ import { FormsModule } from '@angular/forms';
 @Component({
   selector: 'app-table',
   standalone: true,
-  imports: [NgClass, ButtonComponent, FormsModule], // Añadir FormsModule
+  imports: [NgClass, ButtonComponent, FormsModule],
   templateUrl: './table.component.html',
   styleUrl: './table.component.css'
 })
@@ -17,15 +17,16 @@ export class TableComponent {
   @Input() selected?: boolean;
   @Output() deleteTable = new EventEmitter<void>();
   @Output() toggleShape = new EventEmitter<void>();
-  @Output() renameTable = new EventEmitter<string>(); // Cambiado a emitir el nuevo nombre
+  @Output() renameTable = new EventEmitter<string>();
 
   isEditing = false;
-  newName = ''; // Variable para almacenar el nuevo nombre
+  newName = '';
+  activeShift = true;
 
   toggleEditState() {
     this.isEditing = !this.isEditing;
     if (this.isEditing) {
-      this.newName = this.tableData?.name || ''; // Inicializar con el nombre actual
+      this.newName = this.tableData?.name || '';
     }
   }
 

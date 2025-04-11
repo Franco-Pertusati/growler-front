@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, Input } from '@angular/core';
 import { Table } from '../../modules/tables';
 import { TableComponent } from "./table/table.component";
 import { ButtonComponent } from '../../ui/button/button.component';
@@ -15,6 +15,7 @@ import { ToastService } from '../../services/toast.service';
 })
 
 export class DinningAreaComponent {
+  @Input() activeShift: boolean = true;
   tables: Table[] = []
   cells = [...Array(40).keys()].map(x => x + 1);
   draggedTable: any = null;

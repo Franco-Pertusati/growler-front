@@ -26,3 +26,7 @@
 .tabWin {
   grid-column: 2 span;
 }
+
+h3 {
+  margin-right: auto;
+}

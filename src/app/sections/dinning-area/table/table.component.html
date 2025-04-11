@@ -15,8 +15,8 @@
     {{ tableData?.name }}
   </span>
   }
-  @if (selected) {
-  <div class="btnsContainer win">
+  @if (selected && !activeShift) {
+  <div class="btnsContainer win border">
     <app-button [active]="true" [showLabel]="false" [icon]="'edit'" (click)="toggleEditState()"/>
     <app-button [active]="true" [showLabel]="false" [icon]="'category'" (click)="onToggleShape()" (contextmenu)="onDelete(); $event.preventDefault()"/>
     <app-button [active]="true" [showLabel]="false" [icon]="'delete'" (click)="onDelete()" (contextmenu)="onDelete(); $event.preventDefault()"/>

@@ -1,0 +1,32 @@
+.grid {
+  padding: 0;
+  width: fit-content;
+  display: grid;
+  grid-template-columns: repeat(8, 110px);
+  grid-template-rows: repeat(5, 110px);
+  overflow: hidden;
+}
+
+.cell {
+  padding: 6px;
+  height: 100%;
+  width: 100%;
+}
+
+.cell.hover {
+  background-color: var(--bg3);
+}
+
+.container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+}
+
+.salonCont {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin: auto auto;
+  flex-direction: column;
+}

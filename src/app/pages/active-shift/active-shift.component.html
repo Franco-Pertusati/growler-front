@@ -1,0 +1,32 @@
+<div class="shiftContainer">
+  <div class="flexCol">
+    <div class="background flex wfull">
+      <h1 class="wfull">Bar name</h1>
+      <div class="flex">
+        <app-dropdown [label]="'Actions'" [icon]="'bolt'">
+          <app-button [label]="'Close all tables'" [icon]="'close'" [style]="'wfull'" />
+          <app-button [label]="'Swap table'" [icon]="'swap_horiz'" [style]="'wfull'" />
+        </app-dropdown>
+        <app-button [label]="'Cashier'" [icon]="'point_of_sale'" />
+        <app-button [label]="'History'" [icon]="'history'" />
+        <app-button [label]="'End shift'" [icon]="'work'" />
+        <app-theme-btn />
+      </div>
+    </div>
+    <div class="flex">
+      <app-dinning-area [activeShift]="true" />
+      <div class="win smCard hfull">
+        <div class="flex tableData">
+          <span class="badge bgMain">Selected table</span>
+          <span class="badge bgGreen">$120,000.00</span>
+        </div>
+        <div class="tableProducts hfull"></div>
+        <div class="flex ctrlBtns">
+          <app-button [label]="'Add'" [icon]="'add'" [accent]="true" />
+          <app-button [label]="'Print'" [icon]="'receipt_long'" />
+          <app-button [label]="'Close'" [icon]="'shopping_cart'" />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

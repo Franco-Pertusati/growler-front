@@ -1,21 +1,17 @@
 <div class="pageCont">
   <app-top-bar [title]="'Dashboard'" />
   <div class="content">
-    <h3>Last shift resume</h3>
+      <h3>Last shift resume</h3>
     <div class="gridLayout">
       <app-stat-card [title]="'Total income'" />
-      <app-stat-card [title]="'Tables'" [value]="'87'" [icon]="'table_restaurant'"/>
-      <app-stat-card [title]="'Take aways'" [value]="'32'" [icon]="'store'"/>
-      <app-stat-card [title]="'Most selled product'" [value]="'White Beer Pint'" [icon]="'trending_up'"/>
+      <app-stat-card [title]="'Tables'" [value]="'87'" [icon]="'table_restaurant'" />
+      <app-stat-card [title]="'Take aways'" [value]="'32'" [icon]="'store'" />
+      <app-stat-card [title]="'Most selled product'" [value]="'White Beer Pint'" [icon]="'trending_up'" />
       <div class="tabWin">
         <app-table-card [title]="'Top tables'" />
       </div>
       <div class="tabWin">
         <app-table-card [title]="'Top waiters'" />
       </div>
-    </div>
-    <div class="flex">
-      <app-button [label]="'Start new shift'" [icon]="'arrow_forward'" [accent]="true" />
-      <app-button [label]="'Shift history'" [icon]="'history'" [accent]="true" />
     </div>
   </div>

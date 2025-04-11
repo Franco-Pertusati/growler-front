@@ -52,7 +52,7 @@
   --succesBg: #59cd904d;
   --warning: #f39c12;
   --warningBg: #f39c124d;
-  --danger: #fa4531;
+  --danger: #fa3131;
   --dangerBg: #fa45314d;
   --blue: #0074c2;
   --blueBg: #0074c24d;
@@ -97,7 +97,7 @@ button span {
 
 button:hover,
 .dropDwn:hover {
-  background-color: var(--bg1);
+  background-color: var(--bg2);
   box-shadow: 0 2px 4px hsla(0, 0%, 0%, 0.1);
 }
 
@@ -218,6 +218,14 @@ select:focus {
 .bgViolet {
   color: var(--violet);
   background-color: var(--violetBg);
+}
+
+.border {
+  border: solid 1px var(--border);
+}
+
+.shadow {
+  box-shadow: 0 4px 4px hwb(0 0% 100% / 0.2);
 }
 
 .badge {
