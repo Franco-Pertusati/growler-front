@@ -1,0 +1,81 @@
+.win {
+  padding: 0;
+  gap: 0;
+  width: 1272px;
+  height: 631px;
+  display: grid;
+  grid-template-columns: 240px auto 380px;
+}
+
+.catList {
+  padding: 12px;
+  width: 100%;
+  height: 100%;
+  border-right: solid 1px var(--border);
+}
+
+.flexCol {
+  gap: 8px;
+}
+
+.order {
+  padding: 12px;
+}
+
+.actionBtns {
+  justify-content: space-between;
+}
+
+.prodListContainer {
+  display: flex;
+  flex-direction: column;
+  padding: 12px;
+  border-right: solid 1px var(--border);
+  overflow: hidden;
+}
+
+.prodList {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  overflow-y: auto;
+}
+
+
+.prodItem {
+  margin: 0 12px;
+  padding: 6px;
+  border-radius: 4px;
+  cursor: pointer;
+  display: grid;
+  grid-template-columns: auto 100px 30px;
+  align-items: center;
+}
+
+.gridMode {
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.gridMode .prodItem {
+  margin: 0;
+  width: 182px;
+  min-height: 182px;
+  border: solid 1px var(--bg2);
+  display: flex;
+  flex-direction: column;
+}
+
+.prodItem:hover {
+  background-color: var(--bg2);
+}
+
+.list {
+  overflow-y: auto;
+  padding-bottom: 56px;
+}
+
+.mb12 {
+  margin-bottom: 12px;
+}

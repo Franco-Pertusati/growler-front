@@ -44,7 +44,6 @@ export class CategoriesComponent {
 
     dialogRef.closed.subscribe(product => {
       if (product) {
-        console.log(product)
         this.createProduct(product)
       }
     });

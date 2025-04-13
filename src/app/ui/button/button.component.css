@@ -91,3 +91,8 @@
 .justIcon {
   padding: 8px;
 }
+
+.labelCenter span {
+  width: 100%;
+  text-align: center;
+}

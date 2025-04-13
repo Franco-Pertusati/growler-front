@@ -4,5 +4,4 @@ export interface Table {
   position: number;
   state: number;
   round: boolean;
-  products?: string;
 }

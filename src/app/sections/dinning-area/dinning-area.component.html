@@ -16,7 +16,7 @@
         (dragleave)="onDragLeave($event)">
         @for (table of getTableAtPosition(cell); track table.id) {
         <div class="hfull" draggable="true" (dragstart)="onDragStart($event, table)" (click)="selectedTable = table">
-          <app-table [tableData]="table" [selected]="selectedTable === table" (deleteTable)="handleDeleteTable(table)"
+          <app-table (click)="selectTable(table)" [tableData]="table" [selected]="selectedTable === table" (deleteTable)="handleDeleteTable(table)"
             (toggleShape)="handleToggleTableShape(table)" (renameTable)="handleRenameTable($event)" />
         </div>
         }

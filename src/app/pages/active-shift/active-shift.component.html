@@ -8,27 +8,41 @@
           <app-button [label]="'Swap table'" [icon]="'swap_horiz'" [style]="'wfull'" />
         </app-dropdown>
         <app-dropdown [label]="'Cashier'" [icon]="'point_of_sale'">
+          <app-button [label]="'Take away'" [icon]="'shopping_cart'" [style]="'wfull'" />
           <app-button [label]="'New income'" [icon]="'arrow_upward'" [style]="'wfull'" />
           <app-button [label]="'New expense'" [icon]="'arrow_downward'" [style]="'wfull'" />
-          <app-button [label]="'History'" [icon]="'history'" />
+          <app-button [label]="'History'" [icon]="'history'" [style]="'wfull'" />
         </app-dropdown>
         <app-button [label]="'End shift'" [icon]="'work'" />
         <app-theme-btn />
       </div>
     </div>
     <div class="flex">
-      <app-dinning-area />
+      <app-dinning-area (tableSelectedEm)="onTableSelected($event)" />
       <div class="win smCard hfull">
         <div class="flex tableData">
-          <span class="badge bgMain">Selected table</span>
-          <span class="badge bgGreen">$120,000.00</span>
+          @if (selectedTable) {
+          <span class="badge bgMain">Selected table: {{ selectedTable.name }}</span>
+          } @else {
+          <span class="badge bgMain">Select a table</span>
+          }
+          <span class="badge bgGreen">$0.00</span>
         </div>
         <div class="searchBarContainer">
-          <input class="wfull" placeholder="Search products" type="text">
+          <input class="wfull" placeholder="Search products" type="text" (input)="updateSearchValue($event)">
+          @if (searchResult.length) {
+          <div class="searchProdList border flexCol">
+            @for (prod of searchResult; track $index) {
+            <span>
+              {{ prod.name }}
+            </span>
+            }
+          </div>
+          }
         </div>
         <div class="tableProducts hfull"></div>
         <div class="flex ctrlBtns">
-          <app-button [label]="'Add'" [icon]="'add'" [accent]="true" />
+          <app-button [label]="'Add'" [icon]="'add'" [accent]="true" (click)="openCreateProdDialog()" />
           <app-button [label]="'Print'" [icon]="'receipt_long'" />
           <app-button [label]="'Close'" [icon]="'shopping_cart'" />
         </div>

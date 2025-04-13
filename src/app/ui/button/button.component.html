@@ -3,7 +3,7 @@
   <i class="material-icons-round">{{ icon }}</i>
   }
   @if (showLabel && label) {
-  <span>{{ label }}</span>
+  <span>{{ label | titlecase }}</span>
   }
   @if (notifications) {
   <div class="notNum">

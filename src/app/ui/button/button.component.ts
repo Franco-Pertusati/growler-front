@@ -1,11 +1,11 @@
-import { NgClass } from '@angular/common';
+import { CommonModule, NgClass } from '@angular/common';
 import { Component, Input } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-button',
   standalone: true,
-  imports: [NgClass, RouterLink],
+  imports: [NgClass, RouterLink, CommonModule],
   templateUrl: './button.component.html',
   styleUrl: './button.component.css',
 })

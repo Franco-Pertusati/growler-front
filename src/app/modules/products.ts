@@ -6,13 +6,7 @@ export interface Product {
 }
 
 export interface Category {
-  id?: number;
-  name: string;
-  products?: Product[];
-}
-
-export interface Ingredient {
-  id?: number;
+  id: number;
   name: string;
   products?: Product[];
 }
