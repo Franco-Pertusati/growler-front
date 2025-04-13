@@ -1,13 +1,13 @@
 import { Routes } from '@angular/router';
-import { HomeComponent } from './pages/home/home.component';
-import { CategoriesComponent } from './pages/inventory/categories/categories.component';
-import { UsersListComponent } from './pages/users-list/users-list.component';
-import { SignInComponent } from './pages/auth/sign-in/sign-in.component';
-import { AuthComponent } from './pages/auth/auth.component';
-import { SignUpComponent } from './pages/auth/sign-up/sign-up.component';
-import { GrowlerComponent } from './pages/growler/growler.component';
-import { ActiveShiftComponent } from './pages/active-shift/active-shift.component';
-import { DinningSettingsComponent } from './pages/dinning-settings/dinning-settings.component';
+import { HomeComponent } from './modules/app/home/home.component';
+import { CategoriesComponent } from './modules/app/inventory/categories/categories.component';
+import { UsersListComponent } from './modules/app/users-list/users-list.component';
+import { SignInComponent } from './modules/app/auth/sign-in/sign-in.component';
+import { AuthComponent } from './modules/app/auth/auth.component';
+import { SignUpComponent } from './modules/app/auth/sign-up/sign-up.component';
+import { GrowlerComponent } from './modules/app/growler/growler.component';
+import { DinningSettingsComponent } from './modules/app/dinning-settings/dinning-settings.component';
+import { ActiveShiftComponent } from './modules/shift/active-shift/active-shift.component';
 
 export const routes: Routes = [
   {
