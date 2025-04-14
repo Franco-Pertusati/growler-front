@@ -13,7 +13,7 @@
           <app-button [label]="'New expense'" [icon]="'arrow_downward'" [style]="'wfull'" />
           <app-button [label]="'History'" [icon]="'history'" [style]="'wfull'" />
         </app-dropdown>
-        <app-button [label]="'End shift'" [icon]="'work'" />
+        <app-button [label]="'End shift'" [icon]="'work'" (click)="closeShift()" />
         <app-theme-btn />
       </div>
     </div>

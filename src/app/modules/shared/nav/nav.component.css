@@ -1,5 +1,5 @@
-nav {
-  width: 100%;
+.sideBar {
+  width: 298px;
   height: 100%;
   padding: 24px;
   display: flex;
@@ -7,6 +7,7 @@ nav {
   gap: 12px;
   border-right: solid 1px var(--border);
   background-color: var(--bg1);
+  transition: all ease .3s;
 }
 
 .btnList {
@@ -24,4 +25,8 @@ h1 {
   background: linear-gradient(to right, var(--primary), var(--murray));
   background-clip: text;
   color: transparent;
+}
+
+.isClosed {
+  width: 89px;
 }

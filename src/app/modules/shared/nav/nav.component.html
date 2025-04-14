@@ -1,19 +1,20 @@
-<nav>
-  <div class="flex appTitle">
+<div class="sideBar" [ngClass]="isClosed? 'isClosed' : ''">
+  <app-button [showLabel]="false" [icon]="'menu'" (click)="isClosed = !isClosed" />
+  <div class="appTitle flex">
+    @if (isClosed) {
+    <h1 class="wfull">Gr</h1>
+  } @else {
     <h1 class="wfull">Growler</h1>
     <app-theme-btn />
+    }
   </div>
   <div class="btnList wfull">
     @for (b of menuItems; track $index) {
-    @if (!b.children && b.routerLink) {
-    <app-button [icon]="b.icon" [label]="b.label" [routerLink]="b.routerLink" [style]="'wfull'" [accent]="isRouteActive(b.routerLink)" />
-    } @else {
-    <app-acordeon [icon]="b.icon" [label]="b.label">
-      @for (b of b.children; track $index) {
-      <app-button [icon]="b.icon" [label]="b.label" [routerLink]="b.routerLink || null" [style]="'wfull'" [accent]="isRouteActive(b.routerLink)" />
-      }
-    </app-acordeon>
+    <app-button [icon]="b.icon" [label]="b.label" [routerLink]="b.routerLink" [style]="'wfull'" [showLabel]="!isClosed"
+      [accent]="isRouteActive(b.routerLink)" />
     }
+    @if (isClosed) {
+    <app-theme-btn />
     }
   </div>
-</nav>
+</div>

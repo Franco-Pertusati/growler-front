@@ -7,7 +7,7 @@ import { ButtonComponent } from "../../shared/button/button.component";
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [TopBarComponent, StatCardComponent, TableCardComponent, ButtonComponent],
+  imports: [TopBarComponent, StatCardComponent, TableCardComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })

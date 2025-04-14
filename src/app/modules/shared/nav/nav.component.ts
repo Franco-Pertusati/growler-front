@@ -1,21 +1,23 @@
 import { Component } from '@angular/core';
-import { NavigationEnd, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { ButtonComponent } from '../button/button.component';
 import { ThemeBtnComponent } from '../theme-btn/theme-btn.component';
 import { AcordeonComponent } from '../acordeon/acordeon.component';
+import { CommonModule } from '@angular/common';
+import { DropdownComponent } from "../dropdown/dropdown.component";
 
 export interface MenuItem {
   label: string;
   icon: string;
   style: string;
-  routerLink?: string;
+  routerLink: string;
   children?: MenuItem[]; // Esto es para los items que tienen un acordeón
 }
 
 @Component({
   selector: 'app-nav',
   standalone: true,
-  imports: [ButtonComponent, ThemeBtnComponent, AcordeonComponent],
+  imports: [ButtonComponent, ThemeBtnComponent, CommonModule],
   templateUrl: './nav.component.html',
   styleUrl: './nav.component.css'
 })
@@ -32,7 +34,7 @@ export class NavComponent {
       label: 'Dinning area',
       icon: 'table_restaurant',
       style: 'wfull',
-      routerLink: 'dinning-area',
+      routerLink: 'dining-area',
     },
     {
       label: 'Products',
@@ -47,31 +49,22 @@ export class NavComponent {
       routerLink: 'users',
     },
     {
-      label: 'Shifts',
+      label: 'Start shift',
       icon: 'work',
       style: 'wfull',
-      children: [
-        {
-          label: 'Start shift',
-          icon: 'work',
-          style: 'wfull',
-        },
-        {
-          label: 'Shift history',
-          icon: 'work_history',
-          style: 'wfull',
-        },
-      ],
+      routerLink: 'start-shift'
     },
     {
-      label: 'Settings',
-      icon: 'settings',
+      label: 'Shift history',
+      icon: 'work_history',
       style: 'wfull',
-      routerLink: ' ',
+      routerLink: 'shift-history'
     },
   ];
 
   constructor(private router: Router) { }
+
+  isClosed: boolean = true;
 
   ngOnInit() {}
 

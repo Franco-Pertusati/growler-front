@@ -16,4 +16,11 @@ export class ShiftService {
     return this.activeShift
   }
 
+  startShift() {
+    this.activeShift = true
+  }
+
+  endShift() {
+    this.activeShift = false
+  }
 }

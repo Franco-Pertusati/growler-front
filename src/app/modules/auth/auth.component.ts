@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { ThemeBtnComponent } from "../../shared/theme-btn/theme-btn.component";
 import { RouterOutlet } from '@angular/router';
+import { ThemeBtnComponent } from '../shared/theme-btn/theme-btn.component';
 
 @Component({
   selector: 'app-auth',

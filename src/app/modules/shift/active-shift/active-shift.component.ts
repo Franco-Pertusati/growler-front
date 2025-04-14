@@ -8,6 +8,8 @@ import { DropdownComponent } from '../../shared/dropdown/dropdown.component';
 import { ToastService } from '../../../core/services/toast.service';
 import { ApiService } from '../../../core/services/api.service';
 import { Category, Product } from '../../../core/interfaces/products';
+import { ShiftService } from '../../../core/services/shift.service';
+import { Router } from '@angular/router';
 
 export interface ShiftTable {
   id: number;
@@ -26,7 +28,7 @@ export interface ShiftTable {
   styleUrl: './active-shift.component.css'
 })
 export class ActiveShiftComponent {
-  constructor(private apiService: ApiService, private toast: ToastService, private dialog: Dialog) { }
+  constructor(private apiService: ApiService, private toast: ToastService, private dialog: Dialog, private shift: ShiftService, private router: Router) { }
 
   tablesShift: ShiftTable[] = []
   selectedTable: ShiftTable | null = null
@@ -90,5 +92,11 @@ export class ActiveShiftComponent {
       this.searchResult = result
     }
     if (searchValue.length === 0) this.searchResult = []
+  }
+
+  closeShift() {
+    //Para mas adelante: revisar que todas las mesas esten
+    this.shift.endShift()
+    this.router.navigate(['app/'])
   }
 }
