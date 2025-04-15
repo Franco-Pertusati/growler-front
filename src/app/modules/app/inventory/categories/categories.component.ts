@@ -7,17 +7,17 @@ import { Category } from '../../../../core/interfaces/products';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ApiService } from '../../../../core/services/api.service';
 import { ToastService } from '../../../../core/services/toast.service';
+import { CatProductsComponent } from "../cat-products/cat-products.component";
 
 @Component({
   selector: 'app-categories',
   standalone: true,
-  imports: [ButtonComponent, CommonModule, DropdownComponent, DialogModule],
+  imports: [ButtonComponent, CommonModule, DropdownComponent, DialogModule, CatProductsComponent],
   templateUrl: './categories.component.html',
   styleUrl: './categories.component.css'
 })
 export class CategoriesComponent {
   categories: Category[] = []
-  gridMode: boolean = false;
 
   constructor(private apiService: ApiService, private dialog: Dialog, private toast: ToastService) { }
 

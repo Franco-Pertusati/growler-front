@@ -7,7 +7,7 @@
   gap: 12px;
   border-right: solid 1px var(--border);
   background-color: var(--bg1);
-  transition: all ease .3s;
+  transition: width ease .3s;
 }
 
 .btnList {

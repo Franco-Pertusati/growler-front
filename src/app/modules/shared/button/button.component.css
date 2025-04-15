@@ -80,8 +80,7 @@
 }
 
 .active {
-  background-color: var(--bg3);
-  box-shadow: 0 2px 4px hsla(0, 0%, 0%, 0.1);
+  background-color: var(--warning);
 }
 
 .border {
@@ -99,4 +98,8 @@
 
 button {
   overflow: hidden;
+}
+
+.noShadow:hover {
+  box-shadow: none;
 }

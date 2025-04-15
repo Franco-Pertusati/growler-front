@@ -12,7 +12,7 @@
   </app-top-bar>
   <div class="cont">
 
-    <div class="catCard win wfull">
+    <div class="catCard win wfull border">
       <div class="row titleRow">
         <span>Name</span>
         <span>Date Employed</span>
@@ -25,15 +25,15 @@
       </div>
       @for (user of users; track $index) {
       @if (user.name.toLocaleLowerCase().includes(searchValue.toLocaleLowerCase())) {
-      <div class="row">
+      <div class="itemRow" [ngClass]="isSelected(user.id)? 'selected' : ''">
         <span>{{ user.name }}</span>
         <span>12/03/2023</span>
         <span>Active</span>
-        <span class="badge" [ngClass]="user.role === 'admin'? 'bgMain' : 'bgGreen'">{{ user.role | titlecase }}</span>
-        <app-button [showLabel]="false" [icon]="'more_vert'" />
+        <span class="badge" [ngClass]="user.role === 'admin'? 'bgViolet' : 'bgGreen'">{{ user.role | titlecase }}</span>
+        <app-button [showLabel]="false" [icon]="'more_vert'" [style]="'noShadow'" />
 
         <app-button [showLabel]="false" [icon]="isSelected(user.id) ? 'check_box' : 'check_box_outline_blank'"
-          (click)="toggleUserSelection(user.id)" />
+          (click)="toggleUserSelection(user.id)" [style]="'noShadow'"/>
       </div>
       }
       }

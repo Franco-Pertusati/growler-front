@@ -1,0 +1,29 @@
+<div class="background">
+  <table class="list-table">
+    <thead>
+      <tr>
+        @for (col of displayedColumns; track col) {
+        <th>{{ col | titlecase }}</th>
+        }
+      </tr>
+    </thead>
+    <tbody class="">
+      @for (item of data; track item) {
+      <tr class="itemRow">
+        @for (col of displayedColumns; track col) {
+        <td>
+          {{
+          (item[col]?.name !== undefined)
+          ? item[col].name
+          : item[col]
+          }}
+        </td>
+        }
+        <td class="cbContainer">
+          <app-button [showLabel]="false" [icon]="'check_box_outline_blank'" [style]="'noShadow'"/>
+        </td>
+      </tr>
+      }
+    </tbody>
+  </table>
+</div>

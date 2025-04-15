@@ -3,12 +3,10 @@
     <h2>Products</h2>
     <div class="flex">
       <input type="text" placeholder="Search">
-      <app-button [showLabel]="false" [icon]="'grid_view'" [accent]="gridMode" (click)="gridMode = true" />
-      <app-button [showLabel]="false" [icon]="'list'" [accent]="!gridMode" (click)="gridMode = false" />
       <app-dropdown [label]="'Filter'" [icon]="'tune'">
-        <app-button [label]="'Empty categories'" [icon]="'check_box_outline_blank'" />
-        <app-button [label]="'Disabled categories'" [icon]="'check_box_outline_blank'" />
-        <app-button [label]="'Disabled products'" [icon]="'check_box_outline_blank'" />
+        <app-button [label]="'Empty categories'" [icon]="'check_box_outline_blank'" [style]="'wfull'"/>
+        <app-button [label]="'Disabled categories'" [icon]="'check_box_outline_blank'" [style]="'wfull'"/>
+        <app-button [label]="'Disabled products'" [icon]="'check_box_outline_blank'" [style]="'wfull'"/>
       </app-dropdown>
       <div class="createBtnContainer flex">
         <app-button [label]="'Create Product'" [icon]="'add'" [accent]="true" (click)="openCreateProdForm()" />
@@ -16,35 +14,13 @@
       </div>
     </div>
   </div>
-  <div class="catList" [ngClass]="gridMode? 'gridMode' : ''">
-
-    @for (cat of categories; track $index) {
-    <div class="catCard win wfull p24">
-      <h3>{{ cat.name | titlecase }}</h3>
-      <div class="prodCardContainer">
-
-        <div class="cardDataTitle">
-          <span>ID</span>
-          <span>Name</span>
-          <span>Price</span>
+  <div class="catList">
+      @for (cat of categories; track $index) {
+        <div class="cat">
+          <h3>{{ cat.name| titlecase }}</h3>
+          <app-cat-products [items]="cat.products" />
         </div>
-
-        <div class="prodList">
-          @for (prod of cat.products; track $index) {
-          <div class="prodCard" [ngClass]="gridMode? 'background' : ''">
-            <span class="idProd">{{ prod.id }}</span>
-            <span class="inf">{{ prod.name | titlecase }}</span>
-            <span class="inf">{{ prod.price | currency }}</span>
-            <span class="bgGreen badge">Active</span>
-            <app-button [showLabel]="false" [icon]="'edit'" />
-            <app-button [showLabel]="false" [icon]="'check_box_outline_blank'" />
-          </div>
-          }
-        </div>
-
-      </div>
-    </div>
-    }
+      }
   </div>
 
 </div>

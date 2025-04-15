@@ -1,0 +1,43 @@
+table.list-table {
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: collapse;
+  border: none;
+}
+
+table.list-table th,
+table.list-table td {
+  width: auto;
+  text-align: left;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+.itemRow {
+  height: 36px;
+}
+
+.itemRow:hover {
+  background-color: var(--bg3);
+}
+
+.background {
+  padding: 0;
+}
+
+th {
+  padding: 24px 0;
+}
+
+thead th:first-of-type {
+  padding-left: 24px;
+}
+
+.itemRow td:first-of-type {
+  padding-left: 24px;
+}
+
+.cbContainer {
+  width: 1%;
+  white-space: nowrap;
+}

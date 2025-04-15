@@ -60,6 +60,12 @@ export class NavComponent {
       style: 'wfull',
       routerLink: 'shift-history'
     },
+    {
+      label: 'Shift history',
+      icon: 'settings',
+      style: 'wfull',
+      routerLink: 'settings'
+    },
   ];
 
   constructor(private router: Router) { }

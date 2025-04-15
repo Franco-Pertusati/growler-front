@@ -71,8 +71,7 @@ export class ActiveShiftComponent {
     }
   }
 
-  // Agregar condicional de mesa seleccionada
-  openCreateProdDialog() {
+  openTableMenu() {
     if (this.selectedTable) {
       const dialogRef = this.dialog.open(AditionDialogComponent, {
         data: [this.categories, this.selectedTable.name]

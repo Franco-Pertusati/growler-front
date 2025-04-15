@@ -7,6 +7,7 @@ import { CategoriesComponent } from './inventory/categories/categories.component
 import { UsersListComponent } from './users-list/users-list.component';
 import { StartShiftComponent } from './start-shift/start-shift.component';
 import { ShiftHistoryComponent } from './shift-history/shift-history.component';
+import { SettingsComponent } from './settings/settings.component';
 
 
 export const AUTH_ROUTES: Routes = [
@@ -20,6 +21,7 @@ export const AUTH_ROUTES: Routes = [
       { path: 'users', component: UsersListComponent },
       { path: 'start-shift', component: StartShiftComponent },
       { path: 'shift-history', component: ShiftHistoryComponent },
+      { path: 'settings', component: SettingsComponent },
       { path: '', redirectTo: 'dashboard', pathMatch: 'full' }
     ]
   }

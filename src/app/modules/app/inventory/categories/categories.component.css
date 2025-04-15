@@ -13,86 +13,14 @@
   padding: 24px;
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 56px;
   overflow-y: auto;
 }
 
-.cardDataTitle {
-  margin-bottom: 12px;
-  display: grid;
-  gap: 24px;
-  grid-template-columns: 80px minmax(264px, auto) minmax(198px, auto) 98px repeat(2, 40px);
-}
-
-.cardDataTitle span {
-  font-weight: bold;
-}
-
-.prodList {
+.cat {
   display: flex;
   flex-direction: column;
-}
-
-.prodCard {
-  padding: 8px 0;
-  display: grid;
-  gap: 24px;
-  grid-template-columns: 80px minmax(264px, auto) minmax(198px, auto) 98px repeat(2, 40px);
-  align-items: center;
-  box-shadow: none;
-}
-
-.gridMode .cardDataTitle {
-  display: none;
-}
-
-.gridMode .catCard {
-  background-color: transparent;
-  border-style: none;
-}
-
-.gridMode .prodList {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
   gap: 12px;
-}
-
-.gridMode .prodCard {
-  padding: 12px;
-  height: 220px;
-  width: 220px;
-  border-radius: 12px;
-  display: grid;
-  grid-template-rows: 1fr auto;
-  grid-template-columns: 1fr;
-  place-items: center;
-  position: relative;
-}
-
-.gridMode .prodChkbx {
-  position: absolute;
-  left: 12px;
-  top: 12px;
-}
-
-.gridMode .idProd {
-  display: none;
-}
-
-.gridMode .optionsBtn {
-  position: absolute;
-  right: 12px;
-  top: 12px;
-}
-
-.gridMode .inf {
-  text-align: center;
-  font-size: 2.4rem;
-}
-
-.strong {
-  font-weight: 600;
 }
 
 .topBar {
@@ -102,3 +30,4 @@
   gap: 6px;
   border-bottom: solid 1px var(--border);
 }
+
