@@ -2,3 +2,7 @@
   padding: 24px 0;
   gap: 0;
 }
+
+.catCard {
+  gap: 12px;
+}

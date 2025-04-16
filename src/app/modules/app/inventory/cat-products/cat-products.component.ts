@@ -13,6 +13,7 @@ import { CommonModule } from '@angular/common';
 export class CatProductsComponent {
   selectedItems: Set<number> = new Set<number>();
   @Input() items: Product[] | undefined = []
+  @Input() title: string = 'category'
 
   toggleUserSelection(userId: number): void {
     if (this.isSelected(userId)) {

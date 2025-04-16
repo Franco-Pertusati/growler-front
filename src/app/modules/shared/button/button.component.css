@@ -80,7 +80,7 @@
 }
 
 .active {
-  background-color: var(--warning);
+  background-color: var(--bg3);
 }
 
 .border {
@@ -97,6 +97,7 @@
 }
 
 button {
+  height: 42px;
   overflow: hidden;
 }
 

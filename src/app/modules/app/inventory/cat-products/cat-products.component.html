@@ -1,22 +1,31 @@
-<div class="win wfull">
-  <div class="titleRow">
-    <span>Name</span>
-    <span>Price</span>
-    <span>ID</span>
-    <span>State</span>
-    <div></div>
-    <app-button [showLabel]="false" [icon]="this.items?.length === this.selectedItems.size? 'check_box' : 'check_box_outline_blank'" [style]="'noShadow'" (click)="toggleSelectAll()" />
+<div class="flexCol catCard">
+  <div class="flex">
+    <h3>{{ title | titlecase }}</h3>
+    @if (selectedItems.size) {
+    <app-button [label]="'delete ' + selectedItems.size" [icon]="'delete'" [accent]="true" />
+    }
   </div>
-  @for (item of items; track $index) {
-  <span></span>
-  <div class="itemRow" [ngClass]="isSelected(item.id)? 'selected' : ''">
-    <span>{{ item.name | titlecase }}</span>
-    <span>{{ item.price | currency }}</span>
-    <span>{{ item.id }}</span>
-    <span class="badge bgGreen">Active</span>
-    <app-button [showLabel]="false" [icon]="'more_vert'" [style]="'noShadow'" />
-    <app-button [showLabel]="false" [icon]="isSelected(item.id) ? 'check_box' : 'check_box_outline_blank'"
-      (click)="toggleUserSelection(item.id)" [style]="'noShadow'"/>
+  <div class="win wfull">
+    <div class="titleRow">
+      <span>Name</span>
+      <span>Price</span>
+      <span>ID</span>
+      <span>State</span>
+      <div></div>
+      <app-button [showLabel]="false"
+        [icon]="this.items?.length === this.selectedItems.size? 'check_box' : 'check_box_outline_blank'"
+        [style]="'noShadow'" (click)="toggleSelectAll()" />
+    </div>
+    @for (item of items; track $index) {
+    <div class="itemRow" [ngClass]="isSelected(item.id)? 'selected' : ''">
+      <span>{{ item.name | titlecase }}</span>
+      <span>{{ item.price | currency }}</span>
+      <span>{{ item.id }}</span>
+      <span class="badge bgGreen">Active</span>
+      <app-button [showLabel]="false" [icon]="'more_vert'" [style]="'noShadow'" />
+      <app-button [showLabel]="false" [icon]="isSelected(item.id) ? 'check_box' : 'check_box_outline_blank'"
+        (click)="toggleUserSelection(item.id)" [style]="'noShadow'" />
+    </div>
+    }
   </div>
-}
 </div>

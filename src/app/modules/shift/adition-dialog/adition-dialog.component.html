@@ -16,7 +16,7 @@
     <div [ngClass]="gridMode? 'gridMode' : ''" class="prodList">
       @if (selectedCategory) {
         @for (prod of selectedCategory.products; track $index) {
-          <div class="prodItem">
+          <div class="prodItem background">
             <span>{{ prod.name | titlecase  }}</span>
             <span>{{ prod.price | currency }}</span>
             <i class="material-icons-round">add</i>

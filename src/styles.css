@@ -115,7 +115,7 @@ button:hover,
   gap: 12px;
   border-radius: 12px;
   width: fit-content;
-  border: solid 1px var(--border);
+  box-shadow: 0 0 0 1px hsla(0, 0%, 0%, 0.1),0 2px 4px #0000000d,0 12px 24px #0000000d;
 }
 
 .flex {
@@ -134,7 +134,7 @@ button:hover,
   background-color: var(--bg1);
   border-radius: 12px;
   padding: 12px;
-  border: solid 1px var(--border);
+  box-shadow: 0 0 0 1px hsla(0, 0%, 0%, 0.1),0 2px 4px #0000000d,0 12px 24px #0000000d;
 }
 
 h1,
@@ -221,10 +221,6 @@ select:focus {
 .bgViolet {
   color: var(--violet);
   background-color: var(--violetBg);
-}
-
-.border {
-  border: solid 1px var(--border);
 }
 
 .shadow {

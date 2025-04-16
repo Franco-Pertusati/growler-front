@@ -4,9 +4,9 @@
     <div class="flex">
       <input type="text" placeholder="Search">
       <app-dropdown [label]="'Filter'" [icon]="'tune'">
-        <app-button [label]="'Empty categories'" [icon]="'check_box_outline_blank'" [style]="'wfull'"/>
-        <app-button [label]="'Disabled categories'" [icon]="'check_box_outline_blank'" [style]="'wfull'"/>
-        <app-button [label]="'Disabled products'" [icon]="'check_box_outline_blank'" [style]="'wfull'"/>
+        <app-button [label]="'Empty categories'" [icon]="'check_box_outline_blank'" [style]="'wfull'" />
+        <app-button [label]="'Disabled categories'" [icon]="'check_box_outline_blank'" [style]="'wfull'" />
+        <app-button [label]="'Disabled products'" [icon]="'check_box_outline_blank'" [style]="'wfull'" />
       </app-dropdown>
       <div class="createBtnContainer flex">
         <app-button [label]="'Create Product'" [icon]="'add'" [accent]="true" (click)="openCreateProdForm()" />
@@ -15,12 +15,11 @@
     </div>
   </div>
   <div class="catList">
-      @for (cat of categories; track $index) {
-        <div class="cat">
-          <h3>{{ cat.name| titlecase }}</h3>
-          <app-cat-products [items]="cat.products" />
-        </div>
-      }
+    @for (cat of categories; track $index) {
+    <div class="cat">
+      <app-cat-products [items]="cat.products" [title]="cat.name" />
+    </div>
+    }
   </div>
 
 </div>
