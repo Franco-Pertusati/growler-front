@@ -1,10 +1,25 @@
 .win {
   height: fit-content;
-  padding: 32px 64px;
+  background-color: var(--bg2);
+  padding: 0;
 }
 
 .titleContainer {
-  padding-bottom: 32px;
+  background-color: var(--bg1);
+  padding: 24px 64px;
+  border-radius: 12px 12px 0 0;
+}
+
+.formContainer {
+  padding: 32px 64px;
+  padding-top: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+form {
+gap: 12px;
 }
 
 h2 {

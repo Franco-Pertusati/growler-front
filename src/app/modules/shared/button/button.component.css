@@ -84,7 +84,12 @@
 }
 
 .border {
+  background-color: var(--bg1);
   border: solid 1px var(--border);
+}
+
+.border:hover {
+  background-color: var(--bg1);
 }
 
 .justIcon {

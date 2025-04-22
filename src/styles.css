@@ -118,6 +118,10 @@ button:hover,
   box-shadow: 0 0 0 1px hsla(0, 0%, 0%, 0.1),0 2px 4px #0000000d,0 12px 24px #0000000d;
 }
 
+.center {
+  margin: 0 auto;
+}
+
 .flex {
   display: flex;
   gap: 12px;
@@ -137,6 +141,11 @@ button:hover,
   box-shadow: 0 0 0 1px hsla(0, 0%, 0%, 0.1),0 2px 4px #0000000d,0 12px 24px #0000000d;
 }
 
+.dark .win, .dark .background {
+  box-shadow: none;
+  border: solid 1px var(--border);
+}
+
 h1,
 h2 {
   font-size: 3rem;
@@ -153,6 +162,10 @@ h3 {
 
 .wfull {
   width: 100%;
+}
+
+.wfit {
+  width: fit-content;
 }
 
 input {

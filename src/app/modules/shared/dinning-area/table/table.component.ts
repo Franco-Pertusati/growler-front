@@ -15,13 +15,13 @@ import { Table } from '../../../../core/interfaces/tables';
 export class TableComponent {
   @Input() tableData?: Table;
   @Input() selected?: boolean;
+  @Input() activeShift!:boolean;
   @Output() deleteTable = new EventEmitter<void>();
   @Output() toggleShape = new EventEmitter<void>();
   @Output() renameTable = new EventEmitter<string>();
 
   isEditing = false;
   newName = '';
-  activeShift = true;
 
   toggleEditState() {
     this.isEditing = !this.isEditing;

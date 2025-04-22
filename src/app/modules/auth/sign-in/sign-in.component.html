@@ -1,33 +1,42 @@
-<div class="win">
-  <div class="titleContainer">
-    <h2>Sign-In to Growler</h2>
-  </div>
-  <form action="">
-
-    <div>
-      <div class="flex">
-        <label for="price">E-Mail</label>
-      </div>
-      <input type="text" id="price" placeholder="mail@dom.com">
+<div class="wfit center flexCol">
+  <div class="win">
+    <div class="titleContainer">
+      <h2>Sign-In to Growler</h2>
     </div>
+    <div class="formContainer">
+      <form action="">
 
-    <div>
-      <div class="flex">
-        <label for="price">Password</label>
+        <div>
+          <div class="flex">
+            <label for="price">E-Mail</label>
+          </div>
+          <input type="text" id="price" placeholder="mail@dom.com">
+        </div>
+
+        <div>
+          <div class="flex">
+            <label for="price">Password</label>
+          </div>
+          <input type="password" id="price" placeholder="&bull;&bull;&bull;&bull;&bull;">
+        </div>
+
+        <div></div>
+
+        <div class="wfull">
+          <app-button [label]="'Sign-In'" [showIcon]="false" [style]="'wfull border labelCenter'" />
+        </div>
+      </form>
+      <div class="flex wfull">
+        <hr class="wfull">
+        <span>Or</span>
+        <hr class="wfull">
       </div>
-      <input type="text" id="price" placeholder="mail@dom.com">
+      <div class="flexCol">
+        <app-button [label]="'Try Demo account'" [icon]="'arrow_forward'" [style]="'wfull labelCenter accent'" />
+      </div>
     </div>
-
-    <app-button [label]="'Continue with E-Mail'" [icon]="'mail'" [accent]="true" [style]="'wfull labelCenter'" />
-  </form>
-  <div class="flex wfull">
-    <hr class="wfull">
-    <span>Or</span>
-    <hr class="wfull">
   </div>
-  <div class="flexCol">
-    <app-button [label]="'Continue with E-Mail'" [icon]="'lock'" [style]="'wfull labelCenter border'" />
-    <app-button [label]="'Continue with E-Mail'" [icon]="'lock'" [style]="'wfull labelCenter border'" />
-    <app-button [label]="'Continue with E-Mail'" [icon]="'lock'" [style]="'wfull labelCenter border'" />
+  <div class="center wfit">
+    <span>Dont have an account? </span> <a href="">Sign-In</a>
   </div>
 </div>

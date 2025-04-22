@@ -11,12 +11,17 @@ import { Router } from '@angular/router';
   styleUrl: './start-shift.component.css'
 })
 export class StartShiftComponent {
-  constructor (private shift: ShiftService, private router:Router) {}
+  constructor(private shift: ShiftService, private router: Router) { }
+
+  ngOnInit() {
+    console.log(
+      this.shift.activeShift
+
+    )
+  }
 
   startShift() {
-    if (this.shift.getShiftState()) {
-      this.shift.startShift()
-      this.router.navigate(['active-shift'])
-    }
+    this.shift.startShift()
+    this.router.navigate(['active-shift'])
   }
 }

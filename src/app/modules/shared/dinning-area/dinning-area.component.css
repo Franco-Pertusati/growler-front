@@ -4,7 +4,6 @@
   display: grid;
   grid-template-columns: repeat(8, 110px);
   grid-template-rows: repeat(5, 110px);
-  overflow: hidden;
 }
 
 .cell {

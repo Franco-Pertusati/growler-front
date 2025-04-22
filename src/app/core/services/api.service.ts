@@ -4,12 +4,13 @@ import { Observable } from 'rxjs';
 import { Category, Product } from '../interfaces/products';
 import { Table } from '../interfaces/tables';
 import { User } from '../interfaces/users';
+import { environment } from '../../../enviroments/environmet';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ApiService {
-  private apiUrl = 'http://127.0.0.1:8000';
+  private apiUrl = environment.apiUrl;
 
   constructor(private http: HttpClient) { }
 

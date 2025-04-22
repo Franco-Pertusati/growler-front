@@ -11,6 +11,7 @@
   padding: 12px;
   width: 100%;
   height: 100%;
+  border-right: 1px solid var(--border);
 }
 
 .flexCol {
@@ -49,6 +50,8 @@
   display: grid;
   grid-template-columns: auto 100px 30px;
   align-items: center;
+  box-shadow: none;
+  border: solid 1px var(--bg2);
 }
 
 .gridMode {
@@ -61,7 +64,7 @@
   margin: 0;
   width: 182px;
   min-height: 182px;
-  border: solid 1px var(--bg2);
+  border: solid 2px var(--bg2);
   display: flex;
   flex-direction: column;
 }

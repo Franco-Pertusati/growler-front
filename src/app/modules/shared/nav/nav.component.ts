@@ -77,7 +77,6 @@ export class NavComponent {
   isRouteActive(route: string | undefined): boolean {
     if (!route) return false;
 
-    // Para rutas que comienzan con /app/ruta
     const fullRoute = route.startsWith('/app') ? route : `/app${route.startsWith('/') ? route : '/' + route}`;
 
     return this.router.isActive(fullRoute, {

@@ -1,26 +1,26 @@
 import { Injectable } from '@angular/core';
-import { ApiService } from './api.service';
-import { ToastService } from './toast.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ShiftService {
+  activeShift: boolean = false;
 
-  constructor(private apiService: ApiService, private toast: ToastService) { }
-
-  activeShift: boolean = true
-
-
-  getShiftState() {
-    return this.activeShift
+  constructor() {
+    this.activeShift = localStorage.getItem('activeShift') === 'true';
   }
 
   startShift() {
-    this.activeShift = true
+    this.activeShift = true;
+    localStorage.setItem('activeShift', 'true'); // Persistir
   }
 
   endShift() {
-    this.activeShift = false
+    this.activeShift = false;
+    localStorage.removeItem('activeShift'); // Limpiar
+  }
+
+  getShiftState() {
+    return this.activeShift;
   }
 }
