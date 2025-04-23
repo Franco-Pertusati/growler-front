@@ -7,9 +7,11 @@ import { ButtonComponent } from '../../shared/button/button.component';
 import { DropdownComponent } from '../../shared/dropdown/dropdown.component';
 import { ToastService } from '../../../core/services/toast.service';
 import { ApiService } from '../../../core/services/api.service';
-import { Category, Product } from '../../../core/interfaces/products';
+import { Category, Product, ProductInList } from '../../../core/interfaces/products';
 import { ShiftService } from '../../../core/services/shift.service';
 import { Router } from '@angular/router';
+import { Table } from '../../../core/interfaces/tables';
+import { DiningAreaService } from '../../../core/services/dining-area.service';
 
 export interface ShiftTable {
   id: number;
@@ -17,7 +19,7 @@ export interface ShiftTable {
   position: number;
   state: number;
   round: boolean;
-  products: string;
+  products: ProductInList[];
 }
 
 @Component({
@@ -28,58 +30,44 @@ export interface ShiftTable {
   styleUrl: './active-shift.component.css'
 })
 export class ActiveShiftComponent {
-  constructor(private apiService: ApiService, private toast: ToastService, private dialog: Dialog, private shift: ShiftService, private router: Router) { }
+  constructor(
+    private apiService: ApiService,
+    private toast: ToastService,
+    private dialog: Dialog,
+    private shift: ShiftService,
+    private router: Router,
+    private diningService: DiningAreaService) {}
 
-  tablesShift: ShiftTable[] = []
-  selectedTable: ShiftTable | null = null
+  searchResult: Product[] = []
   categories: Category[] = []
+  selectedTable: Table | null = null
 
   ngOnInit() {
-    this.getTables()
     this.loadCategories()
   }
 
-  getTables() {
-    this.apiService.getTables().subscribe(
-      (data: any) => {
-        this.tablesShift = data.member;
-      },
-      (error) => {
-        this.toast.showToast('Error fetching the tables', 'error')
-      }
-    );
+  onTableSelected(event: any) {
+
+  }
+
+  openTableMenu() {
+    if (this.selectedTable) {
+      const dialogRef = this.dialog.open(AditionDialogComponent, {
+        data: [this.categories, this.selectedTable.id]
+      });
+    }
   }
 
   loadCategories() {
     this.apiService.getCategories().subscribe(
       (data: any) => {
         this.categories = data.member;
-        console.log(this.categories)
       },
       (error) => {
         this.toast.showToast('Error fetching product list', 'error')
       }
     );
   }
-
-  onTableSelected(event: any) {
-    const selectedTableId = event;
-
-    const result = this.tablesShift.find(t => t.id === selectedTableId)
-    if (result) {
-      this.selectedTable = result;
-    }
-  }
-
-  openTableMenu() {
-    if (this.selectedTable) {
-      const dialogRef = this.dialog.open(AditionDialogComponent, {
-        data: [this.categories, this.selectedTable.name]
-      });
-    }
-  }
-
-  searchResult: Product[] = []
 
   updateSearchValue(event: any) {
     const searchValue = event.target.value;
@@ -94,8 +82,41 @@ export class ActiveShiftComponent {
   }
 
   closeShift() {
-    //Para mas adelante: revisar que todas las mesas esten
+    //Para mas adelante: revisar que todas las mesas esten cerradas
     this.shift.endShift()
     this.router.navigate(['app/'])
+  }
+
+  addItem(prodToAdd: Product) {
+    const repeatedProd = this.selectedTable?.products.find(i => i.product.id === prodToAdd.id)
+
+    if (repeatedProd) {
+      repeatedProd.quantity++
+    } else {
+      this.selectedTable?.products.push(
+        {
+          product: prodToAdd,
+          quantity: 1
+        }
+      )
+    }
+  }
+
+  removeItem(prodToDelete: ProductInList) {
+    if (this.selectedTable) {
+      const result = this.selectedTable?.products.filter(i => i.product.id !== prodToDelete.product.id);
+
+      if (result) {
+        this.selectedTable.products = result;
+      }
+    }
+  }
+
+  susbstractItem(prodToSubstract: ProductInList) {
+    if (prodToSubstract.quantity > 1) {
+      prodToSubstract.quantity--
+    } else {
+      this.removeItem(prodToSubstract)
+    }
   }
 }

@@ -3,34 +3,50 @@
     <h2 class="mb12">Categories</h2>
     <div class="flexCol">
       @for (cat of categories; track $index) {
-        <app-button [showIcon]="false" [label]="cat.name" [style]="'wfull'" [accent]="selectedCategory?.name === cat.name" (click)="selectCategory(cat.id)" />
+      <app-button [showIcon]="false" [label]="cat.name" [style]="'wfull'" [accent]="selectedCategory?.name === cat.name"
+        (click)="selectCategory(cat.id)" />
       }
     </div>
   </div>
   <div class="prodListContainer">
     <div class="flex mb12">
       <h2>Products</h2>
-      <app-button [showLabel]="false" [icon]="'grid_view'" [accent]="gridMode" (click)="gridMode = !gridMode"/>
-      <app-button [showLabel]="false" [icon]="'list'" [accent]="!gridMode" (click)="gridMode = !gridMode"/>
+      <app-button [showLabel]="false" [icon]="'grid_view'" [accent]="gridMode" (click)="gridMode = true" />
+      <app-button [showLabel]="false" [icon]="'list'" [accent]="!gridMode" (click)="gridMode = false" />
     </div>
     <div [ngClass]="gridMode? 'gridMode' : ''" class="prodList">
       @if (selectedCategory) {
-        @for (prod of selectedCategory.products; track $index) {
-          <div class="prodItem background">
-            <span>{{ prod.name | titlecase  }}</span>
-            <span>{{ prod.price | currency }}</span>
-            <i class="material-icons-round">add</i>
-          </div>
-        }
+      @for (prod of selectedCategory.products; track $index) {
+      <div class="prodItem background" (click)="addItem(prod)">
+        <span>{{ prod.name | titlecase }}</span>
+        <span>{{ prod.price | currency }}</span>
+      </div>
+      }
       }
     </div>
   </div>
-  <div class="order flexCol">
-    <h2>Table: {{ data[1] | titlecase }}</h2>
-    <div class="hfull"></div>
+  <div class="orderListContainer">
+    <h2>Table: </h2>
+    <div class="orderList">
+      @for (prod of itemsList; track $index) {
+        <div class="listedProd">
+          <span>{{ prod.product.name }}</span>
+          <span>{{ prod.quantity }}</span>
+          <div class="flex">
+            <app-button (click)="susbstractItem(prod)" [showLabel]="false" [icon]="'remove'"
+              [style]="'noShadow borderRadNone'" />
+            <app-button (click)="addItem(prod.product)" [showLabel]="false" [icon]="'add'"
+              [style]="'noShadow borderRadNone'" />
+            <app-button (click)="removeItem(prod)" [showLabel]="false" [icon]="'delete'"
+              [style]="'noShadow borderRadNone'" />
+          </div>
+        </div>
+      }
+    </div>
     <div class="flex wfull actionBtns">
       <app-button [label]="'Cancel'" [icon]="'close'" [style]="'wfull'" (click)="closeDialog()" />
-      <app-button [label]="'Confirm order'" [icon]="'check'" [accent]="true" [style]="'wfull'" />
+      <app-button [label]="'Confirm order'" [icon]="'check'" [accent]="true" [style]="'wfull'"
+        (click)="confirmOrder()" />
     </div>
   </div>
 </div>

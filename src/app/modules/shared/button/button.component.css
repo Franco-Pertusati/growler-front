@@ -109,3 +109,7 @@ button {
 .noShadow:hover {
   box-shadow: none;
 }
+
+.borderRadNone {
+  background-color: transparent;
+}

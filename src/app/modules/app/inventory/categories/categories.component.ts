@@ -75,6 +75,8 @@ export class CategoriesComponent {
   }
 }
 
+// ------------------- DIALOG ------------------
+
 @Component({
   selector: 'app-create-product-form',
   standalone: true,
