@@ -3,34 +3,52 @@
     <h2 class="mb12">Categories</h2>
     <div class="flexCol">
       @for (cat of categories; track $index) {
-        <app-button [showIcon]="false" [label]="cat.name" [style]="'wfull'" [accent]="selectedCategory?.name === cat.name" (click)="selectCategory(cat.id)" />
+      <app-button [showIcon]="false" [label]="cat.name" [style]="'wfull'" [accent]="selectedCategory?.name === cat.name"
+        (click)="selectCategory(cat.id)" />
       }
     </div>
   </div>
   <div class="prodListContainer">
     <div class="flex mb12">
       <h2>Products</h2>
-      <app-button [showLabel]="false" [icon]="'grid_view'" [accent]="gridMode" (click)="gridMode = !gridMode"/>
-      <app-button [showLabel]="false" [icon]="'list'" [accent]="!gridMode" (click)="gridMode = !gridMode"/>
+      <app-button [showLabel]="false" [icon]="'grid_view'" [accent]="gridMode" (click)="gridMode = !gridMode" />
+      <app-button [showLabel]="false" [icon]="'list'" [accent]="!gridMode" (click)="gridMode = !gridMode" />
     </div>
     <div [ngClass]="gridMode? 'gridMode' : ''" class="prodList">
       @if (selectedCategory) {
-        @for (prod of selectedCategory.products; track $index) {
-          <div class="prodItem background">
-            <span>{{ prod.name | titlecase  }}</span>
-            <span>{{ prod.price | currency }}</span>
-            <i class="material-icons-round">add</i>
-          </div>
-        }
+      @for (prod of selectedCategory.products; track $index) {
+      <button class="prodItem background" (click)="addProdToList(prod)">
+        <span>{{ prod.name | titlecase }}</span>
+        <span>{{ prod.price | currency }}</span>
+      </button>
+      }
       }
     </div>
   </div>
   <div class="order flexCol">
-    <h2>Table: {{ data[1] | titlecase }}</h2>
-    <div class="hfull"></div>
+    <h2>Table: {{ selectedTable.name| titlecase }}</h2>
+    <div class="hfull orderList">
+      @for (prod of order; track $index) {
+      <div class="orderBtn">
+        <span>{{ prod.quantity }}</span>
+        <span>{{ prod.product.name | titlecase }}</span>
+        <div class="flex">
+          <button (click)="addProdToList(prod.product)">
+            <i class="material-icons-round">add</i>
+          </button>
+          <button (click)="reduceProdQuantity(prod)">
+            <i class="material-icons-round">remove</i>
+          </button>
+          <button (click)="removeProduct(prod)">
+            <i class="material-icons-round">delete</i>
+          </button>
+        </div>
+      </div>
+      }
+    </div>
     <div class="flex wfull actionBtns">
       <app-button [label]="'Cancel'" [icon]="'close'" [style]="'wfull'" (click)="closeDialog()" />
-      <app-button [label]="'Confirm order'" [icon]="'check'" [accent]="true" [style]="'wfull'" />
+      <app-button [label]="'Confirm order'" [icon]="'check'" [accent]="true" [style]="'wfull'" (click)="confirmOrder()" />
     </div>
   </div>
 </div>

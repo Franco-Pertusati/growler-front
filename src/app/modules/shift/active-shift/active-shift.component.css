@@ -29,3 +29,7 @@ h1 {
 .ctrlBtns {
   justify-content: space-between;
 }
+
+.tableProducts {
+  gap: 6px;
+}

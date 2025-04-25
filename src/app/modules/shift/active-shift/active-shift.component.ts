@@ -7,9 +7,11 @@ import { ButtonComponent } from '../../shared/button/button.component';
 import { DropdownComponent } from '../../shared/dropdown/dropdown.component';
 import { ToastService } from '../../../core/services/toast.service';
 import { ApiService } from '../../../core/services/api.service';
-import { Category, Product } from '../../../core/interfaces/products';
+import { Category, ListedProd, Product } from '../../../core/interfaces/products';
 import { ShiftService } from '../../../core/services/shift.service';
 import { Router } from '@angular/router';
+import { Table } from '../../../core/interfaces/tables';
+import { CommonModule } from '@angular/common';
 
 export interface ShiftTable {
   id: number;
@@ -23,38 +25,24 @@ export interface ShiftTable {
 @Component({
   selector: 'app-active-shift',
   standalone: true,
-  imports: [ThemeBtnComponent, DinningAreaComponent, ButtonComponent, DropdownComponent],
+  imports: [ThemeBtnComponent, DinningAreaComponent, ButtonComponent, DropdownComponent, CommonModule],
   templateUrl: './active-shift.component.html',
   styleUrl: './active-shift.component.css'
 })
 export class ActiveShiftComponent {
   constructor(private apiService: ApiService, private toast: ToastService, private dialog: Dialog, private shift: ShiftService, private router: Router) { }
 
-  tablesShift: ShiftTable[] = []
-  selectedTable: ShiftTable | null = null
   categories: Category[] = []
+  selectedTable: Table | null = null
 
   ngOnInit() {
-    this.getTables()
     this.loadCategories()
-  }
-
-  getTables() {
-    this.apiService.getTables().subscribe(
-      (data: any) => {
-        this.tablesShift = data.member;
-      },
-      (error) => {
-        this.toast.showToast('Error fetching the tables', 'error')
-      }
-    );
   }
 
   loadCategories() {
     this.apiService.getCategories().subscribe(
       (data: any) => {
         this.categories = data.member;
-        console.log(this.categories)
       },
       (error) => {
         this.toast.showToast('Error fetching product list', 'error')
@@ -62,19 +50,15 @@ export class ActiveShiftComponent {
     );
   }
 
-  onTableSelected(event: any) {
-    const selectedTableId = event;
-
-    const result = this.tablesShift.find(t => t.id === selectedTableId)
-    if (result) {
-      this.selectedTable = result;
-    }
+  onTableSelected(table: any) {
+    this.selectedTable = table;
+    console.log(this.selectedTable)
   }
 
   openTableMenu() {
     if (this.selectedTable) {
       const dialogRef = this.dialog.open(AditionDialogComponent, {
-        data: [this.categories, this.selectedTable.name]
+        data: [this.categories, this.selectedTable]
       });
     }
   }
@@ -98,4 +82,34 @@ export class ActiveShiftComponent {
     this.shift.endShift()
     this.router.navigate(['app/'])
   }
+
+    addProdToList(productToAdd: Product) {
+      const existingProduct = this.selectedTable?.products.find(p => p.product.id === productToAdd.id);
+
+      if (existingProduct) {
+        existingProduct.quantity++;
+      } else {
+        const newOrder = {
+          product: productToAdd,
+          quantity: 1
+        }
+        this.selectedTable?.products.push(newOrder);
+      }
+    }
+
+    reduceProdQuantity(prodToReduce: ListedProd) {
+      if (prodToReduce.quantity === 1) {
+        this.removeProduct(prodToReduce);
+      } else {
+        prodToReduce.quantity--;
+      }
+    }
+
+    removeProduct(productToRemove: ListedProd) {
+      if (this.selectedTable) {
+        this.selectedTable.products = this.selectedTable?.products.filter(
+          item => item.product.id !== productToRemove.product.id
+        );
+      }
+    }
 }

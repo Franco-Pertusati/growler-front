@@ -6,6 +6,7 @@ import { Table } from '../../../core/interfaces/tables';
 import { ApiService } from '../../../core/services/api.service';
 import { ToastService } from '../../../core/services/toast.service';
 import { ShiftService } from '../../../core/services/shift.service';
+import { ListedProd } from '../../../core/interfaces/products';
 
 @Component({
   selector: 'app-dinning-area',
@@ -21,7 +22,7 @@ export class DinningAreaComponent {
   cells = [...Array(40).keys()].map(x => x + 1);
   draggedTable: any = null;
   selectedTable: Table | null = null;
-  @Output() tableSelectedEm = new EventEmitter<number | null>();
+  @Output() tableSelectedEm = new EventEmitter<Table>();
 
   constructor(private apiService: ApiService, private toast: ToastService, private shift: ShiftService) {
     this.activeShift = this.shift.getShiftState()
@@ -31,15 +32,27 @@ export class DinningAreaComponent {
     this.getTables()
   }
 
-  selectTable(table: Table | null) {
-    this.tableSelectedEm.emit(table?.id);
+  selectTable(table: Table) {
+    this.tableSelectedEm.emit(table);
   }
 
-  //CORREJIR SUSCRIBE
+  //TODO corregir llamadas a la api
   getTables() {
     this.apiService.getTables().subscribe(
       (data: any) => {
-        this.tables = data.member;
+        const rawTables = data.member;
+        rawTables.forEach((rt: any) => {
+          const cookedTable: Table = {
+            id: rt.id,
+            name: rt.name,
+            position: rt.position,
+            state: rt.state,
+            round: rt.round,
+            products: []
+          }
+          this.tables.push(cookedTable)
+        });
+        console.log(this.tables)
       },
       (error) => {
         this.toast.showToast('Error fetching the tables', 'error')
@@ -90,24 +103,7 @@ export class DinningAreaComponent {
     }
   }
 
-  //OJO SIN IMPLEMENTAR
-  createTable() {
-    const table = {
-      id: 3,
-      name: 'NewTable',
-      position: 1,
-      state: 3,
-      round: false
-    }
-    this.apiService.createTable(table).subscribe({
-      next: () => {
-        console.log("Table created")
-      },
-      error: (err) => {
-        console.error('Error al actualizar mesa:', err);
-      }
-    });
-  }
+  createTable() {}
 
   deleteTable() {
     if (this.selectedTable) {

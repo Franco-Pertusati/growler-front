@@ -60,7 +60,6 @@ export class UsersListComponent {
   createUser(): void {
     const newUser = { name: 'John Doe', email: 'john@example.com' };
     this.userService.createUser(newUser).subscribe(user => {
-      console.log('Created user:', user);
       this.loadUsers(); // Refresh the list
     });
   }

@@ -12,6 +12,7 @@
   width: 100%;
   height: 100%;
   border-right: 1px solid var(--border);
+  gap: 8px;
 }
 
 .flexCol {
@@ -45,13 +46,23 @@
 .prodItem {
   margin: 0 12px;
   padding: 6px;
-  border-radius: 4px;
+  border-radius: 8px;
   cursor: pointer;
   display: grid;
-  grid-template-columns: auto 100px 30px;
+  grid-template-columns: auto 120px;
   align-items: center;
   box-shadow: none;
-  border: solid 1px var(--bg2);
+  background-color: var(--primary);
+  transition: all ease .2s;
+  text-align: start;
+}
+
+.prodItem * {
+  color: white;
+}
+
+.prodItem:hover {
+  transform: scale(1.02);
 }
 
 .gridMode {
@@ -64,13 +75,9 @@
   margin: 0;
   width: 182px;
   min-height: 182px;
-  border: solid 2px var(--bg2);
-  display: flex;
-  flex-direction: column;
-}
-
-.prodItem:hover {
-  background-color: var(--bg2);
+  grid-template-columns: auto;
+  grid-template-rows: auto min-content;
+  text-align: center;
 }
 
 .list {
@@ -80,4 +87,12 @@
 
 .mb12 {
   margin-bottom: 12px;
+}
+
+.orderList {
+  height: 508px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
 }

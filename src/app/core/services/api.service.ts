@@ -42,7 +42,6 @@ export class ApiService {
       price: product.price,
       category: `${this.apiUrl}/api/categories/${product.category}`,
     }
-    console.log(productData.price + 3)
     return this.http.post<Product>(`${this.apiUrl}/api/products`, productData);
   }
 

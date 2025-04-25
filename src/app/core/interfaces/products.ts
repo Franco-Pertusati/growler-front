@@ -10,3 +10,8 @@ export interface Category {
   name: string;
   products?: Product[];
 }
+
+export interface ListedProd {
+  product: Product
+  quantity: number
+}
