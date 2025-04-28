@@ -1,4 +1,4 @@
-import { Component, EventEmitter, inject, Input, Output } from '@angular/core';
+import { Component, EventEmitter, inject, input, Input, Output } from '@angular/core';
 import { TableComponent } from "./table/table.component";
 import { LayoutChange } from './modules/changesRegister';
 import { ButtonComponent } from '../button/button.component';
@@ -17,45 +17,18 @@ import { ShiftService } from '../../../core/services/shift.service';
 
 export class DinningAreaComponent {
   activeShift: boolean = false;
-  tables: Table[] = []
   cells = [...Array(40).keys()].map(x => x + 1);
   draggedTable: any = null;
   selectedTable: Table | null = null;
+  @Input() tables: Table[] = []
   @Output() tableSelectedEm = new EventEmitter<Table>();
 
   constructor(private apiService: ApiService, private toast: ToastService, private shift: ShiftService) {
     this.activeShift = this.shift.getShiftState()
   }
 
-  ngOnInit() {
-    this.getTables()
-  }
-
   selectTable(table: Table) {
     this.tableSelectedEm.emit(table);
-  }
-
-  //TODO corregir llamadas a la api
-  getTables() {
-    this.apiService.getTables().subscribe(
-      (data: any) => {
-        const rawTables = data.member;
-        rawTables.forEach((rt: any) => {
-          const cookedTable: Table = {
-            id: rt.id,
-            name: rt.name,
-            position: rt.position,
-            state: rt.state,
-            round: rt.round,
-            products: []
-          }
-          this.tables.push(cookedTable)
-        });
-      },
-      (error) => {
-        this.toast.showToast('Error fetching the tables', 'error')
-      }
-    );
   }
 
   getTableAtPosition(pos: number) {
@@ -101,7 +74,7 @@ export class DinningAreaComponent {
     }
   }
 
-  createTable() {}
+  createTable() { }
 
   deleteTable() {
     if (this.selectedTable) {
@@ -176,9 +149,10 @@ export class DinningAreaComponent {
     }
   }
 
+  //TODO ver como queda el editor de salon
   resetTables() {
     this.layoutChanges = []
-    this.getTables()
+    // this.getTables()
   }
 
   handleDeleteTable(table: Table) {

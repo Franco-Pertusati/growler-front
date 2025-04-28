@@ -4,6 +4,7 @@ import { DIALOG_DATA, DialogRef } from '@angular/cdk/dialog';
 import { CommonModule } from '@angular/common';
 import { Category, ListedProd, Product } from '../../../core/interfaces/products';
 import { Table } from '../../../core/interfaces/tables';
+import { ShiftService } from '../../../core/services/shift.service';
 
 @Component({
   selector: 'app-adition-dialog',
@@ -20,7 +21,7 @@ export class AditionDialogComponent {
   selectedCategory: Category | null = null;
   gridMode: boolean = true;
 
-  constructor(private dialogRef: DialogRef) { }
+  constructor(private dialogRef: DialogRef, private shift:ShiftService) { }
 
   ngOnInit() {
     this.selectCategory(this.categories[0].id);

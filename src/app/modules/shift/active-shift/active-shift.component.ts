@@ -27,8 +27,34 @@ export class ActiveShiftComponent {
   categories: Category[] = []
   selectedTable: Table | null = null
 
+  tables: Table[] = []
+
   ngOnInit() {
+    this.getTables()
     this.loadCategories()
+  }
+
+  //TODO corregir llamadas a la api
+  getTables() {
+    this.apiService.getTables().subscribe(
+      (data: any) => {
+        const rawTables = data.member;
+        rawTables.forEach((rt: any) => {
+          const cookedTable: Table = {
+            id: rt.id,
+            name: rt.name,
+            position: rt.position,
+            state: rt.state,
+            round: rt.round,
+            products: []
+          }
+          this.tables.push(cookedTable)
+        });
+      },
+      (error) => {
+        this.toast.showToast('Error fetching the tables', 'error')
+      }
+    );
   }
 
   loadCategories() {
@@ -51,7 +77,20 @@ export class ActiveShiftComponent {
       const dialogRef = this.dialog.open(AditionDialogComponent, {
         data: [this.categories, this.selectedTable]
       });
+
+
+      dialogRef.closed.subscribe(result => {
+        if (result) {
+          this.saveTables()
+        } else {
+          return
+        }
+    });
     }
+  }
+
+  saveTables() {
+    localStorage.setItem('tables', JSON.stringify(this.tables));
   }
 
   searchResult: Product[] = []
@@ -86,6 +125,7 @@ export class ActiveShiftComponent {
       }
       this.selectedTable?.products.push(newOrder);
     }
+    this.saveTables()
   }
 
   reduceProdQuantity(prodToReduce: ListedProd) {
@@ -94,6 +134,7 @@ export class ActiveShiftComponent {
     } else {
       prodToReduce.quantity--;
     }
+    this.saveTables()
   }
 
   removeProduct(productToRemove: ListedProd) {
@@ -102,6 +143,7 @@ export class ActiveShiftComponent {
         item => item.product.id !== productToRemove.product.id
       );
     }
+    this.saveTables()
   }
 
   printTable() {

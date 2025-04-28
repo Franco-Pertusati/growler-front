@@ -18,7 +18,7 @@
       </div>
     </div>
     <div class="flex">
-      <app-dinning-area (tableSelectedEm)="onTableSelected($event)" />
+      <app-dinning-area (tableSelectedEm)="onTableSelected($event)" [tables]="tables" />
       <div class="win smCard hfull">
         <div class="flex tableData">
           @if (selectedTable) {

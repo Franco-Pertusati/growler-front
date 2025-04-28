@@ -7,7 +7,6 @@ import { ListedTable, Table } from '../interfaces/tables';
 export class ShiftService {
   activeShift: boolean = false;
   shiftRegister: ListedTable[] = [];
-
   constructor() {
     this.activeShift = localStorage.getItem('activeShift') === 'true';
   }
