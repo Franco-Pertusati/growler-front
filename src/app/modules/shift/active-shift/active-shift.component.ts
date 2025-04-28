@@ -26,11 +26,15 @@ export class ActiveShiftComponent {
 
   categories: Category[] = []
   selectedTable: Table | null = null
-
   tables: Table[] = []
 
   ngOnInit() {
-    this.getTables()
+    const storedTables = localStorage.getItem('tables');
+    if (storedTables) {
+      this.tables = JSON.parse(storedTables);
+    } else {
+      this.getTables()
+    }
     this.loadCategories()
   }
 
@@ -150,6 +154,7 @@ export class ActiveShiftComponent {
     if (this.selectedTable && this.selectedTable.products.length) {
       this.selectedTable.state = 3;
       this.printTableTicket(this.selectedTable)
+      this.saveTables()
     }
   }
 
@@ -163,6 +168,7 @@ export class ActiveShiftComponent {
       table.state = 1;
       table.products = []
     }
+    this.saveTables()
     this.createTableRegister(table)
   }
 
