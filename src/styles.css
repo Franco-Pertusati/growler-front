@@ -24,7 +24,7 @@
   --warningBg: #f39c124d;
   --danger: #fa4531;
   --dangerBg: #fa45314d;
-  --blue: #0074c2;
+  --blue: #3bb1ff;
   --blueBg: #0074c24d;
   --violet: #b85cff;
   --violetBg: #b85cff4d;
@@ -55,7 +55,7 @@
   --warningBg: #f39c124d;
   --danger: #fa3131;
   --dangerBg: #fa45314d;
-  --blue: #0074c2;
+  --blue: #3bb1ff;
   --blueBg: #0074c24d;
   --violet: #662C91;
   --violetBg: #662C914d;
@@ -171,7 +171,7 @@ h3 {
 input {
   padding: 4px;
   border-style: none;
-  border-radius: 4px;
+  border-radius: 8px;
   border: 1px solid var(--border);
   background-color: var(--bg1);
 }
@@ -217,7 +217,7 @@ select:focus {
   color: var(--succes);
 }
 
-.greenRed {
+.redFont {
   color: var(--danger);
 }
 
@@ -229,6 +229,11 @@ select:focus {
 .bgGreen {
   color: var(--succes);
   background-color: var(--succesBg);
+}
+
+.bgRed {
+  color: var(--danger);
+  background-color: var(--dangerBg);
 }
 
 .bgViolet {
@@ -269,7 +274,7 @@ select:focus {
 .orderBtn {
   padding: 4px;
   padding-left: 8px;
-  background-color: var(--primary2);
+  background-color: var(--succesBg);
   display: grid;
   grid-template-columns: 24px auto min-content;
   border-radius: 8px;

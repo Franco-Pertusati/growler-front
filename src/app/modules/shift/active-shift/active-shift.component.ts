@@ -10,17 +10,9 @@ import { ApiService } from '../../../core/services/api.service';
 import { Category, ListedProd, Product } from '../../../core/interfaces/products';
 import { ShiftService } from '../../../core/services/shift.service';
 import { Router } from '@angular/router';
-import { Table } from '../../../core/interfaces/tables';
+import { ListedTable, Table } from '../../../core/interfaces/tables';
 import { CommonModule } from '@angular/common';
-
-export interface ShiftTable {
-  id: number;
-  name: string;
-  position: number;
-  state: number;
-  round: boolean;
-  products: string;
-}
+import { PrintService } from '../../../core/services/print-service.service';
 
 @Component({
   selector: 'app-active-shift',
@@ -30,7 +22,7 @@ export interface ShiftTable {
   styleUrl: './active-shift.component.css'
 })
 export class ActiveShiftComponent {
-  constructor(private apiService: ApiService, private toast: ToastService, private dialog: Dialog, private shift: ShiftService, private router: Router) { }
+  constructor(private apiService: ApiService, private toast: ToastService, private dialog: Dialog, private shift: ShiftService, private router: Router, private printService: PrintService) { }
 
   categories: Category[] = []
   selectedTable: Table | null = null
@@ -52,11 +44,10 @@ export class ActiveShiftComponent {
 
   onTableSelected(table: any) {
     this.selectedTable = table;
-    console.log(this.selectedTable)
   }
 
   openTableMenu() {
-    if (this.selectedTable) {
+    if (this.selectedTable && this.selectedTable.state != 3) {
       const dialogRef = this.dialog.open(AditionDialogComponent, {
         data: [this.categories, this.selectedTable]
       });
@@ -77,39 +68,71 @@ export class ActiveShiftComponent {
     if (searchValue.length === 0) this.searchResult = []
   }
 
+  //TODO validar que todas las mesas esten cerradas
   closeShift() {
-    //Para mas adelante: revisar que todas las mesas esten
     this.shift.endShift()
     this.router.navigate(['app/'])
   }
 
-    addProdToList(productToAdd: Product) {
-      const existingProduct = this.selectedTable?.products.find(p => p.product.id === productToAdd.id);
+  addProdToList(productToAdd: Product) {
+    const existingProduct = this.selectedTable?.products.find(p => p.product.id === productToAdd.id);
 
-      if (existingProduct) {
-        existingProduct.quantity++;
-      } else {
-        const newOrder = {
-          product: productToAdd,
-          quantity: 1
-        }
-        this.selectedTable?.products.push(newOrder);
+    if (existingProduct) {
+      existingProduct.quantity++;
+    } else {
+      const newOrder = {
+        product: productToAdd,
+        quantity: 1
       }
+      this.selectedTable?.products.push(newOrder);
     }
+  }
 
-    reduceProdQuantity(prodToReduce: ListedProd) {
-      if (prodToReduce.quantity === 1) {
-        this.removeProduct(prodToReduce);
-      } else {
-        prodToReduce.quantity--;
-      }
+  reduceProdQuantity(prodToReduce: ListedProd) {
+    if (prodToReduce.quantity === 1) {
+      this.removeProduct(prodToReduce);
+    } else {
+      prodToReduce.quantity--;
     }
+  }
 
-    removeProduct(productToRemove: ListedProd) {
-      if (this.selectedTable) {
-        this.selectedTable.products = this.selectedTable?.products.filter(
-          item => item.product.id !== productToRemove.product.id
-        );
-      }
+  removeProduct(productToRemove: ListedProd) {
+    if (this.selectedTable) {
+      this.selectedTable.products = this.selectedTable?.products.filter(
+        item => item.product.id !== productToRemove.product.id
+      );
     }
+  }
+
+  printTable() {
+    if (this.selectedTable && this.selectedTable.products.length) {
+      this.selectedTable.state = 3;
+      this.printTableTicket(this.selectedTable)
+    }
+  }
+
+  printTableTicket(table: Table) {
+    this.printService.printTicket(table);
+  }
+
+  //TODO resetear el startTime
+  closeTable(table: Table) {
+    if (table.state === 3) {
+      table.state = 1;
+      table.products = []
+    }
+    this.createTableRegister(table)
+  }
+
+  // TODO Añadir timeStamps a las mesas
+  createTableRegister(table: Table) {
+    const newRegister: ListedTable = {
+      id: table.id,
+      startTime: 1,
+      endTime: 3,
+      name: table.name,
+      products: table.products
+    }
+    this.shift.registerShift(newRegister)
+  }
 }

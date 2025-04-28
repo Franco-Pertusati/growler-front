@@ -73,11 +73,6 @@ export class AditionDialogComponent {
 
     this.order.forEach(lp => {
       const existingLp = this.selectedTable.products.find(tableLp => tableLp.product.id === lp.product.id)
-
-      // if (!this.selectedTable.products) {
-      //   this.selectedTable.products = [];
-      // }
-
       if (existingLp) {
         existingLp.quantity++
       } else {

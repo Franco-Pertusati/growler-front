@@ -6,7 +6,6 @@ import { Table } from '../../../core/interfaces/tables';
 import { ApiService } from '../../../core/services/api.service';
 import { ToastService } from '../../../core/services/toast.service';
 import { ShiftService } from '../../../core/services/shift.service';
-import { ListedProd } from '../../../core/interfaces/products';
 
 @Component({
   selector: 'app-dinning-area',
@@ -52,7 +51,6 @@ export class DinningAreaComponent {
           }
           this.tables.push(cookedTable)
         });
-        console.log(this.tables)
       },
       (error) => {
         this.toast.showToast('Error fetching the tables', 'error')

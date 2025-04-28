@@ -1,10 +1,12 @@
 import { Injectable } from '@angular/core';
+import { ListedTable, Table } from '../interfaces/tables';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ShiftService {
   activeShift: boolean = false;
+  shiftRegister: ListedTable[] = [];
 
   constructor() {
     this.activeShift = localStorage.getItem('activeShift') === 'true';
@@ -22,5 +24,9 @@ export class ShiftService {
 
   getShiftState() {
     return this.activeShift;
+  }
+
+  registerShift(register: ListedTable) {
+    this.shiftRegister.push(register)
   }
 }

@@ -1,4 +1,4 @@
-import { ListedProd, Product } from "./products";
+import { ListedProd } from "./products";
 
 export interface Table {
   id: number;
@@ -6,5 +6,13 @@ export interface Table {
   position: number;
   state: number;
   round: boolean;
+  products: ListedProd[]
+}
+
+export interface ListedTable {
+  id: number,
+  startTime: number,
+  endTime: number,
+  name: string,
   products: ListedProd[]
 }

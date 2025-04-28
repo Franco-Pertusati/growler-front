@@ -16,7 +16,7 @@
 }
 
 .tableData .badge {
-  border-radius: 4px;
+  border-radius: 8px;
   padding: 6px;
 }
 
@@ -32,4 +32,7 @@ h1 {
 
 .tableProducts {
   gap: 6px;
+  height: 378px;
+  overflow-y: auto;
 }
+

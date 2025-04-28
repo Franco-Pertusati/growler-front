@@ -22,9 +22,9 @@
       <div class="win smCard hfull">
         <div class="flex tableData">
           @if (selectedTable) {
-          <span class="badge bgMain">Selected table: {{ selectedTable.name }}</span>
+          <span>Selected table: {{ selectedTable.name }}</span>
           } @else {
-          <span class="badge bgMain">Select a table</span>
+          <span class="badge bgRed">Select a table</span>
           }
           <span class="badge bgGreen">$0.00</span>
         </div>
@@ -60,9 +60,9 @@
           }
         </div>
         <div class="flex ctrlBtns">
-          <app-button [label]="'Add'" [icon]="'add'" [accent]="true" (click)="openTableMenu()" />
-          <app-button [label]="'Print'" [icon]="'receipt_long'" />
-          <app-button [label]="'Close'" [icon]="'shopping_cart'" />
+          <app-button [label]="'Add'" [icon]="'add'" [accent]="true" [style]="selectedTable?.state === 3? 'disabled' : ''" (click)="openTableMenu()" />
+          <app-button [label]="'Print'" [icon]="'receipt_long'" (click)="printTable()"/>
+          <app-button [label]="'Close'" [icon]="'shopping_cart'" (click)="selectedTable? closeTable(selectedTable) : ''"/>
         </div>
       </div>
     </div>
