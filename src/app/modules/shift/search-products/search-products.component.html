@@ -1,0 +1,12 @@
+<div class="searchBarContainer">
+  <input class="wfull" placeholder="Search products" type="text" (input)="updateSearchValue($event)">
+  @if (searchResult.length) {
+  <div class="searchProdList background wfull flexCol">
+    @for (prod of searchResult; track $index) {
+      <button class="flex" (click)="addProduct(prod)">
+        <span>{{ prod.name }}</span>
+      </button>
+    }
+  </div>
+  }
+</div>

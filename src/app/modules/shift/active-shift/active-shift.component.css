@@ -30,20 +30,9 @@ h1 {
   justify-content: space-between;
 }
 
-.listedProd {
-  padding: 0 6px;
-  background-color: var(--primary2);
-  border-radius: 8px;
-  display: grid;
-  grid-template-columns: auto 30px min-content;
-  align-items: center;
-  gap: 4px;
-}
-
-.listedProd .flex {
-  gap: 0;
-}
-
 .tableProducts {
-  gap: 4px;
+  gap: 6px;
+  height: 378px;
+  overflow-y: auto;
 }
+

@@ -1,4 +1,4 @@
-import { ProductInList } from "./products";
+import { ListedProd } from "./products";
 
 export interface Table {
   id: number;
@@ -6,5 +6,15 @@ export interface Table {
   position: number;
   state: number;
   round: boolean;
-  products: ProductInList[];
+  products: ListedProd[]
+}
+
+export interface ListedTable {
+  id: number,
+  startTime: number,
+  endTime: number,
+  name: string,
+  total: number,
+  paymentMethod: string,
+  products: ListedProd[]
 }

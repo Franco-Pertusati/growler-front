@@ -1,0 +1,11 @@
+.searchBarContainer {
+  position: relative;
+}
+
+.searchProdList {
+  position: absolute;
+  margin-top: 8px;
+  max-height: 382px;
+  overflow-y: scroll;
+  z-index: 20;
+}

@@ -3,9 +3,11 @@
     @if (!activeShift) {
     <div class="flex background">
       <span>Salon settings:</span>
-      <app-button [icon]="'save'" [showLabel]="false" />
-      <app-button [icon]="'refresh'" [showLabel]="false" />
+      <app-button [icon]="'save'" [showLabel]="false" [notifications]="layoutChanges.length" (click)="saveTables()" />
+      <app-button [icon]="'refresh'" [showLabel]="false" (click)="resetTables()" />
+      @if (layoutChanges.length > 0) {
       <span class="small">Unsaved changes</span>
+      }
     </div>
     }
     <div class="grid background">
@@ -13,8 +15,10 @@
       <div class="cell" (dragover)="onDragOver($event)" (drop)="onDrop($event, cell)" (dragenter)="onDragEnter($event)"
         (dragleave)="onDragLeave($event)">
         @for (table of getTableAtPosition(cell); track table.id) {
-        <div class="hfull" draggable="true" (dragstart)="onDragStart($event, table)">
-          <app-table  [activeShift]="activeShift" [tableData]="table" />
+        <div class="hfull" draggable="true" (dragstart)="onDragStart($event, table)" (click)="selectedTable = table">
+          <app-table (click)="selectTable(table)" [activeShift]="activeShift" [tableData]="table"
+            [selected]="selectedTable === table" (deleteTable)="handleDeleteTable(table)"
+            (toggleShape)="handleToggleTableShape(table)" (renameTable)="handleRenameTable($event)" />
         </div>
         }
       </div>

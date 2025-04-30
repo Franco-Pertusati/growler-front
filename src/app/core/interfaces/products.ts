@@ -11,8 +11,7 @@ export interface Category {
   products?: Product[];
 }
 
-
-export interface ProductInList {
-  product: Product,
+export interface ListedProd {
+  product: Product
   quantity: number
 }

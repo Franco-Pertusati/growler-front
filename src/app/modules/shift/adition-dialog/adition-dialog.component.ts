@@ -2,8 +2,9 @@ import { Component, inject } from '@angular/core';
 import { ButtonComponent } from "../../shared/button/button.component";
 import { DIALOG_DATA, DialogRef } from '@angular/cdk/dialog';
 import { CommonModule } from '@angular/common';
-import { Category, Product, ProductInList } from '../../../core/interfaces/products';
-import { DiningAreaService } from '../../../core/services/dining-area.service';
+import { Category, ListedProd, Product } from '../../../core/interfaces/products';
+import { Table } from '../../../core/interfaces/tables';
+import { ShiftService } from '../../../core/services/shift.service';
 
 @Component({
   selector: 'app-adition-dialog',
@@ -15,11 +16,12 @@ import { DiningAreaService } from '../../../core/services/dining-area.service';
 export class AditionDialogComponent {
   data = inject(DIALOG_DATA);
   categories: Category[] = this.data[0];
+  selectedTable: Table = this.data[1];
+  order: ListedProd[] = []
   selectedCategory: Category | null = null;
   gridMode: boolean = true;
-  itemsList: ProductInList[] = []
 
-  constructor(private dialogRef: DialogRef, private diningService: DiningAreaService) { }
+  constructor(private dialogRef: DialogRef, private shift:ShiftService) { }
 
   ngOnInit() {
     this.selectCategory(this.categories[0].id);
@@ -36,39 +38,50 @@ export class AditionDialogComponent {
     }
   }
 
-  addItem(prodToAdd: Product) {
-    const repeatedProd = this.itemsList.find(i => i.product.id === prodToAdd.id)
+  addProdToList(productToAdd: Product) {
+    const existingProduct = this.order.find(p => p.product.id === productToAdd.id);
 
-    if (repeatedProd) {
-      repeatedProd.quantity++
+    if (existingProduct) {
+      existingProduct.quantity++;
     } else {
-      this.itemsList.push(
-        {
-          product: prodToAdd,
-          quantity: 1
-        }
-      )
+      const newOrder = {
+        product: productToAdd,
+        quantity: 1
+      }
+      this.order.push(newOrder);
     }
   }
 
-  removeItem(prodToDelete: ProductInList) {
-    const result = this.itemsList.filter(i => i.product.id !== prodToDelete.product.id);
-
-    if (result) {
-      this.itemsList = result;
+  reduceProdQuantity(prodToReduce: ListedProd) {
+    if (prodToReduce.quantity === 1) {
+      this.removeProduct(prodToReduce);
+    } else {
+      prodToReduce.quantity--;
     }
   }
 
-  susbstractItem(prodToSubstract: ProductInList) {
-    if (prodToSubstract.quantity > 1) {
-      prodToSubstract.quantity--
-    } else {
-      this.removeItem(prodToSubstract)
-    }
+  removeProduct(productToRemove: ListedProd) {
+    this.order = this.order.filter(
+      item => item.product.id !== productToRemove.product.id
+    );
   }
 
   confirmOrder() {
-    this.diningService.addOrder(this.data[1], this.itemsList)
-    this.closeDialog()
+    if (this.order.length === 0) {
+      this.closeDialog();
+      return;
+    }
+
+    this.order.forEach(lp => {
+      const existingLp = this.selectedTable.products.find(tableLp => tableLp.product.id === lp.product.id)
+      if (existingLp) {
+        existingLp.quantity++
+      } else {
+        this.selectedTable.products.push(lp);
+      }
+    });
+
+    this.selectedTable.state = 2
+    this.dialogRef.close(this.selectedTable)
   }
 }

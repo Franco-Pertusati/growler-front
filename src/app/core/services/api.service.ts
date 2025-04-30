@@ -42,7 +42,6 @@ export class ApiService {
       price: product.price,
       category: `${this.apiUrl}/api/categories/${product.category}`,
     }
-    console.log(productData.price + 3)
     return this.http.post<Product>(`${this.apiUrl}/api/products`, productData);
   }
 
@@ -132,6 +131,65 @@ export class ApiService {
    */
   deleteCategory(id: number): Observable<Category> {
     return this.http.delete<Category>(`${this.apiUrl}/api/categories/${id}`);
+  }
+
+  // ==============================================
+  // Dining Table Methods
+  // ==============================================
+
+  /**
+   * Retrieves all dining tables
+   * @returns Observable of Table array
+   */
+  getTables(): Observable<Table[]> {
+    return this.http.get<Table[]>(`${this.apiUrl}/api/dinig_tables`);
+  }
+
+  /**
+   * Retrieves a single dining table by ID
+   * @param id The table ID
+   * @returns Observable of Table
+   */
+  getTable(id: number): Observable<Table> {
+    return this.http.get<Table>(`${this.apiUrl}/api/dinig_tables/${id}`);
+  }
+
+  /**
+   * Creates a new dining table
+   * @param tableData The table data to create
+   * @returns Observable of the created Table
+   */
+  createTable(tableData: Table): Observable<Table> {
+    return this.http.post<Table>(`${this.apiUrl}/api/dinig_tables`, tableData);
+  }
+
+  /**
+   * Fully updates a dining table using PUT
+   * @param id The table ID to update
+   * @param tableData The complete table data
+   * @returns Observable of the updated Table
+   */
+  updateTable(id: number, tableData: Table): Observable<Table> {
+    return this.http.put<Table>(`${this.apiUrl}/api/dinig_tables/${id}`, tableData);
+  }
+
+  /**
+   * Partially updates a dining table using PATCH
+   * @param id The table ID to update
+   * @param updates The partial table data
+   * @returns Observable of the updated Table
+   */
+  patchTable(id: number, updates: Partial<Table>): Observable<Table> {
+    return this.http.patch<Table>(`${this.apiUrl}/api/dinig_tables/${id}`, updates);
+  }
+
+  /**
+   * Deletes a dining table by ID
+   * @param id The table ID to delete
+   * @returns Observable of the deleted Table
+   */
+  deleteTable(id: number): Observable<Table> {
+    return this.http.delete<Table>(`${this.apiUrl}/api/dinig_tables/${id}`);
   }
 
   // ==============================================

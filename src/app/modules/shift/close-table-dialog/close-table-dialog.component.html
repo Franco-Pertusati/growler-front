@@ -1,0 +1,16 @@
+<div class="win">
+  <h2>Confirm sell</h2>
+  <div class="flexCol">
+    <span>select a payment methods</span>
+    <div class="flex" style="flex-wrap: wrap;">
+      @for (pm of paymentMethods; track $index) {
+        <app-button [icon]="''" [label]="pm.name" [style]="selectedPM?.name === pm.name? 'accent' : 'border'" (click)="selectPm($index)" />
+        }
+    </div>
+  </div>
+  <br>
+  <div class="flex">
+    <app-button [icon]="'close'" [label]="'cancel'" [style]="'border'" (click)="cancel()" />
+    <app-button [icon]="'check'" [label]="'confirm payment'" [style]="'accent'" (click)="confirmSell()" />
+  </div>
+</div>

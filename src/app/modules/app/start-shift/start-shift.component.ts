@@ -13,12 +13,7 @@ import { Router } from '@angular/router';
 export class StartShiftComponent {
   constructor(private shift: ShiftService, private router: Router) { }
 
-  ngOnInit() {
-    console.log(
-      this.shift.activeShift
-
-    )
-  }
+  ngOnInit() {}
 
   startShift() {
     this.shift.startShift()
