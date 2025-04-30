@@ -61,7 +61,7 @@ export class NavComponent {
       routerLink: 'shift-history'
     },
     {
-      label: 'Shift history',
+      label: 'Settings',
       icon: 'settings',
       style: 'wfull',
       routerLink: 'settings'

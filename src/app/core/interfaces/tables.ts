@@ -14,5 +14,7 @@ export interface ListedTable {
   startTime: number,
   endTime: number,
   name: string,
+  total: number,
+  paymentMethod: string,
   products: ListedProd[]
 }

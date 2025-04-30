@@ -13,6 +13,7 @@ import { Router } from '@angular/router';
 import { ListedTable, Table } from '../../../core/interfaces/tables';
 import { CommonModule } from '@angular/common';
 import { PrintService } from '../../../core/services/print-service.service';
+import { CloseTableDialogComponent } from '../close-table-dialog/close-table-dialog.component';
 
 @Component({
   selector: 'app-active-shift',
@@ -27,6 +28,7 @@ export class ActiveShiftComponent {
   categories: Category[] = []
   selectedTable: Table | null = null
   tables: Table[] = []
+  total: number = 0
 
   ngOnInit() {
     const storedTables = localStorage.getItem('tables');
@@ -74,6 +76,16 @@ export class ActiveShiftComponent {
 
   onTableSelected(table: any) {
     this.selectedTable = table;
+    this.calcTableTotal(table)
+  }
+
+  calcTableTotal(table: Table) {
+    this.total = 0;
+    table.products.forEach(lp => {
+      const subTotal = lp.product.price * lp.quantity
+
+      this.total = this.total + subTotal;
+    });
   }
 
   openTableMenu() {
@@ -86,10 +98,13 @@ export class ActiveShiftComponent {
       dialogRef.closed.subscribe(result => {
         if (result) {
           this.saveTables()
+          if (this.selectedTable) {
+            this.calcTableTotal(this.selectedTable)
+          }
         } else {
           return
         }
-    });
+      });
     }
   }
 
@@ -130,6 +145,9 @@ export class ActiveShiftComponent {
       this.selectedTable?.products.push(newOrder);
     }
     this.saveTables()
+    if (this.selectedTable) {
+      this.calcTableTotal(this.selectedTable)
+    }
   }
 
   reduceProdQuantity(prodToReduce: ListedProd) {
@@ -139,6 +157,9 @@ export class ActiveShiftComponent {
       prodToReduce.quantity--;
     }
     this.saveTables()
+    if (this.selectedTable) {
+      this.calcTableTotal(this.selectedTable)
+    }
   }
 
   removeProduct(productToRemove: ListedProd) {
@@ -148,6 +169,9 @@ export class ActiveShiftComponent {
       );
     }
     this.saveTables()
+    if (this.selectedTable) {
+      this.calcTableTotal(this.selectedTable)
+    }
   }
 
   printTable() {
@@ -164,23 +188,39 @@ export class ActiveShiftComponent {
 
   //TODO resetear el startTime
   closeTable(table: Table) {
-    if (table.state === 3) {
-      table.state = 1;
-      table.products = []
+    if (table.state > 2) {
+      const dialogRef = this.dialog.open(CloseTableDialogComponent, {
+        data: [this.categories, this.selectedTable]
+      });
+
+
+      dialogRef.closed.subscribe(result => {
+        if (result) {
+          this.createTableRegister(table, result.toString())
+          if (table.state === 3) {
+            table.state = 1;
+            table.products = []
+          }
+          this.saveTables()
+        } else {
+          return
+        }
+      });
     }
-    this.saveTables()
-    this.createTableRegister(table)
   }
 
   // TODO Añadir timeStamps a las mesas
-  createTableRegister(table: Table) {
+  createTableRegister(table: Table, paymentMethod: string) {
     const newRegister: ListedTable = {
       id: table.id,
       startTime: 1,
       endTime: 3,
       name: table.name,
+      paymentMethod: paymentMethod,
+      total: this.total,
       products: table.products
     }
-    this.shift.registerShift(newRegister)
+    this.shift.registerShift(newRegister);
+    console.log(newRegister)
   }
 }

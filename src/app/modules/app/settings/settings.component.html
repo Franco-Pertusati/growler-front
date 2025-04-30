@@ -1,1 +1,77 @@
-<p>settings works!</p>
+<div class="wfull hfull flexCol" style="padding-bottom: 42px; gap: 0;">
+  <app-top-bar [title]="'Settings'">
+  </app-top-bar>
+  <div class="hfull wfull overflow center" style="max-width: 990px;">
+    <div>
+      <h2>Bar Settings</h2>
+      <div class="win">
+        <div class="flex">
+          <span>Bar name:</span>
+          <input type="text">
+          <app-button [icon]="'check'" [label]="''" [style]="'accent'" />
+        </div>
+      </div>
+    </div>
+    <br>
+    <div>
+      <h2>Payment Methods</h2>
+      <p>Gestiona y registra las diferentes formas en que tus clientes pueden pagar por los productos o servicios que
+        ofreces. Es una funcionalidad clave para llevar un control financiero claro y ordenado.</p>
+      <div class="win">
+        @for (pm of paymentMethods; track $index) {
+        <div class="flex">
+          <span class="wfull">
+            {{ pm.name }}
+          </span>
+          <!-- From Uiverse.io by hayyangovinda -->
+          <div class="days-btn-container">
+            <input class="day-btn" [id]="'monday' + pm.id" type="checkbox" checked="true" />
+            <label class="day-label" [for]="'monday' + pm.id">M</label>
+
+            <input class="day-btn" [id]="'tuesday' + pm.id" type="checkbox" checked="true" />
+            <label class="day-label" [for]="'tuesday' + pm.id">T</label>
+
+            <input class="day-btn" [id]="'wednesday' + pm.id" type="checkbox" checked="true" />
+            <label class="day-label" [for]="'wednesday' + pm.id">W</label>
+
+            <input class="day-btn" [id]="'thursday' + pm.id" type="checkbox" checked="true" />
+            <label class="day-label" [for]="'thursday' + pm.id">T</label>
+
+            <input class="day-btn" [id]="'friday' + pm.id" type="checkbox" checked="true" />
+            <label class="day-label" [for]="'friday' + pm.id">F</label>
+
+            <input class="day-btn" [id]="'saturday' + pm.id" type="checkbox" checked="true" />
+            <label class="day-label" [for]="'saturday' + pm.id">S</label>
+
+            <input class="day-btn" [id]="'sunday' + pm.id" type="checkbox" checked="true" />
+            <label class="day-label" [for]="'sunday' + pm.id">S</label>
+          </div>
+          <button>
+            <i class="material-icons">delete</i>
+          </button>
+        </div>
+        }
+        <br>
+        <div class="flex">
+          <app-button [icon]="'add'" [label]="'Add paymen method'" [style]="'accent'" />
+          <app-button [icon]="'save'" [label]="'save'" [style]="'border'" />
+        </div>
+      </div>
+    </div>
+    <br>
+    <div class="flexCol">
+      <h2>Ticket settings</h2>
+      <p>Gestiona el estilo y los datos que aparecen en el ticket de cada mesa</p>
+      <div class="flex" style="flex-wrap: wrap;">
+        <app-button [label]="'show waiter name'" [icon]="'check_box'" [style]="'border'" />
+        <app-button [label]="'show table name'" [icon]="'check_box'" [style]="'border'" />
+        <app-button [label]="'show end time'" [icon]="'check_box'" [style]="'border'" />
+        <app-button [label]="'show bottom text'" [icon]="'check_box'" [style]="'border'" />
+        <app-button [label]="'Monospace font'" [icon]="'check_box'" [style]="'border'" />
+        <app-button [label]="'font opacity: medium'" [icon]="'contrast'" [style]="'border'" />
+        <app-button [label]="'font wheight: medium'" [icon]="'format_bold'" [style]="'border'" />
+      </div>
+      <app-button [label]="'apply'" [icon]="'check'" [style]="'accent'" />
+    </div>
+  </div>
+</div>
