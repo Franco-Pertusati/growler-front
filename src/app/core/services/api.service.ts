@@ -23,7 +23,7 @@ export class ApiService {
    * @returns Observable of Product array
    */
   getProducts(): Observable<Product[]> {
-    return this.http.get<Product[]>(`${this.apiUrl}/api/products`);
+    return this.http.get<Product[]>(`${this.apiUrl}/products`);
   }
 
   /**
@@ -32,7 +32,7 @@ export class ApiService {
    * @returns Observable of Product
    */
   getProduct(id: number): Observable<Product> {
-    return this.http.get<Product>(`${this.apiUrl}/api/products/${id}`);
+    return this.http.get<Product>(`${this.apiUrl}/products/${id}`);
   }
 
 
@@ -40,9 +40,9 @@ export class ApiService {
     const productData = {
       name: product.name,
       price: product.price,
-      category: `${this.apiUrl}/api/categories/${product.category}`,
+      category: `${this.apiUrl}/categories/${product.category}`,
     }
-    return this.http.post<Product>(`${this.apiUrl}/api/products`, productData);
+    return this.http.post<Product>(`${this.apiUrl}/products`, productData);
   }
 
   /**
@@ -52,7 +52,7 @@ export class ApiService {
    * @returns Observable of the updated Product
    */
   updateProduct(id: number, productData: Product): Observable<Product> {
-    return this.http.put<Product>(`${this.apiUrl}/api/products/${id}`, productData);
+    return this.http.put<Product>(`${this.apiUrl}/products/${id}`, productData);
   }
 
   /**
@@ -62,7 +62,7 @@ export class ApiService {
    * @returns Observable of the updated Product
    */
   patchProduct(id: number, updates: Partial<Product>): Observable<Product> {
-    return this.http.patch<Product>(`${this.apiUrl}/api/products/${id}`, updates);
+    return this.http.patch<Product>(`${this.apiUrl}/products/${id}`, updates);
   }
 
   /**
@@ -71,7 +71,7 @@ export class ApiService {
    * @returns Observable of the deleted Product
    */
   deleteProduct(id: number): Observable<Product> {
-    return this.http.delete<Product>(`${this.apiUrl}/api/products/${id}`);
+    return this.http.delete<Product>(`${this.apiUrl}/products/${id}`);
   }
 
   // ==============================================
@@ -83,7 +83,7 @@ export class ApiService {
    * @returns Observable of Category array
    */
   getCategories(): Observable<Category[]> {
-    return this.http.get<any>(`${this.apiUrl}/api/categories`);
+    return this.http.get<any>(`http://localhost:3000/categories`);
   }
 
   /**
@@ -92,7 +92,7 @@ export class ApiService {
    * @returns Observable of Category
    */
   getCategory(id: number): Observable<Category> {
-    return this.http.get<Category>(`${this.apiUrl}/api/categories/${id}`);
+    return this.http.get<Category>(`${this.apiUrl}/categories/${id}`);
   }
 
   /**
@@ -101,7 +101,7 @@ export class ApiService {
    * @returns Observable of the created Category
    */
   createCategory(categoryData: Category): Observable<Category> {
-    return this.http.post<Category>(`${this.apiUrl}/api/categories`, categoryData);
+    return this.http.post<Category>(`${this.apiUrl}/categories`, categoryData);
   }
 
   /**
@@ -111,7 +111,7 @@ export class ApiService {
    * @returns Observable of the updated Category
    */
   updateCategory(id: number, categoryData: Category): Observable<Category> {
-    return this.http.put<Category>(`${this.apiUrl}/api/categories/${id}`, categoryData);
+    return this.http.put<Category>(`${this.apiUrl}/categories/${id}`, categoryData);
   }
 
   /**
@@ -121,7 +121,7 @@ export class ApiService {
    * @returns Observable of the updated Category
    */
   patchCategory(id: number, updates: Partial<Category>): Observable<Category> {
-    return this.http.patch<Category>(`${this.apiUrl}/api/categories/${id}`, updates);
+    return this.http.patch<Category>(`${this.apiUrl}/categories/${id}`, updates);
   }
 
   /**
@@ -130,7 +130,7 @@ export class ApiService {
    * @returns Observable of the deleted Category
    */
   deleteCategory(id: number): Observable<Category> {
-    return this.http.delete<Category>(`${this.apiUrl}/api/categories/${id}`);
+    return this.http.delete<Category>(`${this.apiUrl}/categories/${id}`);
   }
 
   // ==============================================
@@ -142,7 +142,7 @@ export class ApiService {
    * @returns Observable of Table array
    */
   getTables(): Observable<Table[]> {
-    return this.http.get<Table[]>(`${this.apiUrl}/api/dinig_tables`);
+    return this.http.get<Table[]>(`${this.apiUrl}/dining-tables`);
   }
 
   /**
@@ -151,7 +151,7 @@ export class ApiService {
    * @returns Observable of Table
    */
   getTable(id: number): Observable<Table> {
-    return this.http.get<Table>(`${this.apiUrl}/api/dinig_tables/${id}`);
+    return this.http.get<Table>(`${this.apiUrl}/dining-tables/${id}`);
   }
 
   /**
@@ -160,7 +160,7 @@ export class ApiService {
    * @returns Observable of the created Table
    */
   createTable(tableData: Table): Observable<Table> {
-    return this.http.post<Table>(`${this.apiUrl}/api/dinig_tables`, tableData);
+    return this.http.post<Table>(`${this.apiUrl}/dining-tables`, tableData);
   }
 
   /**
@@ -170,7 +170,7 @@ export class ApiService {
    * @returns Observable of the updated Table
    */
   updateTable(id: number, tableData: Table): Observable<Table> {
-    return this.http.put<Table>(`${this.apiUrl}/api/dinig_tables/${id}`, tableData);
+    return this.http.put<Table>(`${this.apiUrl}/dining-tables/${id}`, tableData);
   }
 
   /**
@@ -180,7 +180,7 @@ export class ApiService {
    * @returns Observable of the updated Table
    */
   patchTable(id: number, updates: Partial<Table>): Observable<Table> {
-    return this.http.patch<Table>(`${this.apiUrl}/api/dinig_tables/${id}`, updates);
+    return this.http.patch<Table>(`${this.apiUrl}/dining-tables/${id}`, updates);
   }
 
   /**
@@ -189,7 +189,7 @@ export class ApiService {
    * @returns Observable of the deleted Table
    */
   deleteTable(id: number): Observable<Table> {
-    return this.http.delete<Table>(`${this.apiUrl}/api/dinig_tables/${id}`);
+    return this.http.delete<Table>(`${this.apiUrl}/dining-tables/${id}`);
   }
 
   // ==============================================
@@ -202,7 +202,7 @@ export class ApiService {
    * @returns Observable of User array
    */
   getUsers(params?: any): Observable<any[]> {
-    return this.http.get<any[]>(`${this.apiUrl}/api/users`);
+    return this.http.get<any[]>(`${this.apiUrl}/users`);
   }
 
   /**
@@ -211,7 +211,7 @@ export class ApiService {
    * @returns Observable of User
    */
   getUser(id: string | number): Observable<User> {
-    return this.http.get<User>(`${this.apiUrl}/api/users/${id}`);
+    return this.http.get<User>(`${this.apiUrl}/users/${id}`);
   }
 
   /**
@@ -220,7 +220,7 @@ export class ApiService {
    * @returns Observable of the created User
    */
   createUser(userData: Partial<User>): Observable<User> {
-    return this.http.post<User>(`${this.apiUrl}/api/users`, userData);
+    return this.http.post<User>(`${this.apiUrl}/users`, userData);
   }
 
   /**
@@ -230,7 +230,7 @@ export class ApiService {
    * @returns Observable of the updated User
    */
   updateUser(id: string | number, userData: User): Observable<User> {
-    return this.http.put<User>(`${this.apiUrl}/api/users/${id}`, userData);
+    return this.http.put<User>(`${this.apiUrl}/users/${id}`, userData);
   }
 
   /**
@@ -240,7 +240,7 @@ export class ApiService {
    * @returns Observable of the updated User
    */
   patchUser(id: string | number, updates: Partial<User>): Observable<User> {
-    return this.http.patch<User>(`${this.apiUrl}/api/users/${id}`, updates);
+    return this.http.patch<User>(`${this.apiUrl}/users/${id}`, updates);
   }
 
   /**
@@ -249,6 +249,6 @@ export class ApiService {
    * @returns Observable of any (typically empty response)
    */
   deleteUser(id: string | number): Observable<any> {
-    return this.http.delete(`${this.apiUrl}/api/users/${id}`);
+    return this.http.delete(`${this.apiUrl}/users/${id}`);
   }
 }

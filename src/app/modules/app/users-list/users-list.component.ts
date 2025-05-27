@@ -49,7 +49,7 @@ export class UsersListComponent {
   loadUsers() {
     this.userService.getUsers().subscribe(
       (data: any) => {
-        this.users = data.member;
+        this.users = data;
       },
       (error) => {
         this.toast.showToast('Error fetching user list.', 'error');

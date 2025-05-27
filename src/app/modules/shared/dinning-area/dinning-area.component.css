@@ -12,8 +12,9 @@
   width: 100%;
 }
 
-.cell.hover {
-  background-color: var(--bg3);
+.cell:hover {
+  background-color: var(--bg2);
+  border-radius: 12px;
 }
 
 .container {

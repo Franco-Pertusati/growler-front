@@ -45,7 +45,7 @@ export class ActiveShiftComponent {
   getTables() {
     this.apiService.getTables().subscribe(
       (data: any) => {
-        const rawTables = data.member;
+        const rawTables = data;
         rawTables.forEach((rt: any) => {
           const cookedTable: Table = {
             id: rt.id,
@@ -67,7 +67,7 @@ export class ActiveShiftComponent {
   loadCategories() {
     this.apiService.getCategories().subscribe(
       (data: any) => {
-        this.categories = data.member;
+        this.categories = data;
       },
       (error) => {
         this.toast.showToast('Error fetching product list', 'error')

@@ -25,7 +25,7 @@ export class DinningSettingsComponent {
   getTables() {
     this.apiService.getTables().subscribe(
       (data: any) => {
-        const rawTables = data.member;
+        const rawTables = data;
         rawTables.forEach((rt: any) => {
           const cookedTable: Table = {
             id: rt.id,
@@ -40,6 +40,7 @@ export class DinningSettingsComponent {
       },
       (error) => {
         this.toast.showToast('Error fetching the tables', 'error')
+        console.error(error)
       }
     );
   }

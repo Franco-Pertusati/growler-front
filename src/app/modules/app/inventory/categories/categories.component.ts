@@ -28,11 +28,12 @@ export class CategoriesComponent {
   loadCategories() {
     this.apiService.getCategories().subscribe(
       (data: any) => {
-        this.categories = data.member;
+        this.categories = data;
         console.log(this.categories)
       },
       (error) => {
         this.toast.showToast('Error fetching product list', 'error')
+        console.error(error)
       }
     );
   }
