@@ -6,11 +6,12 @@ import { Table } from '../../../core/interfaces/tables';
 import { ApiService } from '../../../core/services/api.service';
 import { ToastService } from '../../../core/services/toast.service';
 import { ShiftService } from '../../../core/services/shift.service';
+import { LoaderComponent } from "../loader/loader.component";
 
 @Component({
   selector: 'app-dinning-area',
   standalone: true,
-  imports: [TableComponent, ButtonComponent],
+  imports: [TableComponent, ButtonComponent, LoaderComponent],
   templateUrl: './dinning-area.component.html',
   styleUrl: './dinning-area.component.css'
 })
@@ -74,7 +75,10 @@ export class DinningAreaComponent {
     }
   }
 
-  createTable() { }
+  createTable(pos: number) {
+    if (this.getTableAtPosition(pos)) {
+    }
+  }
 
   deleteTable() {
     if (this.selectedTable) {

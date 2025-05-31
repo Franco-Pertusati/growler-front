@@ -2,7 +2,7 @@
   <div class="flex">
     <h3>{{ title | titlecase }}</h3>
     @if (selectedItems.size) {
-    <app-button [label]="'delete ' + selectedItems.size" [icon]="'delete'" [accent]="true" />
+    <app-button (click)="demoRestrictionMessage()" [label]="'delete ' + selectedItems.size" [icon]="'delete'" [accent]="true" />
     }
   </div>
   <div class="win wfull">

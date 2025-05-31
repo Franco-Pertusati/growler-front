@@ -2,11 +2,14 @@
   <app-top-bar [title]="'Users'">
     <input type="text" placeholder="Search" (input)="updateSearchValue($event)">
     <div class="flex">
-      <app-button [label]="'Add user'" [icon]="'person_add'" [accent]="true" />
+      <app-button (click)="demoRestrictionMessage()" [label]="'Add user'" [icon]="'person_add'" [accent]="true" />
       @if (selectedUsers.size) {
-      <app-button [label]="'Delete ' + selectedUsers.size + ' users'" [icon]="'person_remove'" [accent]="true" />
-      <app-button [label]="'Set as admin'" [icon]="'manage_accounts'" [accent]="true" />
-      <app-button [label]="'Set as waiter'" [icon]="'manage_accounts'" [accent]="true" />
+      <app-button (click)="demoRestrictionMessage()" [label]="'Delete ' + selectedUsers.size + ' users'"
+        [icon]="'person_remove'" [accent]="true" />
+      <app-button (click)="demoRestrictionMessage()" [label]="'Set as admin'" [icon]="'manage_accounts'"
+        [accent]="true" />
+      <app-button (click)="demoRestrictionMessage()" [label]="'Set as waiter'" [icon]="'manage_accounts'"
+        [accent]="true" />
       }
     </div>
   </app-top-bar>
@@ -23,6 +26,9 @@
           [icon]="this.users.length === this.selectedUsers.size? 'check_box' : 'check_box_outline_blank'"
           (click)="toggleSelectAll()" />
       </div>
+      @if (isLoading) {
+      <app-loader />
+      } @else {
       @for (user of users; track $index) {
       @if (user.name.toLocaleLowerCase().includes(searchValue.toLocaleLowerCase())) {
       <div class="itemRow" [ngClass]="isSelected(user.id)? 'selected' : ''">
@@ -33,8 +39,9 @@
         <app-button [showLabel]="false" [icon]="'more_vert'" [style]="'noShadow'" />
 
         <app-button [showLabel]="false" [icon]="isSelected(user.id) ? 'check_box' : 'check_box_outline_blank'"
-          (click)="toggleUserSelection(user.id)" [style]="'noShadow'"/>
+          (click)="toggleUserSelection(user.id)" [style]="'noShadow'" />
       </div>
+      }
       }
       }
       <div>

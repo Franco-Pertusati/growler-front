@@ -5,11 +5,12 @@ import { User } from '../../../core/interfaces/users';
 import { CommonModule } from '@angular/common';
 import { ApiService } from '../../../core/services/api.service';
 import { ToastService } from '../../../core/services/toast.service';
+import { LoaderComponent } from '../../shared/loader/loader.component';
 
 @Component({
   selector: 'app-users-list',
   standalone: true,
-  imports: [TopBarComponent, ButtonComponent, CommonModule],
+  imports: [TopBarComponent, ButtonComponent, CommonModule, LoaderComponent],
   templateUrl: './users-list.component.html',
   styleUrl: './users-list.component.css'
 })
@@ -46,12 +47,17 @@ export class UsersListComponent {
     }
   }
 
+  isLoading = false;
+
   loadUsers() {
+    this.isLoading = true;
     this.userService.getUsers().subscribe(
       (data: any) => {
         this.users = data;
+        this.isLoading = false;
       },
       (error) => {
+        this.isLoading = false;
         this.toast.showToast('Error fetching user list.', 'error');
       }
     );
@@ -81,5 +87,9 @@ export class UsersListComponent {
 
   updateSearchValue(event: any) {
     this.searchValue = event.target.value;
+  }
+
+  demoRestrictionMessage() {
+    this.toast.showToast('Modifications are not allowed during the demo version.', 'error')
   }
 }

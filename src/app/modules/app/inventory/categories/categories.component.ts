@@ -8,16 +8,18 @@ import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } 
 import { ApiService } from '../../../../core/services/api.service';
 import { ToastService } from '../../../../core/services/toast.service';
 import { CatProductsComponent } from "../cat-products/cat-products.component";
+import { LoaderComponent } from "../../../shared/loader/loader.component";
 
 @Component({
   selector: 'app-categories',
   standalone: true,
-  imports: [ButtonComponent, CommonModule, DropdownComponent, DialogModule, CatProductsComponent],
+  imports: [ButtonComponent, CommonModule, DropdownComponent, DialogModule, CatProductsComponent, LoaderComponent],
   templateUrl: './categories.component.html',
   styleUrl: './categories.component.css'
 })
 export class CategoriesComponent {
   categories: Category[] = []
+  isLoading = false;
 
   constructor(private apiService: ApiService, private dialog: Dialog, private toast: ToastService) { }
 
@@ -26,14 +28,15 @@ export class CategoriesComponent {
   }
 
   loadCategories() {
+    this.isLoading = true;
     this.apiService.getCategories().subscribe(
       (data: any) => {
         this.categories = data;
-        console.log(this.categories)
+        this.isLoading = false;
       },
       (error) => {
-        this.toast.showToast('Error fetching product list', 'error')
-        console.error(error)
+        this.toast.showToast('Error fetching product list', 'error');
+        this.isLoading = false;
       }
     );
   }
@@ -73,6 +76,10 @@ export class CategoriesComponent {
         this.toast.showToast('An error occurred while deleting the product.', 'error')
       }
     });
+  }
+
+  demoRestrictionMessage() {
+    this.toast.showToast('Modifications are not allowed during the demo version.', 'error')
   }
 }
 

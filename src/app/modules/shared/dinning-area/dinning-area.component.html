@@ -1,3 +1,4 @@
+@if(tables.length) {
 <div class="container">
   <div class="salonCont">
     @if (!activeShift) {
@@ -13,7 +14,7 @@
     <div class="grid background">
       @for (cell of cells; track $index) {
       <div class="cell" (dragover)="onDragOver($event)" (drop)="onDrop($event, cell)" (dragenter)="onDragEnter($event)"
-        (dragleave)="onDragLeave($event)">
+        (click)="createTable(cell)" (dragleave)="onDragLeave($event)">
         @for (table of getTableAtPosition(cell); track table.id) {
         <div class="hfull" draggable="true" (dragstart)="onDragStart($event, table)" (click)="selectedTable = table">
           <app-table (click)="selectTable(table)" [activeShift]="activeShift" [tableData]="table"
@@ -26,3 +27,6 @@
     </div>
   </div>
 </div>
+} @else {
+  <app-loader />
+}

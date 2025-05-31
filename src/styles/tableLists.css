@@ -9,7 +9,7 @@
 
 .itemRow, .titleRow {
   display: grid;
-  grid-template-columns: minmax(200px, auto) minmax(200px, auto) 100px 100px 40px min-content;
+  grid-template-columns: 420px minmax(200px, auto) 100px 100px 40px min-content;
   align-items: center;
   gap: 12px;
   padding: 6px 24px;

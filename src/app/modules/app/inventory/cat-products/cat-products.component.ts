@@ -2,6 +2,7 @@ import { Component, Input } from '@angular/core';
 import { Product } from '../../../../core/interfaces/products';
 import { ButtonComponent } from "../../../shared/button/button.component";
 import { CommonModule } from '@angular/common';
+import { ToastService } from '../../../../core/services/toast.service';
 
 @Component({
   selector: 'app-cat-products',
@@ -14,6 +15,8 @@ export class CatProductsComponent {
   selectedItems: Set<number> = new Set<number>();
   @Input() items: Product[] | undefined = []
   @Input() title: string = 'category'
+
+  constructor(private toast: ToastService) { }
 
   toggleUserSelection(userId: number): void {
     if (this.isSelected(userId)) {
@@ -35,5 +38,9 @@ export class CatProductsComponent {
         this.selectedItems.add(user.id)
       });
     }
+  }
+
+  demoRestrictionMessage() {
+    this.toast.showToast('Modifications are not allowed during the demo version.', 'error')
   }
 }
