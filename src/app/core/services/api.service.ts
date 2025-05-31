@@ -83,7 +83,7 @@ export class ApiService {
    * @returns Observable of Category array
    */
   getCategories(): Observable<Category[]> {
-    return this.http.get<any>(`http://localhost:3000/categories`);
+    return this.http.get<any>(`${this.apiUrl}/categories`);
   }
 
   /**
